@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id('doctor_id');
             $table->foreignId('user_id');
-            $table->foreignId('manager_id');
+            $table->foreignId('manager_id')->nullable();
             $table->string('specialization');
             $table->string('doctor_license_number');
-            $table->json('visiting_hours');
+            $table->json('visiting_hours')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doctors');
+        Schema::dropIfExists('table_doctors');
     }
 };
