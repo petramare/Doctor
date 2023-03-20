@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->id('patient_id');
             $table->foreignId('user_id');
-            $table->integer('insurance_company_id');
+            $table->foreignId('insurance_company_id');
             $table->bigInteger('insurance_number');
             $table->timestamps();
         });
