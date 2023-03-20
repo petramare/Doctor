@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('doctor_id');
             $table->foreignId('patient_id');
             $table->string('message');
-            $table->file('file');
+            $table->string('file_path');
             $table->foreignId('message_type_id');
             $table->timestamps();
         });
