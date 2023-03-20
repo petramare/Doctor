@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('start', 0);
             $table->dateTime('end', 0);
             $table->string('description');
-            $table->foreignId('status_id');
+            $table->foreignId('appointment_status_id');
             $table->timestamps();
         });
     }
