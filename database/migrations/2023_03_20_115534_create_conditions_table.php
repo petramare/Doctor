@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('conditions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id');
-            $table->int('weight');
-            $table->int('height');
+            $table->integer('weight');
+            $table->integer('height');
             $table->text('history');
             $table->date('date');
             $table->timestamps();
