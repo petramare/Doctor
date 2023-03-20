@@ -22,7 +22,7 @@ class AppointmentSeeder extends Seeder
                 "start" => "2023-03-20 10:00:53",
                 "end" => "2023-03-20 11:00:53",
                 "description" => "Just quick check",
-                "status_id" => 1,
+                "appointment_status_id" => 1,
             ],
             [
                 "doctor_id" => 1,
@@ -30,7 +30,7 @@ class AppointmentSeeder extends Seeder
                 "start" => "2023-03-20 15:00:53",
                 "end" => "2023-03-20 17:00:53",
                 "description" => "Just quick check",
-                "status_id" => 1,
+                "appointment_status_id" => 1,
             ],
             [
                 "doctor_id" => 1,
@@ -38,7 +38,7 @@ class AppointmentSeeder extends Seeder
                 "start" => "2023-03-15 16:00:53",
                 "end" => "2023-03-15 18:00:53",
                 "description" => "Just quick check",
-                "status_id" => 1,
+                "appointment_status_id" => 1,
             ],
 
         ];
