@@ -39,7 +39,7 @@ class DoctorSeeder extends Seeder
             ],
             [
                 "user_id" => "10",
-                "manager_id" => "4",
+                "manager_id" => "0",
                 "specialization" => "zubar",
                 "doctor_license_number" => "345135",
                 "visiting_hours" => '{"Monday": true, "Tuesday": true, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}',

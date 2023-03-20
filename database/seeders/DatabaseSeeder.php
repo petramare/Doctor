@@ -22,6 +22,17 @@ class DatabaseSeeder extends Seeder
         $this->call(appointmentStatusesSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(DoctorSeeder::class);
+        $this->call(ClinicSeeder::class);
+        $this->call(ManagerSeeder::class);
+        $this->call(InsuranceCompaniesSeeder::class);
+        $this->call(PatientSeeder::class);
+        $this->call(MessageTypeSeeder::class);
+        $this->call(DoctorPatientSeeder::class);
+        $this->call(ConditionSeeder::class);
+        $this->call(AppointmentSeeder::class);
+        $this->call(MessageSeeder::class);
+
+
 
     }
 }
