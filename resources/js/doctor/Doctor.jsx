@@ -1,9 +1,15 @@
+import Footer from "./Footer/Footer"
+import LandingPage from "./LandingPage/Landingpage"
+
 function Doctor() {
 
     return (
-        <div>
-            <h1>Hello Doctor</h1>
-        </div>
+      <div>
+          
+            <LandingPage />
+           
+            <Footer />
+      </div>
     )
 }
 
