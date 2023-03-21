@@ -59,7 +59,8 @@ export default function LoginPage() {
 
         // re-fetch the user information
         // (method passed down via UserContext from App)
-        getUserInformation();
+
+       // getUserInformation();
     }
 
     const handleChange = (event) => {
