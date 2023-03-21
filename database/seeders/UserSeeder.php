@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
 
         $users = [
             [
-                "name" => "arnyrulez",
                 "email" => "arny@neznam.cz",
                 "password" => "krtecek",
                 "first_name" => "Arnošt",
@@ -27,7 +26,6 @@ class UserSeeder extends Seeder
                 "role" => "patient",
             ],
             [
-                "name" => "Evelin",
                 "email" => "e.svarna@bigboss.eu",
                 "password" => "gucci",
                 "first_name" => "Evelína",
@@ -37,7 +35,6 @@ class UserSeeder extends Seeder
                 "role" => "manager",
             ],
             [
-                "name" => "dokturek",
                 "email" => "pavel@rakl.cz",
                 "password" => "granat",
                 "first_name" => "Pavel",
@@ -47,7 +44,6 @@ class UserSeeder extends Seeder
                 "role" => "doctor",
             ],
             [
-                "name" => "masicko",
                 "email" => "maso@slavia.cz",
                 "password" => "ligamistru",
                 "first_name" => "Lukáš",
@@ -57,7 +53,6 @@ class UserSeeder extends Seeder
                 "role" => "patient",
             ],
             [
-                "name" => "pokerface",
                 "email" => "radio@gaga.com",
                 "password" => "popopopoker",
                 "first_name" => "Lady",
@@ -67,7 +62,6 @@ class UserSeeder extends Seeder
                 "role" => "doctor",
             ],
             [
-                "name" => "pudil",
                 "email" => "dan@pudil.cz",
                 "password" => "boleslav",
                 "first_name" => "Daniel",
@@ -77,7 +71,6 @@ class UserSeeder extends Seeder
                 "role" => "manager",
             ],
             [
-                "name" => "prezident",
                 "email" => "weirdo@weirdo.cz",
                 "password" => "moneybag",
                 "first_name" => "Karel",
@@ -87,7 +80,7 @@ class UserSeeder extends Seeder
                 "role" => "manager",
             ],
             [
-                "name" => "pavca",
+
                 "email" => "pzel@poodle.com",
                 "password" => "kamion",
                 "first_name" => "Pavlína",
@@ -97,7 +90,6 @@ class UserSeeder extends Seeder
                 "role" => "patient",
             ],
             [
-                "name" => "rudy07",
                 "email" => "rud@neznam.cz",
                 "password" => "fagaerhrt",
                 "first_name" => "Rudolf",
@@ -107,7 +99,6 @@ class UserSeeder extends Seeder
                 "role" => "doctor",
             ],
             [
-                "name" => "angel",
                 "email" => "angie@yahoo.com",
                 "password" => "fgsrth",
                 "first_name" => "Angelika",
