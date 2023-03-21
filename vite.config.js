@@ -7,7 +7,7 @@ export default ({ mode }) => {
         plugins: [
             laravel({
                 input: [
-                    "resources/css/doctor/main.scss",
+                    "resources/css/main.scss",
                     "resources/js/doctor/main.jsx",
                 ],
                 refresh: true,
