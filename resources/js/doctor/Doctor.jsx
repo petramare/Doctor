@@ -1,7 +1,7 @@
 
 import Navbar from './Components/navbar/Navbar';
-import Footer from "./Footer/Footer"
-import LandingPage from "./LandingPage/Landingpage"
+import Footer from "./Components/Footer/Footer"
+import LandingPage from "./Components/LandingPage/Landingpage"
 
 function Doctor() {
 
