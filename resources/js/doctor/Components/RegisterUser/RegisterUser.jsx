@@ -30,6 +30,7 @@ export default function RegisterUser(){
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         });
+    }
 
     const handleChange = (event) => {
         setValues(previous_values => {         //values before update
@@ -70,6 +71,7 @@ export default function RegisterUser(){
                 <option value="manager">manager</option>
              </select>
 
+            <br />
             Password:<br />
             <input type="password" name="password" value={ values.password } onChange={ handleChange } />
             <br /><br />
@@ -82,5 +84,5 @@ export default function RegisterUser(){
 
         </form>
     );
-}
+
 };
