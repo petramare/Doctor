@@ -11,12 +11,12 @@ class Manager extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     public function clinic()
     {
-        return $this->hasOne(Clinic::class);
+        return $this->hasOne(Clinic::class, 'id', 'clinic_id');
     }
 
     public function doctors()

@@ -2,6 +2,8 @@ import React from "react";
 import Homenavbar from "./Homenavbar";
 import Doctornavbar from "./Doctornavbar";
 import Patientnavbar from "./Patientnavbar";
+import Managernavbar from "./Managernavbar";
+
 
 
 export default function Navbar() {
@@ -18,6 +20,7 @@ export default function Navbar() {
                         <Homenavbar />
                         <Doctornavbar />
                         <Patientnavbar />
+                        <Managernavbar/>
                     </ul>
                 </div>
             </nav>
