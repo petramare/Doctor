@@ -5,12 +5,11 @@ import React, { useState, useEffect, useContext } from 'react';
 
 export default function RegisterUser(){
 
-    const { getUserInformation } = useContext(UserContext);
+    //const { getUserInformation } = useContext(UserContext);
     const [values, setValues] = useState({
         
         first_name: '',
         surname: '',
-        name: '',
         email: '',
         date_of_birth:'',
         id_number: '',
@@ -53,10 +52,6 @@ export default function RegisterUser(){
             <input type="text" name="surname" value={ values.surname } onChange={ handleChange } />
             <br /><br />
 
-            Name:<br />
-            <input type="text" name="name" value={ values.name } onChange={ handleChange } />
-            <br /><br />
-
             Email:<br />
             <input type="email" name="email" value={ values.email } onChange={ handleChange } />
             <br /><br />
@@ -68,6 +63,13 @@ export default function RegisterUser(){
             Id number:<br />
             <input type="number" name="id_number" value={ values.id_number } onChange={ handleChange } />
             <br /><br />
+
+            Select your role:<br/>
+            <select name="role" id="role" onChange={ handleChange }>
+                <option value="doctor">doctor</option>
+                <option value="patient">patient</option>
+                <option value="manager">manager</option>
+             </select>
 
             Password:<br />
             <input type="password" name="password" value={ values.password } onChange={ handleChange } />
