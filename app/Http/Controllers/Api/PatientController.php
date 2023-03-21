@@ -22,16 +22,19 @@ class PatientController extends Controller
     {
         $search = $request->input('search');
 
-        $doctors = User::query()
-            ->with(['doctor'])
-            ->where('role', 'doctor')
-            ->where('surname', 'like', "%$search%")
-            ->where('first_name', 'like', "%$search%")
-            ->get();
+        if (empty($search)) {
+            $doctors = User::query()
+                ->with(['doctor'])
+                ->where('role', 'doctor')
+                ->get();
+        }
 
-        // $doctors = Doctor::query()
-        //     ->with(['user'])
-        //     ->get();
+        if (!empty($search)) {
+            $doctors = User::query()
+                ->with(['doctor'])
+                ->where('surname', 'like', "%$search%")
+                ->orWhere('first_name', 'like', "%$search%")
+                ->get();
 
         return $doctors;
     }
