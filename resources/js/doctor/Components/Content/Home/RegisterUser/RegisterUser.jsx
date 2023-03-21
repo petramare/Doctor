@@ -66,6 +66,7 @@ export default function RegisterUser(){
 
             Select your role:<br/>
             <select name="role" id="role" onChange={ handleChange }>
+                <option value="select_role">Select role</option>
                 <option value="doctor">doctor</option>
                 <option value="patient">patient</option>
                 <option value="manager">manager</option>
