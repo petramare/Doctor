@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function EditInfo() {
-    let { managerId } = useParams();
-    console.log(managerId);
+    let { id } = useParams();
     const [managerDetail, setManagerDetail] = useState(null);
 
     const loadManager = async () => {
         try {
-            let response = await axios.get(`/api/managers/1`);
+            let response = await axios.get(`/api/managers/${id}`);
             setManagerDetail(response.data);
-            // console.log(response.data);
         } catch (error) {
             console.log(error);
         }
