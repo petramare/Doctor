@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
+
 export default function LandingPage() {
 
 
 
-    return(
-        <div className= "container landing_page">
-            
+    return (
+        <div className="container landing_page">
+
             <div className="container landing_page-header">
                 <h1>
                     Premium healthcare service
@@ -21,16 +23,18 @@ export default function LandingPage() {
             </div>
 
             <div className="container landing_page-button">
-                <button className="container landing_page-button--login">
+                <Link to='/login'><button className="container landing_page-button--login">
                     Login
                 </button>
-
-                <button className="container landing_page-button--register">
-                    Register
-                </button>
+                </Link>
+                <Link to='/register'>
+                    <button className="container landing_page-button--register">
+                        Register
+                    </button>
+                </Link>
             </div>
 
-        </div> 
+        </div>
 
 
     )

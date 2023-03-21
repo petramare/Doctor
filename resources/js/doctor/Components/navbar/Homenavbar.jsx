@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function Homenavbar() {
@@ -6,13 +7,13 @@ export default function Homenavbar() {
     return (
         <>
             <li className="nav-item active">
-                <a className="nav-link" href="#">Home</a>
+                <Link to='/' className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Register</a>
+                <Link to='/register' className="nav-link">Register</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Login</a>
+                <Link to='/login' className="nav-link">Login</Link >
             </li>
         </>
     )
