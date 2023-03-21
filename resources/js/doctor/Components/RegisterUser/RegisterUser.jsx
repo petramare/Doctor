@@ -1,11 +1,10 @@
-import UserContext from "./UserContext";
+
 import React, { useState, useEffect, useContext } from 'react';
 
 
 
 export default function RegisterUser(){
 
-    //const { getUserInformation } = useContext(UserContext);
     const [values, setValues] = useState({
         
         first_name: '',
