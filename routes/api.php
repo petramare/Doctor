@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 // Display list of managers
 Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
+
+// Display list of one manager
 Route::get('/managers/{id}', [ManagerController::class, 'details'])->name('api.managers.detail');
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+    return $request->user();
+});
