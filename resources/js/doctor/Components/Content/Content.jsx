@@ -1,7 +1,7 @@
-import LandingPage from "../LandingPage/LandingPage";
+import LandingPage from "./Home/LandingPage/LandingPage";
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "../LoginPage/LoginPage";
-import RegisterUser from "../RegisterUser/RegisterUser";
+import LoginPage from "./Home/LoginPage/LoginPage";
+import RegisterUser from "./Home/RegisterUser/RegisterUser";
 
 export default function Content() {
 
