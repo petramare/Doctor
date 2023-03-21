@@ -40,7 +40,6 @@ export default function FindDoctor() {
                             </tr>
                         </thead>
                         <tbody>
-                            {console.log(search)}
                             {search.map((result, index) => (
                                 <tr key={index}>
                                     <th scope="row">{index + 1}</th>
