@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-return view('welcome');
-});
+// Route::get('/', function () {
+// return view('welcome');
+// });
 
-
+Route::get('/{path?}', [IndexController::class, 'index'])->where('path', '.*')->name('homepage');
