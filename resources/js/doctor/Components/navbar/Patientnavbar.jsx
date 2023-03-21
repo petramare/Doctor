@@ -1,19 +1,20 @@
+import { Link } from 'react-router-dom';
 
 export default function Patientnavbar() {
 
     return (
         <>
             <li className="nav-item active">
-                <a className="nav-link" href="#">Home</a>
+                <Link to='/patient' className="nav-link">Home</Link>
             </li>
             <li className="nav-item active">
-                <a className="nav-link" href="#">Edit info</a>
+                <Link to='/patient/edit' className="nav-link">Edit info</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Find Doctor</a>
+                <Link to='patient/find' className="nav-link">Find Doctor</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Logout</a>
+                <Link to='/' className="nav-link">Logout</Link>
             </li>
         </>
     )
