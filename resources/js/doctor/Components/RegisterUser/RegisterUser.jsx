@@ -1,3 +1,8 @@
+import UserContext from "./UserContext";
+import React, { useState, useEffect, useContext } from 'react';
+
+
+
 export default function RegisterUser(){
 
     return (
