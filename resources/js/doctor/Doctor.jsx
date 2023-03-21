@@ -1,4 +1,4 @@
-
+import Content from './Components/Content/Content';
 import Navbar from './Components/navbar/Navbar';
 import Footer from "./Components/Footer/Footer";
 import LandingPage from "./Components/LandingPage/Landingpage";
@@ -15,7 +15,7 @@ function Doctor() {
             <BrowserRouter>
 
                 <Navbar />
-                <LandingPage />
+                <Content />
                 <Footer />
 
             </BrowserRouter>
