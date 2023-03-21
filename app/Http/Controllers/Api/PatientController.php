@@ -35,8 +35,7 @@ class PatientController extends Controller
                 ->where('surname', 'like', "%$search%")
                 ->orWhere('first_name', 'like', "%$search%")
                 ->get();
-
-            return $doctors;
         }
+        return $doctors;
     }
 }
