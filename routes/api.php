@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ManagerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+// Display list of managers
+Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
+
+// Display list of one manager
+Route::get('/managers/{id}', [ManagerController::class, 'details'])->name('api.managers.detail');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
