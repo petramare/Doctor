@@ -38,8 +38,10 @@ Route::get('/managers/find', [ManagerController::class, 'search'])->name('api.ma
 Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
 // Display details of one manager
 Route::get('/managers/{id}', [ManagerController::class, 'details'])->name('api.managers.detail');
-// Update existing record of managers, users, clinic table
-Route::post('/managers/update', [ManagerController::class, 'update'])->name('api.managers.update');
+// Create record of managers and clinic tables
+Route::post('/manager/insert', [ManagerController::class, 'insert'])->name('api.managers.update');
+// Update existing record of managers, users, clinic tables
+Route::post('/managers/update', [ManagerController::class, 'update'])->name('api.managers.insert');
 
 
 // Doctor Route

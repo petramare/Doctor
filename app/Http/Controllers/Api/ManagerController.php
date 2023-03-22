@@ -45,6 +45,27 @@ class ManagerController extends Controller
         $user->save();
     }
 
+    public function insert(Request $request)
+    {
+        // when manager does additional registration - clinic record is being created
+        $clinic = new Clinic();
+
+        $clinic->name = $request->input('clinic.name');
+        $clinic->address = $request->input('clinic.address');
+        $clinic->registration_code = $request->input('clinic.registration_code');
+        $clinic->tax_registration_code = $request->input('clinic.tax_registration_code');
+        $clinic->save();
+
+        // find clinic that have been just created
+        $createdClinic = Clinic::latest()->first();
+
+        // and also create manager record
+        $manager = new Manager();
+        $manager->user_id = $request->input('userId');
+        $manager->clinic_id = $createdClinic->id;
+        $manager->save();
+    }
+
     public function search(Request $request)
     {
         $search = $request->input('search');
