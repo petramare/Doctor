@@ -9,6 +9,10 @@ class Manager extends Model
 {
     use HasFactory;
 
+    // headache-solver - find, findorfail expect primary key to be named "id"
+    protected $primaryKey = 'manager_id';
+
+
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
