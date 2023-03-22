@@ -33,6 +33,7 @@ class PatientController extends Controller
         if (!empty($search)) {
             $doctors = User::query()
                 ->with(['doctor'])
+                ->where('role', 'doctor')
                 ->where('surname', 'like', "%$search%")
                 ->orWhere('first_name', 'like', "%$search%")
                 ->get();
