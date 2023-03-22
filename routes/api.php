@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\ManagerController;
+use App\Http\Controllers\Api\DoctorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,18 @@ Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.
 
 // Display list of one manager
 Route::get('/managers/{id}', [ManagerController::class, 'details'])->name('api.managers.detail');
+
+// Doctor Route
+Route::get('/doctor', [DoctorController::class, 'index']);
+// Doctor Route
+Route::get('/doctor/{user_id}', [DoctorController::class, 'show']);
+//Doctor Search Route for clinics
+Route::get('/doctor/findClinics', [DoctorController::class, 'searchClinics']);
+//Doctor Search Route for clinics
+Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
+//Doctor edit info
+Route::post('/doctor/edit', [DoctorController::class, 'edit']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
