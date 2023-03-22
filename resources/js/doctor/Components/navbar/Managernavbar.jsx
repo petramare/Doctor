@@ -23,6 +23,7 @@ export default function Homenavbar() {
                 >
                     Find Doctor
                 </Link>
+            </li>
             <li>
                 <Logout />
             </li>
