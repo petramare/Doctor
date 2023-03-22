@@ -1,21 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Logout from "../../Logout/Logout";
 
 export default function Patientnavbar() {
-
     return (
         <>
             <li className="nav-item active">
-                <Link to='/patient' className="nav-link">Home</Link>
+                <Link to="/patient" className="nav-link">
+                    Home
+                </Link>
             </li>
             <li className="nav-item active">
-                <Link to='/patient/edit' className="nav-link">Edit info</Link>
+                <Link to="/patient/edit" className="nav-link">
+                    Edit info
+                </Link>
             </li>
             <li className="nav-item">
-                <Link to='patient/find' className="nav-link">Find Doctor</Link>
+                <Link to="patient/find" className="nav-link">
+                    Find Doctor
+                </Link>
             </li>
             <li className="nav-item">
-                <Link to='/' className="nav-link">Logout</Link>
+                <Logout />
             </li>
         </>
-    )
+    );
 }

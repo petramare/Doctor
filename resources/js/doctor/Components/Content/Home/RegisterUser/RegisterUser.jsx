@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../../UserContext/UserContext";
 import { Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function RegisterUser() {
     const { getUserInformation } = useContext(UserContext);
@@ -19,38 +20,43 @@ export default function RegisterUser() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // make the AJAX request
-        const response = await fetch("/register", {
-            method: "POST",
-            body: JSON.stringify(values),
-            headers: {
-                Accept: "application/json",
-                "Content-type": "application/json",
-                "X-CSRF-TOKEN": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
-            },
-        });
-        // parse the response as JSON
-        const response_data = await response.json();
-
-        // if the response code is not 2xx (success)
-        if (Math.floor(response.status / 100) !== 2) {
-            switch (response.status) {
-                case 422:
-                    // handle validation errors here
-                    console.log("VALIDATION FAILED:", response_data.errors);
+        try {
+            //make the AJAX request
+            const response = await axios.post("/register", values);
+            // get the (already JSON - parsed) response data
+            const response_data = response.data;
+            const user = await getUserInformation();
+            // these url have to be changed according to the role
+            // DONT FORGET!!!!!
+            switch (user.role) {
+                case "admin":
+                    navigate("/");
+                    break;
+                case "patient":
+                    navigate("/");
+                    break;
+                case "doctor":
+                    navigate("/");
                     break;
                 default:
-                    console.log("UNKNOWN ERROR", response_data);
+                    navigate("/");
                     break;
             }
-        } else {
-            navigate("/");
+        } catch (error) {
+            // if the response code is not 2xx (success)
+            switch (error.response.status) {
+                case 422:
+                    // handle validation errors here
+                    console.log(
+                        "VALIDATION FAILED:",
+                        error.response.data.errors
+                    );
+                    break;
+                case 500:
+                    console.log("UNKNOWN ERROR", error.response.data);
+                    break;
+            }
         }
-        // re-fetch the user information
-        // (method passed down via UserContext from App)
-        getUserInformation();
     };
 
     const handleChange = (event) => {

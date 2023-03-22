@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import Logout from "../../Logout/Logout";
 import UserContext from "../UserContext/UserContext";
 
 export default function Homenavbar() {
@@ -14,6 +15,9 @@ export default function Homenavbar() {
                 >
                     Edit Details
                 </Link>
+            </li>
+            <li>
+                <Logout />
             </li>
         </>
     );
