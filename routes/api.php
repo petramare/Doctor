@@ -31,6 +31,8 @@ Route::get('/patient/{id}', [PatientController::class, 'show']);
 Route::post('/patient/update', [PatientController::class, 'update']);
 
 //Managers
+//Manager Search Doctors
+Route::get('/managers/find', [ManagerController::class, 'search'])->name('api.managers.search');
 // Display list of managers
 Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
 // Display details of one manager

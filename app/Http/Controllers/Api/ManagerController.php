@@ -44,4 +44,26 @@ class ManagerController extends Controller
         $user->id_number = $request->input('user.id_number');
         $user->save();
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        if (empty($search)) {
+            $doctors = User::query()
+                ->with(['doctor'])
+                ->where('role', 'doctor')
+                ->get();
+        }
+
+        if (!empty($search)) {
+            $doctors = User::query()
+                ->with(['doctor'])
+                ->where('surname', 'like', "%$search%")
+                ->orWhere('first_name', 'like', "%$search%")
+                ->get();
+        }
+
+        return $doctors;
+    }
 }
