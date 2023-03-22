@@ -1,16 +1,10 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import UserContext from "../../../UserContext/UserContext";
 
 export default function EditInfo() {
     const { user } = useContext(UserContext);
-    // console.log(user.id);
-
-    // let { id } = useParams();
-
     const [managerDetail, setManagerDetail] = useState(null);
-    const [message, setMessage] = useState(null);
 
     const loadManager = async () => {
         try {
@@ -59,7 +53,6 @@ export default function EditInfo() {
                 "/api/managers/update",
                 managerDetail
             );
-            setMessage(response.data["message"]);
         } catch (error) {
             console.log(error);
         }

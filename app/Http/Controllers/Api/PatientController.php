@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class PatientController extends Controller
 {
@@ -22,22 +23,27 @@ class PatientController extends Controller
     {
         $search = $request->input('search');
 
-        if (empty($search)) {
+        if (strlen($search) < 2) {
             $doctors = User::query()
                 ->with(['doctor'])
                 ->where('role', 'doctor')
                 ->get();
-        }
-
-        if (!empty($search)) {
+            return $doctors;
+        } else if (strlen($search) >= 2) {
             $doctors = User::query()
                 ->with(['doctor'])
-                ->where('surname', 'like', "%$search%")
-                ->orWhere('first_name', 'like', "%$search%")
+                ->where('role', 'doctor')
+                ->where(function ($query) use ($search) {
+                    $query->where('surname', 'like', "%$search%")
+                        ->orWhere('first_name', 'like', "%$search%");
+                })
                 ->get();
+            return $doctors;
         }
-        return $doctors;
     }
+
+
+
 
     public function show($id)
     {
@@ -45,28 +51,27 @@ class PatientController extends Controller
             ->with(['user'])
             ->where('user_id', $id)
             ->first();
-
         return $patient;
     }
 
-    public function edit(Request $request, $id)
+    public function update(Request $request)
     {
-        $patient = Patient::findOrFail($id);
+
+        // search for record in tables Patient and User
+        $user = User::findOrFail($request->input('user_id'));
+        // $patient = Patient::findOrFail($request->input('patient_id'));
+        $patient = Patient::where('patient_id', $request->input('patient_id'))->first();
+
+        // set what to be changed in table Patient
         $patient->insurance_number = $request->input('insurance_number');
         $patient->save();
 
-
-
-
-
-
-        // $user = $patient->user;
-        // $user->first_name = $request->input('first_name');
-        // $user->surname = $request->input('surname');
-        // $user->email = $request->input('email');
-        // $user->date_of_birth = $request->input('date_of_birth');
-        // $user->id_number = $request->input('id_number');
-        // $user->save();
-
+        // set what to be changed in table User
+        $user->email = $request->input('user.email');
+        $user->first_name = $request->input('user.first_name');
+        $user->surname = $request->input('user.surname');
+        $user->date_of_birth = $request->input('user.date_of_birth');
+        $user->id_number = $request->input('user.id_number');
+        $user->save();
     }
 }

@@ -4,6 +4,7 @@ import Doctornavbar from "./Doctornavbar";
 import Patientnavbar from "./Patientnavbar";
 import Managernavbar from "./Managernavbar";
 import UserContext from "../UserContext/UserContext";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
     const { user } = useContext(UserContext);
@@ -32,10 +33,12 @@ export default function Navbar() {
 
     return (
         <>
+
+
             <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
-                <a className="navbar-brand" href="#">
+                <Link to="/" className="navbar-brand">
                     CalenDr
-                </a>
+                </Link>
                 <button
                     className="navbar-toggler"
                     type="button"
