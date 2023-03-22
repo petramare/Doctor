@@ -40,6 +40,7 @@ function Doctor() {
     return (
         <UserContext.Provider value={{ user, setUser, getUserInformation }}>
             <BrowserRouter>
+                {/* {console.log(user)} */}
                 <Navbar />
                 <Content />
                 <Footer />
