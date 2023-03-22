@@ -49,22 +49,22 @@ class ManagerController extends Controller
     {
         $search = $request->input('search');
 
-        if (empty($search)) {
+        if (strlen($search) < 2) {
             $doctors = User::query()
                 ->with(['doctor'])
                 ->where('role', 'doctor')
                 ->get();
-        }
-
-        if (!empty($search)) {
+            return $doctors;
+        } else if (strlen($search) >= 2) {
             $doctors = User::query()
                 ->with(['doctor'])
                 ->where('role', 'doctor')
-                ->where('surname', 'like', "%$search%")
-                ->orWhere('first_name', 'like', "%$search%")
+                ->where(function ($query) use ($search) {
+                    $query->where('surname', 'like', "%$search%")
+                        ->orWhere('first_name', 'like', "%$search%");
+                })
                 ->get();
+            return $doctors;
         }
-
-        return $doctors;
     }
 }
