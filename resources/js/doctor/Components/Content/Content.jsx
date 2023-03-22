@@ -18,7 +18,7 @@ export default function Content() {
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterUser />} />
-                    <Route path="/manager/:id/edit" element={<ManagerEditInfo />} />
+                    <Route path="/managers/edit" element={<ManagerEditInfo />} />
                 </Routes>
             </div>
         </main>
