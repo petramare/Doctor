@@ -29,8 +29,8 @@ export default function RegisterUser() {
             // these url have to be changed according to the role
             // DONT FORGET!!!!!
             switch (user.role) {
-                case "admin":
-                    navigate("/");
+                case "manager":
+                    navigate("/managers/additional-registration");
                     break;
                 case "patient":
                     navigate("/");
