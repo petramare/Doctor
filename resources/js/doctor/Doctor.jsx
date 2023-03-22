@@ -19,11 +19,11 @@ function Doctor() {
             if (response.status === 200) {
                 const dataUser = await response.json();
                 setUser(dataUser);
-                console.log("WE HAVE USER", dataUser);
                 return dataUser;
             } else if (response.status === 401) {
                 // UNauthenticated
                 // ...
+                setUser(null);
             }
         } catch (error) {
             setUser(false);
