@@ -16,6 +16,13 @@ export default function Homenavbar() {
                     Edit Details
                 </Link>
             </li>
+            <li className="nav-item active">
+                <Link
+                    to={`/managers/find`}
+                    className="nav-link"
+                >
+                    Find Doctor
+                </Link>
             <li>
                 <Logout />
             </li>
