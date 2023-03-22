@@ -57,8 +57,7 @@ export default function EditInfo() {
         try {
             let response = await axios.post(
                 "/api/managers/update",
-                
-                
+                managerDetail
             );
             setMessage(response.data["message"]);
         } catch (error) {

@@ -25,20 +25,18 @@ class ManagerController extends Controller
 
     public function update(Request $request)
     {
-        // $manager = Manager::findOrFail($request->input('manager_id'));
-        // // $manager->users()->sync($request->input('user', []));
-        // // $manager->clinics()->sync($request->input('clinic', []));
-
-        // $manager->save();
-
+        // search for record in tables Clinic and User
         $clinic = Clinic::findOrFail($request->input('clinic_id'));
+        $user = User::findOrFail($request->input('user_id'));
+
+        // set what to be changed in table Clinic
         $clinic->name = $request->input('clinic.name');
         $clinic->address = $request->input('clinic.address');
         $clinic->registration_code = $request->input('clinic.registration_code');
         $clinic->tax_registration_code = $request->input('clinic.tax_registration_code');
         $clinic->save();
 
-        $user = User::findOrFail($request->input('user_id'));
+        // set what to be changed in table User
         $user->email = $request->input('user.email');
         $user->first_name = $request->input('user.first_name');
         $user->surname = $request->input('user.surname');
