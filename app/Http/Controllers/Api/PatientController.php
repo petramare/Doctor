@@ -38,4 +38,35 @@ class PatientController extends Controller
         }
         return $doctors;
     }
+
+    public function show($id)
+    {
+        $patient = Patient::query()
+            ->with(['user'])
+            ->where('user_id', $id)
+            ->first();
+
+        return $patient;
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $patient = Patient::findOrFail($id);
+        $patient->insurance_number = $request->input('insurance_number');
+        $patient->save();
+
+
+
+
+
+
+        // $user = $patient->user;
+        // $user->first_name = $request->input('first_name');
+        // $user->surname = $request->input('surname');
+        // $user->email = $request->input('email');
+        // $user->date_of_birth = $request->input('date_of_birth');
+        // $user->id_number = $request->input('id_number');
+        // $user->save();
+
+    }
 }

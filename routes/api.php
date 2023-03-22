@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/patient', [PatientController::class, 'index']);
 //Patient Search Route for Doctors
 Route::get('/patient/find', [PatientController::class, 'search']);
+//Patient detail info
+Route::get('/patient/{id}', [PatientController::class, 'show']);
+//Patient Edit info
+Route::post('/patient/{id}', [PatientController::class, 'edit']);
 // Display list of managers
 Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
 
