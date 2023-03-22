@@ -11,13 +11,26 @@ function Doctor() {
 
     const getUserInformation = async () => {
         try {
-            const response = await fetch("/api/user");
-            const dataUser = await response.json();
-            setUser(dataUser);
+            const response = await fetch("/api/user", {
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+            if (response.status === 200) {
+                const dataUser = await response.json();
+                setUser(dataUser);
+                return dataUser;
+            } else if (response.status === 401) {
+                // UNauthenticated
+                // ...
+                setUser(null);
+            }
         } catch (error) {
             setUser(false);
             console.log(error);
         }
+
+        return false;
     };
 
     useEffect(() => {
@@ -27,7 +40,7 @@ function Doctor() {
     return (
         <UserContext.Provider value={{ user, setUser, getUserInformation }}>
             <BrowserRouter>
-                {console.log(user)}
+                {/* {console.log(user)} */}
                 <Navbar />
                 <Content />
                 <Footer />

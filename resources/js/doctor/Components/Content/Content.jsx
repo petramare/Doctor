@@ -6,6 +6,7 @@ import PatientHome from "./Patient/Home/PatientHome";
 import PatientInfo from "./Patient/EditInfo/EditInfo";
 import PatientFind from "./Patient/FindDoctor/FindDoctor";
 import ManagerEditInfo from "./Manager/EditInfo/EditInfo";
+import ManagerFind from "./Manager/FindDoctor/FindDoctor";
 
 export default function Content() {
     return (
@@ -18,7 +19,8 @@ export default function Content() {
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterUser />} />
-                    <Route path="/manager/:id/edit" element={<ManagerEditInfo />} />
+                    <Route path="/managers/edit" element={<ManagerEditInfo />} />
+                    <Route path="/managers/find" element={<ManagerFind />} />
                 </Routes>
             </div>
         </main>

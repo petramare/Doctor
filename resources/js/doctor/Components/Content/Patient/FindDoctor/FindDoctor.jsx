@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function FindDoctor() {
 
@@ -10,7 +10,6 @@ export default function FindDoctor() {
         try {
             let response = await axios.get(`/api/patient/find?search=${query}`)
             setSearch(response.data);
-            console.log(response.data);
         }
         catch (error) {
             console.log(error);
@@ -44,8 +43,11 @@ export default function FindDoctor() {
                                 <tr key={index}>
                                     <th scope="row">{index + 1}</th>
                                     <td>{result.first_name} {result.surname}</td>
-                                    <td>{result.doctor.specialization}</td>
-                                    <td><button>More information</button></td>
+                                    <td>{result.doctor ? result.doctor.specialization : ''}</td>
+                                    <td>
+                                        <button className="btn btn-success">Apply</button>
+                                        <button className="btn btn-info">Detail</button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

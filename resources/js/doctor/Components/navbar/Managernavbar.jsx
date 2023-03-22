@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import Logout from "../../Logout/Logout";
 import UserContext from "../UserContext/UserContext";
 
 export default function Homenavbar() {
@@ -9,11 +10,22 @@ export default function Homenavbar() {
         <>
             <li className="nav-item active">
                 <Link
-                    to={`/manager/${user ? user.id : ""}/edit`}
+                    to={`/managers/edit`}
                     className="nav-link"
                 >
                     Edit Details
                 </Link>
+            </li>
+            <li className="nav-item active">
+                <Link
+                    to={`/managers/find`}
+                    className="nav-link"
+                >
+                    Find Doctor
+                </Link>
+            </li>
+            <li>
+                <Logout />
             </li>
         </>
     );
