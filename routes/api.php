@@ -17,11 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+//Doctors
+//insert all Doctor routes petra 
+
+//Patient
 //Patient Route
 Route::get('/patient', [PatientController::class, 'index']);
 //Patient Search Route for Doctors
 Route::get('/patient/find', [PatientController::class, 'search']);
+//Patient detail info
+Route::get('/patient/{id}', [PatientController::class, 'show']);
+//Patient Edit info
+Route::post('/patient/{id}', [PatientController::class, 'edit']);
 
+//Managers
 // Display list of managers
 Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
 // Display details of one manager
