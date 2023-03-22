@@ -11,13 +11,26 @@ function Doctor() {
 
     const getUserInformation = async () => {
         try {
-            const response = await fetch("/api/user");
-            const dataUser = await response.json();
-            setUser(dataUser);
+            const response = await fetch("/api/user", {
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+            if (response.status === 200) {
+                const dataUser = await response.json();
+                setUser(dataUser);
+                console.log("WE HAVE USER", dataUser);
+                return dataUser;
+            } else if (response.status === 401) {
+                // UNauthenticated
+                // ...
+            }
         } catch (error) {
             setUser(false);
             console.log(error);
         }
+
+        return false;
     };
 
     useEffect(() => {

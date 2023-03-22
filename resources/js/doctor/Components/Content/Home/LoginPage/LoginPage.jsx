@@ -40,6 +40,8 @@ export default function LoginPage() {
                     break;
             }
         } else {
+            const user = await getUserInformation();
+            console.log("IN LOGIN", user);
             navigate("/");
         }
 
@@ -68,10 +70,7 @@ export default function LoginPage() {
 
         // re-fetch the user information
         // (method passed down via UserContext from App)
-
-        getUserInformation();
     };
-
 
     const handleChange = (event) => {
         setValues((previous_values) => {
