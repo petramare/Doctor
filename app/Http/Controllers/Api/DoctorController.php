@@ -7,6 +7,8 @@ use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Clinic;
+use Symfony\Component\Console\Input\Input;
+
 
 class DoctorController extends Controller
 {
@@ -17,48 +19,60 @@ class DoctorController extends Controller
             return $doctors;
     }
 
-    public function show($user_id) {
-        $doctor = User::findOrFail($user_id);
+    public function show($id) 
+    {
+        $doctor = Doctor::query()
+            ->with(['user'])
+            ->where('user_id', $id)
+            ->first();
 
         return $doctor;
     }
 
-    public function searchPatients(Request $request)
+    // public function search(Request $request)
+    // {
+    //     $search = $request->input('search');
+
+    //     if (strlen($search) < 2 ) {
+    //         $patients = User::query()
+    //             ->with(['patient'])
+    //             ->where('role', 'patient')
+    //             ->get();
+    //             return $patients;
+    //     }
+
+    //     else if (strlen($search) >= 2) {
+    //         $patients = User::query()
+    //             ->with(['patient'])
+    //             ->where('role', 'patient')
+    //             ->where(function ($query) use ($search) {
+    //                 $query->where('first_name', 'like', "%$search%")
+    //                     ->orWhere('surname', 'like', "%$search%");
+    //             })
+    //             ->get();
+
+    //     return $patients;   
+    //     }
+
+    //}
+
+    public function search(Request $request)
     {
         $search = $request->input('search');
-
-        if (empty($search)) {
-            $patients = User::query()
-                ->with(['patient'])
-                ->where('role', 'patient')
+        
+      if (strlen($search) < 2 ) {
+            $clinics = Doctor::query()
+                ->with(['clinic'])
                 ->get();
+                return $clinics;
         }
 
-        if (!empty($search)) {
-            $patients = User::query()
-                ->with(['patient'])
-                ->where('first_name', 'like', "%$search}%")
-                ->where('surname', 'like', "%{$search}%")
-                ->get();
-
-        return $patients;   
-        }
-
-    }
-
-    public function searchClinics(Request $request)
-    {
-        $search = $request->input('search');
-
-        if (empty($search)) {
-            $clinics = Clinic::query()
-                ->where(['clinic'])
-                ->get();
-        }
-
-        if (!empty($search)) {
-            $clinics = Clinic::query()
-                ->where('clinic', 'like', "%$search}%")
+        else if (strlen($search) >= 2) {
+            $clinics = Doctor::query()
+                ->with(['clinic'])
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%$search%");
+                })
                 ->get();
 
         return $clinics;   
@@ -66,7 +80,7 @@ class DoctorController extends Controller
 
     }
 
-    public function edit(Request $request)
+    public function update(Request $request)
     {
         $doctor = Doctor::findOrFail($request->input('doctor_id'));
 

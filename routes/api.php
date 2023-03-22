@@ -44,14 +44,14 @@ Route::post('/managers/update', [ManagerController::class, 'update'])->name('api
 
 // Doctor Route
 Route::get('/doctor', [DoctorController::class, 'index']);
-// Doctor Route
-Route::get('/doctor/{user_id}', [DoctorController::class, 'show']);
+// Doctor detail info
+Route::get('/doctor/{id}', [DoctorController::class, 'show']);
 //Doctor Search Route for clinics
-Route::get('/doctor/findClinics', [DoctorController::class, 'searchClinics']);
+Route::get('/doctor/find', [DoctorController::class, 'search']);
 //Doctor Search Route for clinics
-Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
+//Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
 //Doctor edit info
-Route::post('/doctor/edit', [DoctorController::class, 'edit']);
+Route::post('/doctor/update', [DoctorController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
