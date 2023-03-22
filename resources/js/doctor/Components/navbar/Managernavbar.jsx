@@ -10,6 +10,14 @@ export default function Homenavbar() {
         <>
             <li className="nav-item active">
                 <Link
+                    to={`/managers/find`}
+                    className="nav-link"
+                >
+                    Find Doctor
+                </Link>
+            </li>
+            <li className="nav-item active">
+                <Link
                     to={`/managers/edit`}
                     className="nav-link"
                 >
