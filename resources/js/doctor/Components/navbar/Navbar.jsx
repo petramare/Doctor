@@ -32,7 +32,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
                 <a className="navbar-brand" href="#">
                     CalenDr
                 </a>
