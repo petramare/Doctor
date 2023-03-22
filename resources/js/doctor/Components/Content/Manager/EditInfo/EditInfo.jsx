@@ -1,15 +1,20 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import UserContext from "../../../UserContext/UserContext";
 
 export default function EditInfo() {
-    let { id } = useParams();
+    const { user } = useContext(UserContext);
+    // console.log(user.id);
+
+    // let { id } = useParams();
+
     const [managerDetail, setManagerDetail] = useState(null);
-    const [firstName, setFirstName] = useState({ first_name: "lukas" });
+    const [message, setMessage] = useState(null);
 
     const loadManager = async () => {
         try {
-            let response = await axios.get(`/api/managers/${id}`);
+            let response = await axios.get(`/api/managers/${user.id}`);
             setManagerDetail(response.data);
         } catch (error) {
             console.log(error);
@@ -18,11 +23,29 @@ export default function EditInfo() {
 
     useEffect(() => {
         loadManager();
-    }, []);
+    }, [user]);
 
-    const handleChange = (e) => {
+    const handleChangeUser = (e) => {
         setManagerDetail((previous_values) => {
-            return { ...previous_values, [e.target.name]: e.target.value };
+            return {
+                ...previous_values,
+                user: {
+                    ...previous_values.user,
+                    [e.target.name]: e.target.value,
+                },
+            };
+        });
+    };
+
+    const handleChangeClinic = (e) => {
+        setManagerDetail((previous_values) => {
+            return {
+                ...previous_values,
+                clinic: {
+                    ...previous_values.clinic,
+                    [e.target.name]: e.target.value,
+                },
+            };
         });
     };
 
@@ -31,12 +54,15 @@ export default function EditInfo() {
         console.log("submited");
         console.log(managerDetail);
 
-        // try {
-        //     let response = await axios.post('/api/missions/store', mission)
-        //     setMessage(response.data['message'])
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        try {
+            let response = await axios.post(
+                "/api/managers/update",
+                managerDetail
+            );
+            setMessage(response.data["message"]);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return managerDetail ? (
@@ -52,17 +78,17 @@ export default function EditInfo() {
                                 name="first_name"
                                 className="form-control"
                                 value={managerDetail.user.first_name}
-                                onChange={handleChange}
+                                onChange={handleChangeUser}
                             />
                         </div>
                         <div className="form-group">
                             <label htmlFor="surname">Surname:</label>
                             <input
                                 type="text"
-                                name="first_name"
+                                name="surname"
                                 className="form-control"
                                 value={managerDetail.user.surname}
-                                onChange={handleChange}
+                                onChange={handleChangeUser}
                             />
                         </div>
                         <div className="form-group">
@@ -72,7 +98,9 @@ export default function EditInfo() {
                                 name="email"
                                 className="form-control"
                                 value={managerDetail.user.email}
-                                onChange={handleChange}
+                                // onChange={handleChangeUser}
+                                readOnly
+                                disabled
                             />
                         </div>
                         <div className="form-group">
@@ -84,7 +112,7 @@ export default function EditInfo() {
                                 name="date_of_birth"
                                 className="form-control"
                                 value={managerDetail.user.date_of_birth}
-                                onChange={handleChange}
+                                onChange={handleChangeUser}
                             />
                         </div>
                         <div className="form-group">
@@ -94,64 +122,71 @@ export default function EditInfo() {
                                 name="role"
                                 className="form-control"
                                 value={managerDetail.user.role}
-                                onChange={handleChange}
+                                // onChange={handleChangeUser}
+                                readOnly
+                                disabled
                             />
                         </div>
-                        <div className="">
-                            <h1>Clinic Info</h1>
-                            <div className="form-group">
-                                <label htmlFor="name">Role:</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    className="form-control"
-                                    value={managerDetail.clinic.name}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="address">Address:</label>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    className="form-control"
-                                    value={managerDetail.clinic.address}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="registration_code">
-                                    Registration Code:
-                                </label>
-                                <input
-                                    type="text"
-                                    name="registration_code"
-                                    className="form-control"
-                                    value={
-                                        managerDetail.clinic.registration_code
-                                    }
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="tax_registration_code">
-                                    Tax Registration Code:
-                                </label>
-                                <input
-                                    type="text"
-                                    name="tax_registration_code"
-                                    className="form-control"
-                                    value={
-                                        managerDetail.clinic
-                                            .tax_registration_code
-                                    }
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <button type="submit" className="btn btn-primary">
-                                Update
-                            </button>
+                        <div className="form-group">
+                            <label htmlFor="id_number">Id Number:</label>
+                            <input
+                                type="text"
+                                name="id_number"
+                                className="form-control"
+                                value={managerDetail.user.id_number}
+                                onChange={handleChangeUser}
+                            />
                         </div>
+                        <h1>Clinic Info</h1>
+                        <div className="form-group">
+                            <label htmlFor="name">Name:</label>
+                            <input
+                                type="text"
+                                name="name"
+                                className="form-control"
+                                value={managerDetail.clinic.name}
+                                onChange={handleChangeClinic}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="address">Address:</label>
+                            <input
+                                type="text"
+                                name="address"
+                                className="form-control"
+                                value={managerDetail.clinic.address}
+                                onChange={handleChangeClinic}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="registration_code">
+                                Registration Code:
+                            </label>
+                            <input
+                                type="text"
+                                name="registration_code"
+                                className="form-control"
+                                value={managerDetail.clinic.registration_code}
+                                onChange={handleChangeClinic}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="tax_registration_code">
+                                Tax Registration Code:
+                            </label>
+                            <input
+                                type="text"
+                                name="tax_registration_code"
+                                className="form-control"
+                                value={
+                                    managerDetail.clinic.tax_registration_code
+                                }
+                                onChange={handleChangeClinic}
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">
+                            Update
+                        </button>
                     </form>
                 </div>
             </div>

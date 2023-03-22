@@ -9,7 +9,7 @@ export default function Homenavbar() {
         <>
             <li className="nav-item active">
                 <Link
-                    to={`/manager/${user ? user.id : ""}/edit`}
+                    to={`/managers/edit`}
                     className="nav-link"
                 >
                     Edit Details

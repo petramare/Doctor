@@ -21,11 +21,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/patient', [PatientController::class, 'index']);
 //Patient Search Route for Doctors
 Route::get('/patient/find', [PatientController::class, 'search']);
+
 // Display list of managers
 Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
-
-// Display list of one manager
+// Display details of one manager
 Route::get('/managers/{id}', [ManagerController::class, 'details'])->name('api.managers.detail');
+// Update existing record of managers, users, clinic table
+Route::post('/managers/update', [ManagerController::class, 'update'])->name('api.managers.update');
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
