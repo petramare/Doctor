@@ -33,7 +33,9 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+
+
+            <nav className="navbar navbar-expand-lg navbar-light bg-light px-4">
                 <Link to="/" className="navbar-brand">
                     CalenDr
                 </Link>
