@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Clinic;
 use Symfony\Component\Console\Input\Input;
+use Auth;
 
 
 class DoctorController extends Controller
@@ -60,7 +61,7 @@ class DoctorController extends Controller
     {
         $search = $request->input('search');
         
-      if (strlen($search) < 2 ) {
+        if (strlen($search) < 2 ) {
             $clinics = Clinic::query()
                 ->get();
         }
@@ -72,18 +73,22 @@ class DoctorController extends Controller
                 
                 ->get();
 
-            }
-            return $clinics;   
+        }
+
+        return $clinics;   
 
     }
 
     public function update(Request $request)
     {
-        $doctor = Doctor::findOrFail($request->input('doctor_id'));
+        $user = Auth::user();
 
-        $doctor->visiting_hours = $request->input('visiting_hours');
-        $doctor->save();
+        $user->first_name = $request->input('first_name');
+        
+        $user->save();
 
-        //... co chci menit
+        return $user;
+
+        //... 
     }
 }
