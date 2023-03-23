@@ -7,6 +7,7 @@ use App\Models\Clinic;
 use App\Models\Manager;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ManagerController extends Controller
 {
@@ -17,9 +18,9 @@ class ManagerController extends Controller
         return $managers;
     }
 
-    public function details($manager_id)
+    public function details($user_id)
     {
-        $manager = Manager::where('manager_id', $manager_id)->with(['user', 'clinic'])->first();
+        $manager = Manager::where('user_id', $user_id)->with(['user', 'clinic'])->first();
         return $manager;
     }
 
@@ -47,6 +48,9 @@ class ManagerController extends Controller
 
     public function insert(Request $request)
     {
+        // test that I can see Id of logged user
+        // return Auth::id();
+
         // when manager does additional registration - clinic record is being created
         $clinic = new Clinic();
 
@@ -56,13 +60,16 @@ class ManagerController extends Controller
         $clinic->tax_registration_code = $request->input('clinic.tax_registration_code');
         $clinic->save();
 
+        // test that I can see id of new clinic
+        // return $clinic->id;
+
         // find clinic that have been just created
-        $createdClinic = Clinic::latest()->first();
+        // $createdClinic = Clinic::latest()->first();
 
         // and also create manager record
         $manager = new Manager();
-        $manager->user_id = $request->input('userId');
-        $manager->clinic_id = $createdClinic->id;
+        $manager->user_id = Auth::id();
+        $manager->clinic_id = $clinic->id;
         $manager->save();
     }
 
