@@ -8,6 +8,11 @@ import PatientFind from "./Patient/FindDoctor/FindDoctor";
 import ManagerEditInfo from "./Manager/EditInfo/EditInfo";
 import ManagerFind from "./Manager/FindDoctor/FindDoctor";
 import AdditionalRegistration from "./Manager/AdditionalRegistration/AdditionalRegistration";
+import DoctorFind from "./Doctor/FindClinic/FindClinic";
+import DoctorInfo from './Doctor/EditInfo/EditInfo';
+import DoctorHome from './Doctor/Home/DoctorHome';
+import DoctorPatientRecords from './Doctor/PatientRecords/PatientRecords';
+import ManagerHome from './Manager/Home/ManagerHome';
 
 export default function Content() {
     return (
@@ -24,8 +29,15 @@ export default function Content() {
                         path="/managers/edit"
                         element={<ManagerEditInfo />}
                     />
+                    <Route path="/managers" element={<ManagerHome />} />
+
                     <Route path="/managers/find" element={<ManagerFind />} />
                     <Route path="/managers/additional-registration" element={<AdditionalRegistration />} />
+
+                    <Route path='/doctor/find' element={< DoctorFind />} />
+                    <Route path='/doctor/update' element={< DoctorInfo />} />
+                    <Route path='/doctor' element={<DoctorHome />} />
+                    <Route path='/doctor/patientRecords' element={<DoctorPatientRecords />} />
                 </Routes>
             </div>
         </main>

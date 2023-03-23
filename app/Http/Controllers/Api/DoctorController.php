@@ -61,22 +61,19 @@ class DoctorController extends Controller
         $search = $request->input('search');
         
       if (strlen($search) < 2 ) {
-            $clinics = Doctor::query()
-                ->with(['clinic'])
+            $clinics = Clinic::query()
                 ->get();
-                return $clinics;
         }
 
-        else if (strlen($search) >= 2) {
-            $clinics = Doctor::query()
-                ->with(['clinic'])
-                ->where(function ($query) use ($search) {
-                    $query->where('name', 'like', "%$search%");
-                })
+        if (strlen($search) >= 2) {
+            $clinics = Clinic::query()
+                
+                ->where('name', 'like', "%$search%")
+                
                 ->get();
 
-        return $clinics;   
-        }
+            }
+            return $clinics;   
 
     }
 

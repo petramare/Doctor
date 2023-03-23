@@ -11,7 +11,7 @@ export default function FindClinic() {
         try {
             let response = await axios.get(`api/doctor/find?search=${query}`)
             setSearch(response.data);
-            console.log(response.data);
+            
         }
         catch (error) {
             console.log(error);

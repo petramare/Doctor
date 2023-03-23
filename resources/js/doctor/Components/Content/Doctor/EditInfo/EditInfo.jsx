@@ -9,7 +9,7 @@ export default function EditInfo() {
 
    const loadData = async () => {
     try {
-        let response = await axios.get(`/api/patient/${user.id}`);
+        let response = await axios.get(`/api/doctor/${user.id}`);
         setPatient(response.data);
     } catch (error) {
         console.log(error);
@@ -61,7 +61,7 @@ export default function EditInfo() {
             </div>
         </div>
 
-        {patient ? (
+        {doctor ? (
             <div className="container">
                 <div className="row">
                     <div className="col">
