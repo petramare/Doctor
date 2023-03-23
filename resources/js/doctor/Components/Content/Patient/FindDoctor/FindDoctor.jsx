@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PatientApply from "./PatientApply/PatientApply";
 import PatientRequest from './PatientRequest/PatientRequest';
 
@@ -7,6 +7,7 @@ export default function FindDoctor() {
 
     const [search, setSearch] = useState([]);
     const [query, setQuery] = useState('');
+    const [status, setStatus] = useState(0);
 
     const handleSearch = async () => {
         try {
@@ -17,9 +18,14 @@ export default function FindDoctor() {
             console.log(error);
         }
     }
+
+    useEffect(() => {
+
+    }, [status])
     return (
         <>
-            <PatientRequest />
+            <PatientRequest
+                status={status} />
             <h1>Find your Doctor:</h1>
             <form action="" onSubmit={(e) => {
                 e.preventDefault();
@@ -49,7 +55,9 @@ export default function FindDoctor() {
                                     <td>{result.doctor ? result.doctor.specialization : ''}</td>
                                     <td>
                                         <PatientApply
-                                            result={result} />
+                                            result={result}
+                                            status={status}
+                                            setStatus={setStatus} />
                                         <button className="btn btn-info">Detail</button>
                                     </td>
                                 </tr>

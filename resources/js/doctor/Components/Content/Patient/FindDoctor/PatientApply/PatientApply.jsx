@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export default function PatientApply({ result }) {
+export default function PatientApply({ result, status, setStatus }) {
 
     const handleClick = (e) => {
         e.preventDefault();
         sendRequest(e);
+        setStatus(status + 1);
     }
 
     const sendRequest = async (e) => {
