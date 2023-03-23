@@ -78,6 +78,16 @@ class PatientController extends Controller
         $user->save();
     }
 
+    public function insert(Request $request)
+    {
+        // create new patient fill it with data and store it in db
+        $patient = new Patient();
+        $patient->user_id = Auth::id();
+        $patient->insurance_company_id = $request->input('patient.insurance_company_id');
+        $patient->insurance_number = $request->input('patient.insurance_number');
+        $patient->save();
+    }
+
     public function request(Request $request)
     {
         $user = Auth::user();

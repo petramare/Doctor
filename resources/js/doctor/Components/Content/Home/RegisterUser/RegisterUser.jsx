@@ -33,10 +33,10 @@ export default function RegisterUser() {
                     navigate("/managers/additional-registration");
                     break;
                 case "patient":
-                    navigate("/");
+                    navigate("/patient/additional-registration");
                     break;
                 case "doctor":
-                    navigate("/");
+                    navigate("/doctor/additional-registration");
                     break;
                 default:
                     navigate("/");
