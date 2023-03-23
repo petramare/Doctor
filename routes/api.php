@@ -2,11 +2,8 @@
 
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\ManagerController;
-<<<<<<< HEAD
-use App\Http\Controllers\AppointmentController;
-=======
+use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
->>>>>>> main
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

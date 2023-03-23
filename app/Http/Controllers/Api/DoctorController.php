@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\User;
@@ -12,14 +13,15 @@ use Symfony\Component\Console\Input\Input;
 
 class DoctorController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $doctors = Doctor::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->get();
-            return $doctors;
+        return $doctors;
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $doctor = Doctor::query()
             ->with(['user'])
@@ -59,22 +61,20 @@ class DoctorController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        
-      if (strlen($search) < 2 ) {
+
+        if (strlen($search) < 2) {
             $clinics = Clinic::query()
                 ->get();
         }
 
         if (strlen($search) >= 2) {
             $clinics = Clinic::query()
-                
+
                 ->where('name', 'like', "%$search%")
-                
+
                 ->get();
-
-            }
-            return $clinics;   
-
+        }
+        return $clinics;
     }
 
     public function update(Request $request)
