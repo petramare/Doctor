@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Relationship;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Symfony\Component\Console\Input\Input;
 
 class PatientController extends Controller
@@ -93,5 +94,30 @@ class PatientController extends Controller
         //second argument is array, with what column => the input status string 
         //maybe its not even like that but ...
         $doctor->patients()->attach($user->patient->patient_id, ['status' => $request->input('status')]);
+    }
+
+    public function status()
+    {
+        $user = Auth::user();
+
+        $user = User::find($user->id);
+
+        $patient = $user->patient;
+
+        $result = $patient->doctors()->with('user')->get();
+        return $result;
+    }
+
+    public function patientsDoctors()
+    {
+        $userId = 11; // Auth::id()
+
+        $user = User::find($userId);
+
+        $patient = $user->patient;
+
+        $result = $patient->appliedDoctor;
+
+        dd($result);
     }
 }

@@ -28,10 +28,15 @@ Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/patient/find', [PatientController::class, 'search']);
 //Patient detail info
 Route::get('/patient/{id}', [PatientController::class, 'show']);
+//Patient request status
+Route::get('/patient/request/status', [PatientController::class, 'status']);
 //Patient Edit info
 Route::post('/patient/update', [PatientController::class, 'update']);
 //Patient request
 Route::post('/patient/request', [PatientController::class, 'request']);
+
+Route::get('/mytest', [PatientController::class, 'patientsDoctors']);
+
 
 //Managers
 //Manager Search Doctors
