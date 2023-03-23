@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\ManagerController;
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\api\InsuranceCompanyController;
+use App\Models\Insurance_company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,8 @@ Route::get('/patient/find', [PatientController::class, 'search']);
 Route::get('/patient/{id}', [PatientController::class, 'show']);
 //Patient Edit info
 Route::post('/patient/update', [PatientController::class, 'update']);
+//List of Insurance Companies
+Route::get('/insuranceCompany', [InsuranceCompanyController::class, 'list']);
 
 //Managers
 //Manager Search Doctors

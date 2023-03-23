@@ -30,15 +30,19 @@ export default function RegisterUser() {
             // DONT FORGET!!!!!
             switch (user.role) {
                 case "manager":
+                    console.log("additional reg manager");
                     navigate("/managers/additional-registration");
                     break;
                 case "patient":
-                    navigate("/");
+                    console.log("additional reg patient");
+                    navigate("/patient/additional-registration");
                     break;
                 case "doctor":
+                    console.log("additional reg doctor");
                     navigate("/");
                     break;
                 default:
+                    console.log("additional reg default");
                     navigate("/");
                     break;
             }
