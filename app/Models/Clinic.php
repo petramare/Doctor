@@ -13,4 +13,9 @@ class Clinic extends Model
     {
         return $this->hasOne(Manager::class);
     }
+
+    public function doctor()
+    {
+        return $this->hasMany(Doctor::class);
+    }
 }

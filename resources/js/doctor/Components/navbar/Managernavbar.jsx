@@ -10,6 +10,15 @@ export default function Homenavbar() {
         <>
             <li className="nav-item active">
                 <Link
+                    to={`/managers`}
+                    className="nav-link"
+                >
+                    Home
+                </Link>
+            </li>
+
+            <li className="nav-item active">
+                <Link
                     to={`/managers/edit`}
                     className="nav-link"
                 >
