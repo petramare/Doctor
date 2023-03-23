@@ -11,7 +11,6 @@ use App\Models\Clinic;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
-
 class DoctorController extends Controller
 {
     public function index()
@@ -75,6 +74,7 @@ class DoctorController extends Controller
 
                 ->get();
         }
+
         return $clinics;
     }
 

@@ -29,10 +29,17 @@ Route::get('/patient/find', [PatientController::class, 'search']);
 Route::get('/patient/{id}', [PatientController::class, 'show']);
 // Create new record in Patient Table
 Route::post('/patient/insert', [PatientController::class, 'insert']);
-//Patient Edit info
-Route::post('/patient/update', [PatientController::class, 'update']);
 //List of Insurance Companies
 Route::get('/insuranceCompany', [InsuranceCompanyController::class, 'list']);
+//Patient request status
+Route::get('/patient/request/status', [PatientController::class, 'status']);
+//Patient Edit info
+Route::post('/patient/update', [PatientController::class, 'update']);
+//Patient request
+Route::post('/patient/request', [PatientController::class, 'request']);
+
+Route::get('/mytest', [PatientController::class, 'patientsDoctors']);
+
 
 //Managers
 //Manager Search Doctors
@@ -48,17 +55,17 @@ Route::post('/managers/update', [ManagerController::class, 'update'])->name('api
 
 //Doctors
 // Doctor Route
-Route::get('/doctor', [DoctorController::class, 'index']);
+Route::get('/doctors', [DoctorController::class, 'index']);
 // Doctor detail info
-Route::get('/doctor/{id}', [DoctorController::class, 'show']);
+Route::get('/doctors/{id}', [DoctorController::class, 'show']);
 //Doctor Search Route for clinics
-Route::get('/doctor/find', [DoctorController::class, 'search']);
+Route::get('/doctors/find', [DoctorController::class, 'search']);
 //Doctor Search Route for clinics
 Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
 // Create new record in Doctors Table
 Route::post('/doctor/insert', [DoctorController::class, 'insert']);
 //Doctor edit info
-Route::post('/doctor/update', [DoctorController::class, 'update']);
+Route::post('/doctors/update', [DoctorController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -9,7 +9,7 @@ export default function FindClinic() {
 
     const handleSearch = async () => {
         try {
-            let response = await axios.get(`api/doctor/find?search=${query}`)
+            let response = await axios.get(`/api/doctors/find?search=${query}`)
             setSearch(response.data);
             
         }

@@ -8,7 +8,7 @@ export default function EditInfo() {
 
     const loadData = async () => {
         try {
-            let response = await axios.get(`/api/doctor/${user.id}`);
+            let response = await axios.get(`/api/doctors/${user.id}`);
             setDoctor(response.data);
         } catch (error) {
             console.log(error);
@@ -60,7 +60,7 @@ export default function EditInfo() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/doctor/update", doctor);
+            const response = await axios.post("/api/doctors/update", doctor);
         } catch (error) {
             console.log(error);
         }
