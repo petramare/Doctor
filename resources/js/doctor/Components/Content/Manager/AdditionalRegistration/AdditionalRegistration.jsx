@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import UserContext from "../../../UserContext/UserContext";
 
 export default function AdditionalRegistration() {
     const { user } = useContext(UserContext);
     const [clinic, setClinic] = useState("");
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setClinic((previous_values) => {
@@ -20,19 +22,9 @@ export default function AdditionalRegistration() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("clicked submit");
-
-        setClinic((previous_values) => {
-            return {
-                ...previous_values,
-                userId: user.id,
-            };
-        });
-
-        console.log(clinic);
-
         try {
             let response = await axios.post("/api/manager/insert", clinic);
+            navigate("/managers/edit");
         } catch (error) {
             console.log(error);
         }

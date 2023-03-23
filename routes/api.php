@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\ManagerController;
+<<<<<<< HEAD
 use App\Http\Controllers\AppointmentController;
+=======
+use App\Http\Controllers\Api\DoctorController;
+>>>>>>> main
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,11 +41,23 @@ Route::get('/managers/find', [ManagerController::class, 'search'])->name('api.ma
 // Display list of managers
 Route::get('/managers', [ManagerController::class, 'list'])->name('api.managers.list');
 // Display details of one manager
-Route::get('/managers/{id}', [ManagerController::class, 'details'])->name('api.managers.detail');
+Route::get('/managers/{user_id}', [ManagerController::class, 'details'])->name('api.managers.detail');
 // Create record of managers and clinic tables
 Route::post('/manager/insert', [ManagerController::class, 'insert'])->name('api.managers.update');
 // Update existing record of managers, users, clinic tables
 Route::post('/managers/update', [ManagerController::class, 'update'])->name('api.managers.insert');
+
+
+// Doctor Route
+Route::get('/doctor', [DoctorController::class, 'index']);
+// Doctor detail info
+Route::get('/doctor/{id}', [DoctorController::class, 'show']);
+//Doctor Search Route for clinics
+Route::get('/doctor/find', [DoctorController::class, 'search']);
+//Doctor Search Route for clinics
+//Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
+//Doctor edit info
+Route::post('/doctor/update', [DoctorController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
