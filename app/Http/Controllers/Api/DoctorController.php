@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Clinic;
 use Symfony\Component\Console\Input\Input;
+use Auth;
 
 
 class DoctorController extends Controller
@@ -74,16 +75,20 @@ class DoctorController extends Controller
 
                 ->get();
         }
+
         return $clinics;
     }
 
     public function update(Request $request)
     {
-        $doctor = Doctor::findOrFail($request->input('doctor_id'));
+        $user = Auth::user();
 
-        $doctor->visiting_hours = $request->input('visiting_hours');
-        $doctor->save();
+        $user->first_name = $request->input('first_name');
 
-        //... co chci menit
+        $user->save();
+
+        return $user;
+
+        //... 
     }
 }
