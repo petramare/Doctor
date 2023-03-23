@@ -1,5 +1,7 @@
 import axios from "axios";
-import { useState } from "react"
+import { useState } from "react";
+import PatientApply from "./PatientApply/PatientApply";
+import PatientRequest from './PatientRequest/PatientRequest';
 
 export default function FindDoctor() {
 
@@ -17,6 +19,7 @@ export default function FindDoctor() {
     }
     return (
         <>
+            <PatientRequest />
             <h1>Find your Doctor:</h1>
             <form action="" onSubmit={(e) => {
                 e.preventDefault();
@@ -45,7 +48,8 @@ export default function FindDoctor() {
                                     <td>{result.first_name} {result.surname}</td>
                                     <td>{result.doctor ? result.doctor.specialization : ''}</td>
                                     <td>
-                                        <button className="btn btn-success">Apply</button>
+                                        <PatientApply
+                                            result={result} />
                                         <button className="btn btn-info">Detail</button>
                                     </td>
                                 </tr>

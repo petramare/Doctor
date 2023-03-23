@@ -29,6 +29,8 @@ Route::get('/patient/find', [PatientController::class, 'search']);
 Route::get('/patient/{id}', [PatientController::class, 'show']);
 //Patient Edit info
 Route::post('/patient/update', [PatientController::class, 'update']);
+//Patient request
+Route::post('/patient/request', [PatientController::class, 'request']);
 
 //Managers
 //Manager Search Doctors
