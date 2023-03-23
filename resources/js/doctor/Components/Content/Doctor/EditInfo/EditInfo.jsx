@@ -5,27 +5,32 @@ import UserContext from "../../../UserContext/UserContext";
 export default function EditInfo() {
 
    const { user } = useContext(UserContext);
-   const [doctor, setDoctor] = useState(null);
-
-   const loadData = async () => {
-    try {
-        let response = await axios.get(`/api/doctor/${user.id}`);
-        setPatient(response.data);
-    } catch (error) {
-        console.log(error);
-    }
-};
+    const [doctor, setDoctor] = useState(user);
+//    const [ loadingDoctor, setLoadingDoctor ] = useState(false);
+   
+    
+//    const loadData = async () => {
+//     try {
+//         let response = await axios.get(`/api/doctors/show/${id}`);
+//         console.log(response);
+//         // setDoctor(response);
+        
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 
     useEffect(() => {
         if (user) {
-            loadData();
+            setDoctor(user);
         }
     }, [user]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/doctor/update", doctor);
+            const response = await axios.post("/api/doctors/update", doctor);
         } catch (error) {
             console.log(error);
         }
@@ -35,10 +40,7 @@ export default function EditInfo() {
         const { name, value } = e.target;
         setDoctor((prevState) => ({
             ...prevState,
-            user: {
-                ...prevState.user,
-                [name]: value,
-            },
+            [name]: value,
         }));
     };
 
@@ -51,8 +53,14 @@ export default function EditInfo() {
         });
     };
 
+    if (!user) return null;
+
     return (
+
+        
         <>
+        {console.log(user)}
+        {console.log(doctor)}
         <div className="container">
             <div className="row">
                 <div className="col">
@@ -79,7 +87,7 @@ export default function EditInfo() {
                                     className="form-control"
                                     name="first_name"
                                     id="first_name"
-                                    value={doctor.user.first_name || ""}
+                                    value={doctor.first_name || ""}
                                     onChange={handleChangeDoctor}
                                 />
                             </div>
@@ -90,7 +98,7 @@ export default function EditInfo() {
                                     className="form-control"
                                     id="surname"
                                     name="surname"
-                                    value={doctor.user.surname || ""}
+                                    value={doctor.surname || ""}
                                     onChange={handleChangeDoctor}
                                 />
                             </div>
@@ -101,7 +109,7 @@ export default function EditInfo() {
                                     className="form-control"
                                     id="email"
                                     name="email"
-                                    value={doctor.user.email || ""}
+                                    value={doctor.email || ""}
                                     // onChange={handleChange}
                                     readOnly
                                     disabled
@@ -114,7 +122,7 @@ export default function EditInfo() {
                                     className="form-control"
                                     id="date_of_birth"
                                     name="date_of_birth"
-                                    value={doctor.user.date_of_birth || ""}
+                                    value={doctor.date_of_birth || ""}
                                     onChange={handleChangeDoctor}
                                 />
                             </div>
@@ -124,7 +132,7 @@ export default function EditInfo() {
                                     type="text"
                                     name="role"
                                     className="form-control"
-                                    value={doctor.user.role || ""}
+                                    value={doctor.role || ""}
                                     // onChange={handleChange}
                                     readOnly
                                     disabled
@@ -137,7 +145,7 @@ export default function EditInfo() {
                                     className="form-control"
                                     id="id_number"
                                     name="id_number"
-                                    value={doctor.user.id_number || ""}
+                                    value={doctor.id_number || ""}
                                     onChange={handleChangeDoctor}
                                 />
 
@@ -149,7 +157,7 @@ export default function EditInfo() {
                                     className="form-control"
                                     id="specialization"
                                     name="specialization"
-                                    value={doctor.user.specialization || ""}
+                                    value={doctor.specialization || ""}
                                     onChange={handleChangeDoctor}
                                 />
 
@@ -163,7 +171,7 @@ export default function EditInfo() {
                                     className="form-control"
                                     id="doctor_license_number"
                                     name="doctor_license_number"
-                                    value={doctor.user.doctor_license_number || ""}
+                                    value={doctor.doctor_license_number || ""}
                                     onChange={handleChangeDoctor}
                                 />
 
