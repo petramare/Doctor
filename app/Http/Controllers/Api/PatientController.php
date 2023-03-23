@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class PatientController extends Controller
@@ -73,5 +74,15 @@ class PatientController extends Controller
         $user->date_of_birth = $request->input('user.date_of_birth');
         $user->id_number = $request->input('user.id_number');
         $user->save();
+    }
+
+    public function insert(Request $request)
+    {
+        // create new patient fill it with data and store it in db
+        $patient = new Patient();
+        $patient->user_id = Auth::id();
+        $patient->insurance_company_id = $request->input('patient.insurance_company_id');
+        $patient->insurance_number = $request->input('patient.insurance_number');
+        $patient->save();
     }
 }

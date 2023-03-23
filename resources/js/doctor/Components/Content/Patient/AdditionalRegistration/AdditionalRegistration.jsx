@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AdditionalRegistration() {
     const [insuranceCompanies, setInsuranceCompanies] = useState(null);
+    const [patient, setPatient] = useState("");
+    const navigate = useNavigate();
 
     const loadInsuranceCompanies = async () => {
         try {
@@ -13,37 +16,30 @@ export default function AdditionalRegistration() {
         }
     };
 
-    // const getInsuranceCompany = () => {
-    //     insuranceCompanies
-    //         ? insuranceCompanies.map((company, i) => {
-    //               return (
-    //                   <option key={i}>
-    //                       {company.name}
-    //                   </option>
-    //               );
-    //           })
-    //         : "load";
-    // };
-
-    //   {insuranceCompanies
-    //     ? insuranceCompanies.map((company, i) => {
-    //           return (
-    //               <option value={company.id} key={i}>
-    //                   {company.name}
-    //               </option>
-    //           );
-    //       })
-    //     : "load"}
-
     useEffect(() => {
         loadInsuranceCompanies();
     }, []);
 
-    const handleChange = (e) => {};
+    const handleChange = (e) => {
+        setPatient((previous_values) => {
+            return {
+                ...previous_values,
+                patient: {
+                    ...previous_values.patient,
+                    [e.target.name]: e.target.value,
+                },
+            };
+        });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("patient reg clicked");
+        try {
+            let response = await axios.post("/api/patient/insert", patient);
+            navigate("/patient/edit");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -61,28 +57,31 @@ export default function AdditionalRegistration() {
                                 name="insurance_number"
                                 className="form-control"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="insurance_company_id">
-                                Insurance Company:
-                            </label>
-                            <input
-                                type="text"
-                                name="insurance_company_id"
-                                className="form-control"
-                                onChange={handleChange}
-                            />
-                        </div>
+                        <label htmlFor="insurance_company_id">
+                            Insurance Company
+                        </label>
                         <select
+                            name="insurance_company_id"
                             className="form-control"
                             aria-label="Floating label select example"
                             onChange={handleChange}
+                            required
                         >
-                            <option value="choose" disabled selected="selected">
+                            <option value={null} disabled selected>
                                 -- Select Insurance Company --
                             </option>
-                            {getInsuranceCompany}
+                            {insuranceCompanies
+                                ? insuranceCompanies.map((company, i) => {
+                                      return (
+                                          <option value={company.id} key={i}>
+                                              {company.name}
+                                          </option>
+                                      );
+                                  })
+                                : "load"}
                         </select>
                         <button type="submit" className="btn btn-primary">
                             Submit
