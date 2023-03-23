@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\ManagerController;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +48,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     return $request->user();
 });
+
+
+// Appointments API
+Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);

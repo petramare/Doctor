@@ -1,6 +1,5 @@
-export default function DoctorHome() {
+import Calendar from "../../Calendar/CalendarComponent";
 
-    return (
-        <></>
-    )
+export default function DoctorHome() {
+    return <CalendarComponent />;
 }
