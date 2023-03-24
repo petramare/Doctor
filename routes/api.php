@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ManagerController;
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\api\InsuranceCompanyController;
+use App\Http\Controllers\api\MessageController;
 use App\Models\Insurance_company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,12 @@ Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
 Route::post('/doctor/insert', [DoctorController::class, 'insert']);
 //Doctor edit info
 Route::post('/doctors/update', [DoctorController::class, 'update']);
+
+//Messages
+// Display list of messages
+Route::get('/messages', [MessageController::class, 'list'])->name('api.messages.list');
+// Display details of one message
+Route::get('/messages/{id}', [MessageController::class, 'details'])->name('api.messages.detail');
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
