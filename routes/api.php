@@ -56,10 +56,10 @@ Route::post('/managers/update', [ManagerController::class, 'update'])->name('api
 //Doctors
 // Doctor Route
 Route::get('/doctors', [DoctorController::class, 'index']);
-// Doctor detail info
-Route::get('/doctors/{id}', [DoctorController::class, 'show']);
 //Doctor Search Route for clinics
 Route::get('/doctors/find', [DoctorController::class, 'search']);
+// Doctor detail info
+Route::get('/doctors/{id}', [DoctorController::class, 'show']);
 //Doctor Search Route for clinics
 Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
 // Create new record in Doctors Table
