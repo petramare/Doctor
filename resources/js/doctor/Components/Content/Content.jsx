@@ -32,6 +32,7 @@ export default function Content() {
                     <Route path="/patient/additional-registration" element={<AdditionalRegistrationPatient />} />
                     <Route path="/patient/edit" element={<PatientInfo />} />
                     <Route path="/patient/find" element={<PatientFind />} />
+                    <Route path="/patient/condition" element={<PatientCondition />} />
 
                     {/* manager routes */}
                     <Route path="/managers" element={<ManagerHome />} />

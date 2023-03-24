@@ -54,6 +54,6 @@ class Patient extends Model
 
     public function conditions()
     {
-        return $this->hasMany(Condition::class);
+        return $this->hasMany(Condition::class, 'patient_id', 'patient_id');
     }
 }
