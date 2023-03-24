@@ -36,7 +36,7 @@ export default function RegisterUser() {
                     navigate("/");
                     break;
                 case "doctor":
-                    navigate("/");
+                    navigate("/doctors/additional-registration");
                     break;
                 default:
                     navigate("/");

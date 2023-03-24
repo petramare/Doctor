@@ -13,6 +13,7 @@ import DoctorInfo from './Doctor/EditInfo/EditInfo';
 import DoctorHome from './Doctor/Home/DoctorHome';
 import DoctorPatientRecords from './Doctor/PatientRecords/PatientRecords';
 import ManagerHome from './Manager/Home/ManagerHome';
+import PatientCondition from './Patient/Condition/Condition';
 
 export default function Content() {
     return (
@@ -22,6 +23,7 @@ export default function Content() {
                     <Route path="/patient" element={<PatientHome />} />
                     <Route path="/patient/edit" element={<PatientInfo />} />
                     <Route path="/patient/find" element={<PatientFind />} />
+                    <Route path="/patient/condition" element={<PatientCondition />} />
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterUser />} />

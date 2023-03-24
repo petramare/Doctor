@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//Doctors
-//insert all Doctor routes petra 
+
 
 //Patient
 //Patient Route
@@ -30,6 +29,10 @@ Route::get('/patient/find', [PatientController::class, 'search']);
 Route::get('/patient/{id}', [PatientController::class, 'show']);
 //Patient Edit info
 Route::post('/patient/update', [PatientController::class, 'update']);
+//Patient Condition detail
+Route::post('/patient/condition', [PatientController::class, 'condition']);
+
+
 
 //Managers
 //Manager Search Doctors
@@ -43,7 +46,7 @@ Route::post('/manager/insert', [ManagerController::class, 'insert'])->name('api.
 // Update existing record of managers, users, clinic tables
 Route::post('/managers/update', [ManagerController::class, 'update'])->name('api.managers.insert');
 
-
+//Doctors
 // Doctor Route
 Route::get('/doctors', [DoctorController::class, 'index']);
 // Doctor detail info

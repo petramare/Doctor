@@ -74,4 +74,10 @@ class PatientController extends Controller
         $user->id_number = $request->input('user.id_number');
         $user->save();
     }
+
+    public function condition()
+    {
+        
+
+    }
 }
