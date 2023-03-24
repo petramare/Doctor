@@ -65,3 +65,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Appointments API
 Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);
+Route::post('/appointments/update', [AppointmentController::class, 'updateAppointments']);
