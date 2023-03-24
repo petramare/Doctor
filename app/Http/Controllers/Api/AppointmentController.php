@@ -17,4 +17,14 @@ class AppointmentController extends Controller
 
         return $appointments;
     }
+
+    public function updateAppointments(Request $request)
+    {
+        dd($request);
+        $new_appointment = new Appointment();
+        $new_appointment->start = $request->input("start");
+        $new_appointment->end = $request->input('end');
+        $new_appointment->description = $request->input("title");
+        dd($new_appointment);
+    }
 }
