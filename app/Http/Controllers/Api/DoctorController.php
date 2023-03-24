@@ -25,10 +25,11 @@ class DoctorController extends Controller
     public function show($id)
     {
         $doctor = Doctor::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->where('user_id', $id)
             ->first();
 
+        // dd($doctor);
         return $doctor;
     }
 

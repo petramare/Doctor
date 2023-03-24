@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import UserContext from "../../../UserContext/UserContext";
-import CalendarComponent from "../../Calendar/Calendar";
+import CalendarComponent from "../../Calendar/DoctorCalendar";
 
 export default function DoctorHome() {
     const { user } = useContext(UserContext);
