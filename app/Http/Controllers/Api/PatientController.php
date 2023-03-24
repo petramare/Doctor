@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Relationship;
 use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Symfony\Component\Console\Input\Input;
 
 class PatientController extends Controller
@@ -73,6 +76,59 @@ class PatientController extends Controller
         $user->date_of_birth = $request->input('user.date_of_birth');
         $user->id_number = $request->input('user.id_number');
         $user->save();
+    }
+
+    public function insert(Request $request)
+    {
+        // create new patient fill it with data and store it in db
+        $patient = new Patient();
+        $patient->user_id = Auth::id();
+        $patient->insurance_company_id = $request->input('patient.insurance_company_id');
+        $patient->insurance_number = $request->input('patient.insurance_number');
+        $patient->save();
+    }
+
+    public function request(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return null;
+        }
+
+        $doctor = Doctor::where('doctor_id', $request->input('doctor'))->first();
+
+        // dd($user->patient->id, $doctor->id);
+        //attaching doctorid and patient id into doctor_patient table specified in Doctor model, 
+        //it already knows the doctorId $request, and what patient to attach to from user->patients
+        //second argument is array, with what column => the input status string 
+        //maybe its not even like that but ...
+        $doctor->patients()->attach($user->patient->patient_id, ['status' => $request->input('status')]);
+    }
+
+    public function status()
+    {
+        $user = Auth::user();
+
+        $user = User::find($user->id);
+
+        $patient = $user->patient;
+
+        $result = $patient->doctors()->with('user')->get();
+        return $result;
+    }
+
+    public function patientsDoctors()
+    {
+        $userId = 11; // Auth::id()
+
+        $user = User::find($userId);
+
+        $patient = $user->patient;
+
+        $result = $patient->appliedDoctor;
+
+        dd($result);
     }
 
     public function condition()

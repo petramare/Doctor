@@ -7,7 +7,9 @@ import PatientInfo from "./Patient/EditInfo/EditInfo";
 import PatientFind from "./Patient/FindDoctor/FindDoctor";
 import ManagerEditInfo from "./Manager/EditInfo/EditInfo";
 import ManagerFind from "./Manager/FindDoctor/FindDoctor";
-import AdditionalRegistration from "./Manager/AdditionalRegistration/AdditionalRegistration";
+import AdditionalRegistrationManager from "./Manager/AdditionalRegistration/AdditionalRegistration";
+import AdditionalRegistrationPatient from "./Patient/AdditionalRegistration/AdditionalRegistration";
+import AdditionalRegistrationDoctor from "./Doctor/AdditionalRegistration/AdditionalRegistration";
 import DoctorFind from "./Doctor/FindClinic/FindClinic";
 import DoctorInfo from './Doctor/EditInfo/EditInfo';
 import DoctorHome from './Doctor/Home/DoctorHome';
@@ -20,25 +22,28 @@ export default function Content() {
         <main className="">
             <div>
                 <Routes>
-                    <Route path="/patient" element={<PatientHome />} />
-                    <Route path="/patient/edit" element={<PatientInfo />} />
-                    <Route path="/patient/find" element={<PatientFind />} />
-                    <Route path="/patient/condition" element={<PatientCondition />} />
+                    {/* general routes */}
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterUser />} />
-                    <Route
-                        path="/managers/edit"
-                        element={<ManagerEditInfo />}
-                    />
+
+                    {/* patient routes */}
+                    <Route path="/patient" element={<PatientHome />} />
+                    <Route path="/patient/additional-registration" element={<AdditionalRegistrationPatient />} />
+                    <Route path="/patient/edit" element={<PatientInfo />} />
+                    <Route path="/patient/find" element={<PatientFind />} />
+
+                    {/* manager routes */}
                     <Route path="/managers" element={<ManagerHome />} />
-
+                    <Route path="/managers/additional-registration" element={<AdditionalRegistrationManager />} />
+                    <Route path="/managers/edit" element={<ManagerEditInfo />}/>
                     <Route path="/managers/find" element={<ManagerFind />} />
-                    <Route path="/managers/additional-registration" element={<AdditionalRegistration />} />
-
-                    <Route path='/doctor/find' element={< DoctorFind />} />
-                    <Route path='/doctor/update' element={< DoctorInfo />} />
+                    
+                    {/* doctor routes */}
                     <Route path='/doctor' element={<DoctorHome />} />
+                    <Route path="/doctor/additional-registration" element={<AdditionalRegistrationDoctor />} />
+                    <Route path='/doctor/edit' element={< DoctorInfo />} />
+                    <Route path='/doctor/find' element={< DoctorFind />} />
                     <Route path='/doctor/patientRecords' element={<DoctorPatientRecords />} />
                 </Routes>
             </div>

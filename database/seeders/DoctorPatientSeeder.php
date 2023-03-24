@@ -18,15 +18,18 @@ class DoctorPatientSeeder extends Seeder
         $doctor_patient = [
             [
                 "doctor_id" => 1,
-                "patient_id" => 1
+                "patient_id" => 1,
+                "status" => 'applied'
             ],
             [
                 "doctor_id" => 1,
-                "patient_id" => 2
+                "patient_id" => 2,
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 2,
-                "patient_id" => 3
+                "patient_id" => 3,
+                "status" => 'rejected'
             ],
         ];
 
