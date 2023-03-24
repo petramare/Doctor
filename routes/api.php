@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\ManagerController;
+use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\api\InsuranceCompanyController;
 use App\Models\Insurance_company;
@@ -76,3 +77,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     return $request->user();
 });
+
+
+// Appointments API
+Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);
+Route::post('/appointments/update', [AppointmentController::class, 'updateAppointments']);
