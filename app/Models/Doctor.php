@@ -23,8 +23,8 @@ class Doctor extends Model
     }
 
     public function patients()
-    {
-        return $this->belongsToMany(Patient::class);
+    {                                           // name of the table, id-> doctor_id, id->patient_id
+        return $this->belongsToMany(Patient::class, 'doctor_patient', 'doctor_id', 'patient_id')->withPivot('status');
     }
 
     public function messages()

@@ -8,9 +8,8 @@ use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Clinic;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
-use Auth;
-
 
 class DoctorController extends Controller
 {
@@ -82,14 +81,46 @@ class DoctorController extends Controller
 
     public function update(Request $request)
     {
-        $user = Auth::user();
+        // Find existing Doctor and User records
+        $doctor = Doctor::findOrFail($request->input('doctor_id'));
+        $user = User::findOrFail($request->input('user_id'));
 
-        $user->first_name = $request->input('first_name');
+        // What is about to be changed in Doctor record
+        $doctor->doctor_license_number = $request->input('doctor_license_number');
+        $doctor->specialization = $request->input('specialization');
+        $doctor->visiting_hours = $request->input('visiting_hours');
 
+        // What is about to be changed in User record
+        $user->email = $request->input('user.email');
+        $user->first_name = $request->input('user.first_name');
+        $user->surname = $request->input('user.surname');
+        $user->date_of_birth = $request->input('user.date_of_birth');
+        $user->id_number = $request->input('user.id_number');
+
+        // Save the changes to database
+        $doctor->save();
         $user->save();
+    }
 
-        return $user;
+    public function insert(Request $request)
+    {
+        // Create new Doctor record and fill it with data
 
-        //... 
+        // Default visiting hours
+        $visitingHours = [
+            'monday' => false,
+            'tuesday' => false,
+            'wednesday' => false,
+            'thursday' => false,
+            'friday' => false,
+        ];
+
+        $visitingHours = array_merge($visitingHours, $request->input('visiting_hours'));
+        $doctor = new Doctor();
+        $doctor->user_id = Auth::id();
+        $doctor->specialization = $request->input('doctor.specialization');
+        $doctor->doctor_license_number = $request->input('doctor.doctor_license_number');
+        $doctor->visiting_hours = json_encode($visitingHours);
+        $doctor->save();
     }
 }

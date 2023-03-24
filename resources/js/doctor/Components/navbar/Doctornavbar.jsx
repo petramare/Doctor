@@ -15,7 +15,7 @@ export default function Doctornavbar() {
                 </Link>
             </li>
             <li className="nav-item active">
-                <Link to='/doctor/update' className="nav-link" >
+                <Link to='/doctor/edit' className="nav-link" >
                     Edit info
                 </Link>
             </li>
