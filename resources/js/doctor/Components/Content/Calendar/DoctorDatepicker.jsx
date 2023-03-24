@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import axios from "axios";
 
 export default function DoctorDatepicker() {
     const [newAppointment, setNewAppointment] = useState({
@@ -9,7 +10,17 @@ export default function DoctorDatepicker() {
         end: "",
     });
 
-    const handleAddAppointment = () => {};
+    const handleAddAppointment = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(
+                "/api/appointments/update",
+                newAppointment
+            );
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <>
@@ -17,6 +28,7 @@ export default function DoctorDatepicker() {
             <div className="col">
                 <input
                     type="text"
+                    name="title"
                     placeholder="Add a appointment title"
                     value={newAppointment.title}
                     onChange={(e) =>

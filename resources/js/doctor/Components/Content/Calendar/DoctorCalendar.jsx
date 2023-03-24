@@ -30,8 +30,10 @@ export default function CalendarComponent() {
     // fetching appointments according to the doctor_id
     const loadAppointments = async () => {
         try {
-            const response = await axios.get(`api/doctors/show/${user.id}`);
-            setAppointments(response.data.user.appointments);
+            const response = await axios.get(`api/doctors/${user.id}`);
+            setAppointments(response.data.appointments);
+            console.log(response.data);
+            console.log(user.id);
         } catch (error) {
             console.log(error);
         }
