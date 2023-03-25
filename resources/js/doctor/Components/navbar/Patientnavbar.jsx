@@ -20,6 +20,11 @@ export default function Patientnavbar() {
                 </Link>
             </li>
             <li className="nav-item">
+                <Link to="patient/messages" className="nav-link">
+                    Messages
+                </Link>
+            </li>
+            <li className="nav-item">
                 <Logout />
             </li>
         </>

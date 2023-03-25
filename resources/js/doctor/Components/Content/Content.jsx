@@ -15,6 +15,7 @@ import DoctorInfo from './Doctor/EditInfo/EditInfo';
 import DoctorHome from './Doctor/Home/DoctorHome';
 import DoctorPatientRecords from './Doctor/PatientRecords/PatientRecords';
 import ManagerHome from './Manager/Home/ManagerHome';
+import Messages from "./Patient/Messages/Messages";
 
 export default function Content() {
     return (
@@ -29,6 +30,7 @@ export default function Content() {
                     {/* patient routes */}
                     <Route path="/patient" element={<PatientHome />} />
                     <Route path="/patient/additional-registration" element={<AdditionalRegistrationPatient />} />
+                    <Route path="patient/messages" element={<Messages />} />
                     <Route path="/patient/edit" element={<PatientInfo />} />
                     <Route path="/patient/find" element={<PatientFind />} />
 

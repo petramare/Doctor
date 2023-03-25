@@ -70,10 +70,20 @@ Route::post('/doctor/insert', [DoctorController::class, 'insert']);
 Route::post('/doctors/update', [DoctorController::class, 'update']);
 
 //Messages
+// Display list of message types
+Route::get('/message-types', [MessageController::class, 'messageTypes'])->name('api.messages.types');
 // Display list of messages
 Route::get('/messages', [MessageController::class, 'list'])->name('api.messages.list');
 // Display details of one message
+Route::post('/messages/insert', [MessageController::class, 'insert'])->name('api.messages.insert');
+// Display pacients and their doctors
+Route::get('/messages/patient-doctor', [MessageController::class, 'patientsDoctors']);
+// Display pacient and his/her doctors
+Route::get('/messages/patient-doctor/{patient_user_id}', [MessageController::class, 'patientDoctors']);
+// Display details of one message
 Route::get('/messages/{id}', [MessageController::class, 'details'])->name('api.messages.detail');
+// Display dirrect messages between 1 patient and 1 doctor
+Route::get('/messages/dirrect/{doctor_id}/{patient_id}', [MessageController::class, 'direct']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
