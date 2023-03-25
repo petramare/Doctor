@@ -19,7 +19,7 @@ class Patient extends Model
 
     public function doctors()
     {
-        return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->withPivot('status');
+        return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->with('user')->withPivot('status');
     }
 
     public function appliedDoctor()

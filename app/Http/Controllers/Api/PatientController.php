@@ -104,6 +104,8 @@ class PatientController extends Controller
         //second argument is array, with what column => the input status string 
         //maybe its not even like that but ...
         $doctor->patients()->attach($user->patient->patient_id, ['status' => $request->input('status')]);
+
+        return $doctor;
     }
 
     public function status()
@@ -118,16 +120,32 @@ class PatientController extends Controller
         return $result;
     }
 
-    public function patientsDoctors()
-    {
-        $userId = 11; // Auth::id()
+    // public function patientsDoctors()
+    // {
+    //     $userId = 11; // Auth::id()
 
-        $user = User::find($userId);
+    //     $user = User::find($userId);
 
-        $patient = $user->patient;
+    //     $patient = $user->patient;
 
-        $result = $patient->appliedDoctor;
+    //     $result = $patient->appliedDoctor;
 
-        dd($result);
-    }
+    //     dd($result);
+    // }
+
+    // public function mytest()
+    // {
+    //     $userId = 13; // Auth::id()
+
+    //     $user = User::find($userId);
+
+    //     $doctor = $user->doctor()->with('user')->get();
+
+    //     $doctor->patients()->
+    //     return $doctor;
+
+    //     $patient = $user->patient;
+
+    //     $result = $patient->appliedDoctor;
+    // }
 }

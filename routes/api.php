@@ -39,7 +39,7 @@ Route::post('/patient/update', [PatientController::class, 'update']);
 //Patient request
 Route::post('/patient/request', [PatientController::class, 'request']);
 
-Route::get('/mytest', [PatientController::class, 'patientsDoctors']);
+Route::get('/mytest', [PatientController::class, 'mytest']);
 
 
 //Managers
@@ -60,13 +60,23 @@ Route::get('/doctors', [DoctorController::class, 'index']);
 //Doctor Search Route for clinics
 Route::get('/doctors/find', [DoctorController::class, 'search']);
 // Doctor detail info
-Route::get('/doctors/{id}', [DoctorController::class, 'show']);
+Route::get('/doctors/show/{id}', [DoctorController::class, 'show']);
 //Doctor Search Route for clinics
 Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
+//Doctor patientRequests
+Route::get('/doctors/patient-request', [DoctorController::class, 'patientRequest']);
+//Doctor patientList
+Route::get('/doctors/patient-list', [DoctorController::class, 'patientList']);
+//Doctor patientDetail
+Route::get('/doctors/patient-detail', [DoctorController::class, 'patientDetail']);
 // Create new record in Doctors Table
 Route::post('/doctor/insert', [DoctorController::class, 'insert']);
 //Doctor edit info
 Route::post('/doctors/update', [DoctorController::class, 'update']);
+//Doctor accept patient
+Route::post('/doctors/accept', [DoctorController::class, 'acceptPatient']);
+//TEST DOCTOR API
+// Route::get('/doctor-mytest', [DoctorController::class, 'mytest']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
