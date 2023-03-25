@@ -7,7 +7,8 @@ export default function FindDoctor() {
 
     const [search, setSearch] = useState([]);
     const [query, setQuery] = useState('');
-    const [status, setStatus] = useState(0);
+    const [request, setRequest] = useState(null);
+    const [applied, setApplied] = useState(null);
 
     const handleSearch = async () => {
         try {
@@ -19,13 +20,9 @@ export default function FindDoctor() {
         }
     }
 
-    useEffect(() => {
-
-    }, [status])
     return (
         <>
-            <PatientRequest
-                status={status} />
+            <PatientRequest request={request} setRequest={setRequest} applied={applied} />
             <h1>Find your Doctor:</h1>
             <form action="" onSubmit={(e) => {
                 e.preventDefault();
@@ -56,8 +53,7 @@ export default function FindDoctor() {
                                     <td>
                                         <PatientApply
                                             result={result}
-                                            status={status}
-                                            setStatus={setStatus} />
+                                            setApplied={setApplied} />
                                         <button className="btn btn-info">Detail</button>
                                     </td>
                                 </tr>
