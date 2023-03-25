@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../UserContext/UserContext";
 import DoctorDatepicker from "./DoctorDatepicker";
 
-export default function CalendarComponent() {
+export default function DoctorCalendarComponent() {
     // FOR THE CALENDER TO WORK
     const [appointments, setAppointments] = useState([]);
     const { user } = useContext(UserContext);
