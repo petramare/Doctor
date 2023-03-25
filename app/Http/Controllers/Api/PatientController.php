@@ -17,7 +17,7 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->get();
         return $patients;
     }
@@ -50,10 +50,12 @@ class PatientController extends Controller
 
     public function show($id)
     {
+
         $patient = Patient::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->where('user_id', $id)
             ->first();
+        // dd($patient);
         return $patient;
     }
 

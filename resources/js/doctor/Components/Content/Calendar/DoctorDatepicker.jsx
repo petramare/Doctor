@@ -33,7 +33,7 @@ export default function DoctorDatepicker() {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "/api/appointments/update",
+                "/api/appointments/doctor/update",
                 newAppointment
             );
         } catch (error) {
@@ -49,6 +49,7 @@ export default function DoctorDatepicker() {
                     <div>
                         <label htmlFor="choose_patient">Pick a patient:</label>
                         <select
+                            className="form-control"
                             name="patient_id"
                             id=""
                             onChange={(e) =>
@@ -74,6 +75,7 @@ export default function DoctorDatepicker() {
                         <label htmlFor="title">Title: </label>
                         <br />
                         <input
+                            className="form-control"
                             type="text"
                             name="title"
                             placeholder="Add a appointment title"
@@ -89,6 +91,7 @@ export default function DoctorDatepicker() {
                     <div className="form-group">
                         <label htmlFor="start">Start Date:</label>
                         <DatePicker
+                            className="form-control"
                             placeholderText="Start Date"
                             selected={newAppointment.start}
                             showTimeSelect
@@ -107,6 +110,7 @@ export default function DoctorDatepicker() {
                     <div className="form-group">
                         <label htmlFor="end">End Date: </label>
                         <DatePicker
+                            className="form-control"
                             placeholderText="End Date"
                             selected={newAppointment.end}
                             showTimeSelect
@@ -123,7 +127,7 @@ export default function DoctorDatepicker() {
                         />
                     </div>
                     <button
-                        className="btn btn-success"
+                        className="btn btn-success mt-4"
                         onClick={handleAddAppointment}
                     >
                         Schedule Meeting

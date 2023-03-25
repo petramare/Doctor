@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class AppointmentController extends Controller
         return $appointments;
     }
 
-    public function updateAppointments(Request $request)
+    public function updateAppointmentsDoctor(Request $request)
     {
         // dd($request->all());
 
@@ -52,6 +53,29 @@ class AppointmentController extends Controller
         $new_appointment->save();
     }
 
+    public function updateAppointmentPatient(Request $request)
+    {
+
+        $logged_user = Auth::user();
+        $patient = $logged_user->patient;
+
+
+
+        $new_appointment = new Appointment();
+        $new_appointment->patient_id = $patient->patient_id;
+        $hour_added_start = new Carbon($request->input("start"));
+        $hour_added_start->addHours(1);
+        $new_appointment->start = $hour_added_start;
+        $hour_added_end = new Carbon($request->input('end'));
+        $hour_added_end->addHours(1);
+        $new_appointment->end = $hour_added_end;
+        $new_appointment->description = $request->input("title");
+        $new_appointment->doctor_id = $request->input('doctor_id');
+        $new_appointment->appointment_status_id = 3;
+        // dd($new_appointment);
+        $new_appointment->save();
+    }
+
     public function showDoctorsPatients()
     {
 
@@ -63,5 +87,27 @@ class AppointmentController extends Controller
         // finding patients for a doctor with users
         $patients = $doctor->patients()->with('user')->get();
         return $patients;
+    }
+
+    public function showPatientsDoctors()
+    {
+        // $logged_user = Auth::user();
+        $logged_user = 13;
+        $found_user = User::findOrFail($logged_user);
+        // dd($found_user);
+
+        $patient = $found_user->patient;
+        // dd($patient->patient_id);
+
+        $doctors = $patient->doctors;
+
+        foreach ($doctors as $doctor) {
+            $appointments = $doctor->appointments()->where('patient_id', $patient->patient_id)->get();
+            $doctor->appointments = $appointments;
+            $doctor->user;
+            // dd($appointments);
+        }
+
+        return $patient;
     }
 }
