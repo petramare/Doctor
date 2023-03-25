@@ -32,8 +32,6 @@ export default function CalendarComponent() {
         try {
             const response = await axios.get(`api/doctors/${user.id}`);
             setAppointments(response.data.appointments);
-            console.log(response.data);
-            console.log(user.id);
         } catch (error) {
             console.log(error);
         }
@@ -44,14 +42,14 @@ export default function CalendarComponent() {
     }, []);
 
     //this is remaping data to the correct inputs for big calender component
-    const meetings = [];
+    let meetings = [];
     if (appointments.length !== 0) {
         meetings = appointments.map((appointment) => {
             return {
                 id: appointment.id,
                 title: appointment.description,
-                start: new Date(appointment.start + "Z"),
-                end: new Date(appointment.end + "Z"),
+                start: new Date(appointment.start),
+                end: new Date(appointment.end),
                 allDay: false,
             };
         });
