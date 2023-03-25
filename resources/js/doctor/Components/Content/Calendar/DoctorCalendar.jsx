@@ -30,7 +30,7 @@ export default function DoctorCalendarComponent() {
     // fetching appointments according to the doctor_id
     const loadAppointments = async () => {
         try {
-            const response = await axios.get(`api/doctors/${user.id}`);
+            const response = await axios.get(`api/doctors/show/${user.id}`);
             setAppointments(response.data.appointments);
         } catch (error) {
             console.log(error);
@@ -69,7 +69,7 @@ export default function DoctorCalendarComponent() {
                 onEventDrop={function noRefCheck() {
                     console.log("hey");
                 }}
-                onEventResize={function noRefCheck() {}}
+                onEventResize={function noRefCheck() { }}
             />
         </div>
     );

@@ -75,6 +75,8 @@ Route::post('/doctor/insert', [DoctorController::class, 'insert']);
 Route::post('/doctors/update', [DoctorController::class, 'update']);
 //Doctor accept patient
 Route::post('/doctors/accept', [DoctorController::class, 'acceptPatient']);
+//Doctor reject/delete patient
+Route::post('/doctor/reject', [DoctorController::class, 'rejectPatient']);
 //TEST DOCTOR API
 // Route::get('/doctor-mytest', [DoctorController::class, 'mytest']);
 

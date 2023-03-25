@@ -1,14 +1,19 @@
 import axios from "axios";
+import { useEffect } from "react";
 
-export default function PatientRequest({ request }) {
-
+export default function PatientRequest({ request, setState, state }) {
+    //Accept button
     const handleClickAccept = (e, patient) => {
         e.preventDefault();
-        console.log(patient);
         sendAccept(e, patient);
     }
+    //Delete button
+    const handleClickDelete = (e, patient) => {
+        e.preventDefault();
+        sendReject(e, patient);
+    }
 
-
+    // change status to accepted
     const sendAccept = async (e, patient) => {
         e.preventDefault();
         try {
@@ -16,10 +21,24 @@ export default function PatientRequest({ request }) {
                 patient: patient.pivot.patient_id,
                 status: 'accepted'
             })
+            setState(state + 1);
         } catch (error) {
             console.log(error);
         }
     }
+    // change status to rejected
+    const sendReject = async (e, patient) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('/api/doctor/reject', {
+                patient: patient.pivot.patient_id,
+                status: 'rejected'
+            })
+            setState(state + 1);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <>
@@ -44,7 +63,7 @@ export default function PatientRequest({ request }) {
                                         <td className="text-capitalize">{result.pivot.status}</td>
                                         <td>
                                             <button className="btn btn-success" onClick={(e) => handleClickAccept(e, result)}>Accept</button>
-                                            <button className="btn btn-danger">Reject</button>
+                                            <button className="btn btn-danger" onClick={(e) => handleClickDelete(e, result)}>Reject</button>
                                         </td>
                                     </tr>
                                 ))}
