@@ -56,7 +56,6 @@ export default function DoctorCalendarComponent() {
             };
         });
     }
-    console.log(meetings);
 
     return (
         <div>
@@ -73,9 +72,14 @@ export default function DoctorCalendarComponent() {
                 }}
                 onEventResize={function noRefCheck() {}}
                 eventPropGetter={(meetings) => {
+                    // const backgroundColor =
+                    //     ;
                     const backgroundColor =
-                        meetings.status === 1 ? "#E0A553" : "#1A6BC7";
-
+                        meetings.end < new Date()
+                            ? "grey"
+                            : meetings.status === 1
+                            ? "#E0A553"
+                            : "#1A6BC7";
                     return { style: { backgroundColor } };
                 }}
             />

@@ -85,7 +85,7 @@ class AppointmentController extends Controller
         // connecting user with doctor
         $doctor = $logged_user->doctor;
         // finding patients for a doctor with users
-        $patients = $doctor->patients()->with('user')->get();
+        $patients = $doctor->acceptedPatients;
 
         return $patients;
     }
@@ -97,7 +97,7 @@ class AppointmentController extends Controller
         $patient = $logged_user->patient;
 
 
-        $doctors = $patient->doctors;
+        $doctors = $patient->acceptedDoctor;
 
         foreach ($doctors as $doctor) {
             $appointments = $doctor->appointments()
