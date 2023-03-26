@@ -24,9 +24,15 @@ export default function Doctornavbar() {
                     Find Clinic
                 </Link>
             </li>
+            <li className="nav-item active">
+                < Link to='/doctor/messages' className="nav-link" >
+                    Messages
+                </Link>
+            </li>
             <li className="nav-item">
                 <Logout />
             </li>
         </>
     );
 }
+

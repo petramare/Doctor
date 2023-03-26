@@ -8,7 +8,7 @@ export default function EditInfo() {
 
     const loadData = async () => {
         try {
-            let response = await axios.get(`/api/patient/${user.id}`);
+            let response = await axios.get(`/api/patient/show/${user.id}`);
             setPatient(response.data);
         } catch (error) {
             console.log(error);

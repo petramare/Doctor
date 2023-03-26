@@ -17,7 +17,7 @@ export default function DoctorDatepicker() {
     const loadDoctorsPatients = async () => {
         try {
             const response = await axios.get(
-                "http://www.doctor.test/api/appointments/patients"
+                "/api/appointments/patients"
             );
             setPatients(response.data);
         } catch (error) {

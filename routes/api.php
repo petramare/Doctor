@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ManagerController;
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\api\InsuranceCompanyController;
+use App\Http\Controllers\api\MessageController;
 use App\Models\Insurance_company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ Route::get('/patient', [PatientController::class, 'index']);
 //Patient Search Route for Doctors
 Route::get('/patient/find', [PatientController::class, 'search']);
 //Patient detail info
-Route::get('/patient/{id}', [PatientController::class, 'show']);
+Route::get('/patient/show/{id}', [PatientController::class, 'show']);
 // Create new record in Patient Table
 Route::post('/patient/insert', [PatientController::class, 'insert']);
 //List of Insurance Companies
@@ -79,6 +80,22 @@ Route::post('/doctors/accept', [DoctorController::class, 'acceptPatient']);
 Route::post('/doctor/reject', [DoctorController::class, 'rejectPatient']);
 //TEST DOCTOR API
 // Route::get('/doctor-mytest', [DoctorController::class, 'mytest']);
+
+//Messages
+// Display list of message types
+Route::get('/message-types', [MessageController::class, 'messageTypes'])->name('api.messages.types');
+// Display list of messages
+Route::get('/messages', [MessageController::class, 'list'])->name('api.messages.list');
+// Display details of one message
+Route::post('/messages/insert', [MessageController::class, 'insert'])->name('api.messages.insert');
+// Display pacients and their doctors
+Route::get('/messages/patient-doctor', [MessageController::class, 'patientsDoctors']);
+// Display pacient and his/her doctors
+Route::get('/messages/patient-doctor/{patient_user_id}', [MessageController::class, 'patientDoctors']);
+// Display details of one message
+Route::get('/messages/{id}', [MessageController::class, 'details'])->name('api.messages.detail');
+// Display dirrect messages between 1 patient and 1 doctor
+Route::get('/messages/dirrect/{doctor_id}/{patient_id}', [MessageController::class, 'direct']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
