@@ -44,7 +44,43 @@ export default function PatientRequest({ request, setRequest, applied }) {
                                         <td>{result.specialization}</td>
                                         <td>{result.pivot.status}</td>
                                         <td>
-                                            <button className="btn btn-info">Detail</button>
+                                            <button className="btn btn-info" type="button" data-toggle="modal" data-target={`#detail${index}`}>Detail</button>
+                                            {/* <!-- Modal Detail --> */}
+                                            <div className="modal fade" id={`detail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`detailLabel${index}`} aria-hidden="true">
+                                                <div className="modal-dialog" role="document">
+                                                    <div className="modal-content">
+                                                        <div className="modal-header">
+                                                            <h5 className="modal-title" id={`detail${index}`}>Patient name: {result.user.first_name} {result.user.surname} </h5>
+                                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div className="modal-body">
+                                                            <div className="popup">
+                                                                <div className="popup-content">
+                                                                    <h2>{result.user.first_name} {result.user.surname}</h2>
+                                                                    <p><strong>Email:</strong> {result.user.email}</p>
+                                                                    <p><strong>Specialization:</strong> {result.specialization}</p>
+                                                                    <p><strong>Visiting days:</strong></p>
+                                                                    <div className="col">
+                                                                        {Object.entries(JSON.parse(result.visiting_hours))
+                                                                            .filter(([day, isOpen]) => isOpen)
+                                                                            .map(([a], i) => (
+                                                                                <button key={i} className="btn btn-success m-2">{a}</button>
+                                                                            ))}
+
+                                                                    </div >
+                                                                    {/* {JSON.parse(result.visiting_hours).map((day, index) => {
+                                                                        <div key={index}>
+                                                                            <h1>{day}</h1>
+                                                                        </div>
+                                                                    })} */}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}

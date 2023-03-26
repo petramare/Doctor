@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import UserContext from "../../../UserContext/UserContext";
 import DoctorCalendarComponent from "../../Calendar/DoctorCalendar";
+import AppointmentsList from "./AppointmentsList/AppointmentsList";
 
 export default function DoctorHome() {
     const { user } = useContext(UserContext);
@@ -22,7 +23,9 @@ export default function DoctorHome() {
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <div className="calendar"></div>
+                                <div className="calendar">
+                                    <AppointmentsList />
+                                </div>
                             </div>
                         </div>
                     </div>
