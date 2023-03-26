@@ -52,10 +52,11 @@ export default function DoctorCalendarComponent() {
                 start: new Date(appointment.start),
                 end: new Date(appointment.end),
                 allDay: false,
+                status: appointment.appointment_status_id,
             };
         });
     }
-    // console.log("render");
+    console.log(meetings);
 
     return (
         <div>
@@ -71,6 +72,12 @@ export default function DoctorCalendarComponent() {
                     console.log("hey");
                 }}
                 onEventResize={function noRefCheck() {}}
+                eventPropGetter={(meetings) => {
+                    const backgroundColor =
+                        meetings.status === 1 ? "#C7120C" : "#1A6BC7";
+
+                    return { style: { backgroundColor } };
+                }}
             />
         </div>
     );
