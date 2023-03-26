@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 export default function PatientRecords() {
     const [request, setRequest] = useState([]);
     const [patientList, setPatientList] = useState([]);
+    const [state, setState] = useState(0); // after delete button the Patient list and Request will re-render
+
 
     const handleRequest = async () => {
         try {
@@ -25,10 +27,12 @@ export default function PatientRecords() {
         }
     }
 
+
+
     useEffect((e) => {
         handlePatientList();
         handleRequest();
-    }, []);
+    }, [state]);
 
 
 
@@ -38,7 +42,9 @@ export default function PatientRecords() {
                 <div className="row">
                     <div className="col">
                         <PatientRequest
-                            request={request} />
+                            request={request}
+                            state={state}
+                            setState={setState} />
                     </div>
                 </div>
             </div>
@@ -46,7 +52,9 @@ export default function PatientRecords() {
                 <div className="row">
                     <div className="col">
                         <PatientList
-                            patientList={patientList} />
+                            patientList={patientList}
+                            state={state}
+                            setState={setState} />
                     </div>
                 </div>
             </div>

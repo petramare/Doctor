@@ -137,17 +137,21 @@ class PatientController extends Controller
 
     // public function mytest()
     // {
-    //     $userId = 13; // Auth::id()
+    //     $userId = 11;
 
-    //     $user = User::find($userId);
-
-    //     $doctor = $user->doctor()->with('user')->get();
-
-    //     $doctor->patients()->
-    //     return $doctor;
+    //     $user = User::findOrFail($userId);
 
     //     $patient = $user->patient;
 
-    //     $result = $patient->appliedDoctor;
+    //     $doctors = $patient->doctors;
+
+    //     foreach ($doctors as $doctor) {
+    //         $doctor->$user;
+    //     }
+
+
+
+    //     // $result = $patient->acceptedDoctor;
+    //     return $patient;
     // }
 }
