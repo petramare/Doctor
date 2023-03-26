@@ -17,7 +17,7 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->get();
         return $patients;
     }
@@ -50,10 +50,12 @@ class PatientController extends Controller
 
     public function show($id)
     {
+
         $patient = Patient::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->where('user_id', $id)
             ->first();
+        // dd($patient);
         return $patient;
     }
 
@@ -104,6 +106,8 @@ class PatientController extends Controller
         //second argument is array, with what column => the input status string 
         //maybe its not even like that but ...
         $doctor->patients()->attach($user->patient->patient_id, ['status' => $request->input('status')]);
+
+        return $doctor;
     }
 
     public function status()
@@ -118,16 +122,36 @@ class PatientController extends Controller
         return $result;
     }
 
-    public function patientsDoctors()
-    {
-        $userId = 11; // Auth::id()
+    // public function patientsDoctors()
+    // {
+    //     $userId = 11; // Auth::id()
 
-        $user = User::find($userId);
+    //     $user = User::find($userId);
 
-        $patient = $user->patient;
+    //     $patient = $user->patient;
 
-        $result = $patient->appliedDoctor;
+    //     $result = $patient->appliedDoctor;
 
-        dd($result);
-    }
+    //     dd($result);
+    // }
+
+    // public function mytest()
+    // {
+    //     $userId = 11;
+
+    //     $user = User::findOrFail($userId);
+
+    //     $patient = $user->patient;
+
+    //     $doctors = $patient->doctors;
+
+    //     foreach ($doctors as $doctor) {
+    //         $doctor->$user;
+    //     }
+
+
+
+    //     // $result = $patient->acceptedDoctor;
+    //     return $patient;
+    // }
 }

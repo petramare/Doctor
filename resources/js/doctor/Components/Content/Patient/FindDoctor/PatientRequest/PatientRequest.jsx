@@ -1,12 +1,8 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../../../../UserContext/UserContext";
+import { useEffect, useState } from "react";
 
 
-export default function PatientRequest({ status }) {
-
-    const [request, setRequest] = useState(null);
-    const { user } = useContext(UserContext);
+export default function PatientRequest({ request, setRequest, applied }) {
 
     const handleRequest = async () => {
         try {
@@ -20,7 +16,7 @@ export default function PatientRequest({ status }) {
 
     useEffect(() => {
         handleRequest();
-    }, []);
+    }, [applied]);
 
 
     return (
@@ -28,6 +24,7 @@ export default function PatientRequest({ status }) {
             {
                 request ?
                     <div>
+                        {console.log(request)}
                         <h1>Your Doctors:</h1>
                         <table className="table">
                             <thead>

@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Clinic;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
@@ -31,33 +32,6 @@ class DoctorController extends Controller
         // dd($doctor);
         return $doctor;
     }
-
-    // public function search(Request $request)
-    // {
-    //     $search = $request->input('search');
-
-    //     if (strlen($search) < 2 ) {
-    //         $patients = User::query()
-    //             ->with(['patient'])
-    //             ->where('role', 'patient')
-    //             ->get();
-    //             return $patients;
-    //     }
-
-    //     else if (strlen($search) >= 2) {
-    //         $patients = User::query()
-    //             ->with(['patient'])
-    //             ->where('role', 'patient')
-    //             ->where(function ($query) use ($search) {
-    //                 $query->where('first_name', 'like', "%$search%")
-    //                     ->orWhere('surname', 'like', "%$search%");
-    //             })
-    //             ->get();
-
-    //     return $patients;   
-    //     }
-
-    //}
 
     public function search(Request $request)
     {
@@ -123,4 +97,71 @@ class DoctorController extends Controller
         $doctor->visiting_hours = json_encode($visitingHours);
         $doctor->save();
     }
+
+    public function patientRequest()
+    {
+        $user = Auth::user();
+
+        $doctor = $user->doctor;
+
+        // $result = $doctor->patients()->with('user')->get();
+        $result = $doctor->appliedPatients;
+        return $result;
+    }
+
+    public function patientList()
+    {
+        $user = Auth::user();
+        $doctor = $user->doctor;
+
+        $result = $doctor->acceptedPatients;
+        return $result;
+    }
+
+    public function patientDetail($userid)
+    {
+        // dd($userid);
+
+        $user = User::where('id', $userid)->with('patient')->first();
+        return $user;
+    }
+
+    public function acceptPatient(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $doctor = $user->doctor;
+        $patientId = $request->input('patient');
+
+        $status = $request->input('status');
+        $doctor->patients()->updateExistingPivot($patientId, ['status' => $status]);
+    }
+
+    public function rejectPatient(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $doctor = $user->doctor;
+        $patientId = $request->input('patient');
+
+        $status = $request->input('status');
+        $doctor->patients()->updateExistingPivot($patientId, ['status' => $status]);
+    }
+
+
+    // public function mytest()
+    // {
+
+    //     $userid = 13;
+
+    //     $user = User::findOrFail($userid);
+
+    //     $patient = $user->patient;
+
+    //     $result = $patient;
+
+    //     return $result;
+    // }
 }

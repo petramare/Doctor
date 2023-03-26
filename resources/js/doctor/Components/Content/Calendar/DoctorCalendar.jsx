@@ -12,7 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../UserContext/UserContext";
 import DoctorDatepicker from "./DoctorDatepicker";
 
-export default function CalendarComponent() {
+export default function DoctorCalendarComponent() {
     // FOR THE CALENDER TO WORK
     const [appointments, setAppointments] = useState([]);
     const { user } = useContext(UserContext);
@@ -31,7 +31,7 @@ export default function CalendarComponent() {
     const loadAppointments = async () => {
         try {
             const response = await axios.get(`api/doctors/show/${user.id}`);
-            setAppointments(response.data.user.appointments);
+            setAppointments(response.data.appointments);
         } catch (error) {
             console.log(error);
         }
@@ -42,14 +42,14 @@ export default function CalendarComponent() {
     }, []);
 
     //this is remaping data to the correct inputs for big calender component
-    const meetings = [];
+    let meetings = [];
     if (appointments.length !== 0) {
         meetings = appointments.map((appointment) => {
             return {
                 id: appointment.id,
                 title: appointment.description,
-                start: new Date(appointment.start + "Z"),
-                end: new Date(appointment.end + "Z"),
+                start: new Date(appointment.start),
+                end: new Date(appointment.end),
                 allDay: false,
             };
         });
@@ -69,7 +69,7 @@ export default function CalendarComponent() {
                 onEventDrop={function noRefCheck() {
                     console.log("hey");
                 }}
-                onEventResize={function noRefCheck() {}}
+                onEventResize={function noRefCheck() { }}
             />
         </div>
     );
