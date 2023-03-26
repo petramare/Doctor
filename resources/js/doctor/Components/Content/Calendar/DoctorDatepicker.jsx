@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
+import getDay from "date-fns/getDay";
 
 export default function DoctorDatepicker({ refresh, setRefresh }) {
     const [newAppointment, setNewAppointment] = useState({
@@ -45,6 +46,19 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
             console.log(error);
         }
     };
+    // filters the weeekday
+    const isWeekday = (date) => {
+        const day = getDay(date);
+        return day !== 0 && day !== 6;
+    };
+
+    // filters the time, you cannot select the time that has passed
+    const filterPassedTime = (time) => {
+        const currentDate = new Date();
+        const selectedDate = new Date(time);
+
+        return currentDate.getTime() < selectedDate.getTime();
+    };
 
     return (
         <div className="container">
@@ -58,6 +72,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                             // value="selected"
                             name="patient_id"
                             id=""
+                            defaultValue="selected"
                             onChange={(e) =>
                                 setNewAppointment({
                                     ...newAppointment,
@@ -65,7 +80,9 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                                 })
                             }
                         >
-                            <option value="selected">Select a patient</option>
+                            <option value="selected" disabled>
+                                Select a patient
+                            </option>
                             {patients.map((patient) => (
                                 <option
                                     key={patient.patient_id}
@@ -98,9 +115,12 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                         <label htmlFor="start">Start Date:</label>
                         <DatePicker
                             className="form-control"
-                            placeholderText="Start Date"
+                            placeholderText="Click to select a start date"
                             selected={newAppointment.start}
+                            filterTime={filterPassedTime}
+                            filterDate={isWeekday}
                             showTimeSelect
+                            withPortal
                             timeFormat="HH:mm"
                             injectTimes={[
                                 setHours(setMinutes(new Date(), 1), 0),
@@ -117,9 +137,12 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                         <label htmlFor="end">End Date: </label>
                         <DatePicker
                             className="form-control"
-                            placeholderText="End Date"
+                            placeholderText="Click to select an end date"
+                            filterTime={filterPassedTime}
+                            filterDate={isWeekday}
                             selected={newAppointment.end}
                             showTimeSelect
+                            withPortal
                             timeFormat="HH:mm"
                             injectTimes={[
                                 setHours(setMinutes(new Date(), 1), 0),

@@ -11,8 +11,8 @@ export default function PatientHome() {
 
     const loadDoctors = async () => {
         try {
-            const response = await axios.get(`api/appointments/doctors`);
-            setDoctorsAppointments(response.data.doctors);
+            const response = await axios.get(`/api/appointments/doctors`);
+            setDoctorsAppointments(response.data.accepted_doctor);
         } catch (error) {
             console.log(error);
         }
@@ -25,6 +25,7 @@ export default function PatientHome() {
         <>
             {user ? (
                 <div>
+                    {console.log(doctorsAppointments)}
                     <div className="container">
                         <div className="row">
                             <div className="col">
