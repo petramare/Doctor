@@ -22,19 +22,32 @@ class Patient extends Model
         return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->with('user')->withPivot('status');
     }
 
+    // public function appliedDoctor()
+    // {
+    //     return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->withPivot('status')->wherePivot('status', 'applied');
+    // }
     public function appliedDoctor()
     {
-        return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->withPivot('status')->wherePivot('status', 'applied');
+        return $this->doctors()->wherePivot('status', 'applied');
     }
 
+    // public function acceptedDoctor()
+    // {
+    //     return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->withPivot('status')->wherePivot('status', 'accepted');
+    // }
     public function acceptedDoctor()
     {
-        return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->withPivot('status')->wherePivot('status', 'accepted');
+        return $this->doctors()->wherePivot('status', 'accepted');
     }
+
+    // public function rejectedDoctor()
+    // {
+    //     return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->withPivot('status')->wherePivot('status', 'rejected');
+    // }
 
     public function rejectedDoctor()
     {
-        return $this->belongsToMany(Doctor::class, 'doctor_patient', 'patient_id', 'doctor_id')->withPivot('status')->wherePivot('status', 'rejected');
+        return $this->doctors()->wherePivot('status', 'rejected');
     }
 
     public function messages()
