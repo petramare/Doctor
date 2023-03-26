@@ -17,7 +17,7 @@ export default function Messages() {
             let response = await axios.get(
                 `/api/messages/patient-doctor/${user.id}`
             );
-            setDoctors(response.data.doctors);
+            setDoctors(response.data.accepted_doctor);
             setPatientId(response.data.patient_id);
             // console.log(response.data.doctors);
         } catch (error) {
@@ -27,9 +27,8 @@ export default function Messages() {
 
     const loadMessages = async () => {
         try {
-            // let response = await axios.get("/api/messages");
             let response = await axios.get(
-                `/api/messages/dirrect/${selectedDoctor}/${patientId}`
+                `/api/messages/dirrect/${doctors[selectedDoctor].doctor_id}/${patientId}`
             );
             setMessages(response.data);
             // console.log(response.data);
@@ -49,11 +48,12 @@ export default function Messages() {
     };
 
     const handleSelectDoctor = (e) => {
+        let selectedDoctorId = doctors[e.target.value].doctor_id;
         setSelectedDoctor(e.target.value);
         setNewMessage((previous_values) => {
             return {
                 ...previous_values,
-                [e.target.name]: e.target.value,
+                [e.target.name]: selectedDoctorId,
             };
         });
 
@@ -72,8 +72,8 @@ export default function Messages() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // console.log("send message click");
-            // console.log(newMessage);
+            console.log("send message click");
+            console.log(newMessage);
             const response = await axios.post(
                 "/api/messages/insert",
                 newMessage
@@ -127,7 +127,7 @@ export default function Messages() {
                     {doctors
                         ? doctors.map((doctor, i) => {
                               return (
-                                  <option value={doctor.doctor_id} key={i}>
+                                  <option value={i} key={i}>
                                       {doctor.user.first_name}{" "}
                                       {doctor.user.surname}
                                       {" - "}
@@ -141,8 +141,8 @@ export default function Messages() {
                     {selectedDoctor && doctors ? (
                         <>
                             Communication with{" "}
-                            {doctors[selectedDoctor - 1].user.first_name}{" "}
-                            {doctors[selectedDoctor - 1].user.surname}
+                            {doctors[selectedDoctor].user.first_name}{" "}
+                            {doctors[selectedDoctor].user.surname}
                         </>
                     ) : (
                         ""

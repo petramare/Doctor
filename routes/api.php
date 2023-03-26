@@ -92,6 +92,8 @@ Route::post('/messages/insert', [MessageController::class, 'insert'])->name('api
 Route::get('/messages/patient-doctor', [MessageController::class, 'patientsDoctors']);
 // Display pacient and his/her doctors
 Route::get('/messages/patient-doctor/{patient_user_id}', [MessageController::class, 'patientDoctors']);
+// Display doctor and his/her patients
+Route::get('/messages/doctor-patient/{doctor_user_id}', [MessageController::class, 'doctorPatients']);
 // Display details of one message
 Route::get('/messages/{id}', [MessageController::class, 'details'])->name('api.messages.detail');
 // Display dirrect messages between 1 patient and 1 doctor
