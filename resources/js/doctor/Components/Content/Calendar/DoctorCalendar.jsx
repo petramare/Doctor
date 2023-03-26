@@ -16,6 +16,7 @@ export default function DoctorCalendarComponent() {
     // FOR THE CALENDER TO WORK
     const [appointments, setAppointments] = useState([]);
     const { user } = useContext(UserContext);
+    const [refresh, setRefresh] = useState(false);
     //setting up localizer for the calendar
     const localizer = dateFnsLocalizer({
         format,
@@ -39,7 +40,7 @@ export default function DoctorCalendarComponent() {
 
     useEffect(() => {
         loadAppointments();
-    }, []);
+    }, [refresh]);
 
     //this is remaping data to the correct inputs for big calender component
     let meetings = [];
@@ -58,7 +59,7 @@ export default function DoctorCalendarComponent() {
 
     return (
         <div>
-            <DoctorDatepicker />
+            <DoctorDatepicker refresh={refresh} setRefresh={setRefresh} />
             <DnDCalendar
                 localizer={localizer}
                 events={meetings}
@@ -69,7 +70,7 @@ export default function DoctorCalendarComponent() {
                 onEventDrop={function noRefCheck() {
                     console.log("hey");
                 }}
-                onEventResize={function noRefCheck() { }}
+                onEventResize={function noRefCheck() {}}
             />
         </div>
     );

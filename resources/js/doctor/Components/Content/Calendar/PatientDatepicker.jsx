@@ -5,7 +5,7 @@ import axios from "axios";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 
-export default function PatientDatepicker({ doctor_id }) {
+export default function PatientDatepicker({ doctor_id, refresh, setRefresh }) {
     const [newAppointment, setNewAppointment] = useState({
         title: "",
         start: "",
@@ -14,12 +14,18 @@ export default function PatientDatepicker({ doctor_id }) {
     });
     const handleAddAppointment = async (e) => {
         e.preventDefault();
-        console.log(newAppointment);
         try {
             const response = await axios.post(
                 "/api/appointments/patient/update",
                 newAppointment
             );
+            setRefresh(!refresh);
+            setNewAppointment({
+                title: "",
+                start: "",
+                end: "",
+                doctor_id: doctor_id,
+            });
         } catch (error) {
             console.log(error);
         }
