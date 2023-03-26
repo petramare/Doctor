@@ -100,7 +100,10 @@ class AppointmentController extends Controller
         $doctors = $patient->doctors;
 
         foreach ($doctors as $doctor) {
-            $appointments = $doctor->appointments()->where('patient_id', $patient->patient_id)->get();
+            $appointments = $doctor->appointments()
+                ->where('patient_id', $patient->patient_id)
+                ->where('appointment_status_id', 3)
+                ->get();
             $doctor->appointments = $appointments;
             $doctor->user;
         }

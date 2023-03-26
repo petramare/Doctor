@@ -74,7 +74,7 @@ export default function DoctorCalendarComponent() {
                 onEventResize={function noRefCheck() {}}
                 eventPropGetter={(meetings) => {
                     const backgroundColor =
-                        meetings.status === 1 ? "#C7120C" : "#1A6BC7";
+                        meetings.status === 1 ? "#E0A553" : "#1A6BC7";
 
                     return { style: { backgroundColor } };
                 }}
