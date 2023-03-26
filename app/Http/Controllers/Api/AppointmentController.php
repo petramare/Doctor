@@ -110,33 +110,74 @@ class AppointmentController extends Controller
 
     public function test()
     {
-        // $logged_user_id = 11;
-        // $logged_user = User::findOrFail($logged_user_id);
 
-        // $doctor = $logged_user->doctor;
         // $patients = $doctor->patients()->with('user')->get();
 
         // return $patients;
 
         // $logged_user = Auth::user();
-        $logged_user_id = 13;
-        $logged_user = User::findOrFail($logged_user_id);
+        // $logged_user_id = 13;
+        // $logged_user = User::findOrFail($logged_user_id);
 
 
-        $patient = $logged_user->patient;
+
+        // $patient = $logged_user->patient;
+        // dd($patient);
+
+        // $doctors = $patient->doctors;
+
+        // foreach ($doctors as $doctor) {
+        //     $appointments = $doctor->appointments()
+        //         ->where('patient_id', $patient->patient_id)
+        //         ->where('appointment_status_id', 3)
+        //         ->get();
+        //     $doctor->appointments = $appointments;
+        //     $doctor->user;
+        // }
+
+        // return $patient;
 
 
-        $doctors = $patient->doctors;
+        // $appointments->patient = $patient;
 
-        foreach ($doctors as $doctor) {
-            $appointments = $doctor->appointments()
-                ->where('patient_id', $patient->patient_id)
-                ->where('appointment_status_id', 3)
-                ->get();
-            $doctor->appointments = $appointments;
-            $doctor->user;
+        // foreach ($appointments as $appointment) {
+        //     $patient = $appointment->patient()->where('patient_id', $appointment->patient_id)->first();
+        //     $appointment->patient = $patient;
+        // }
+        // $patient = Patient::find($appointments->patient_id);
+        // return $patient;
+
+        // $logged_user_id = 13;
+        // $logged_user = User::findOrFail($logged_user_id);
+        // $doctor = $logged_user->doctor;
+
+        // $appointments = Appointment::where('doctor_id', $doctor->doctor_id)
+        //     ->with('appointment_status')
+        //     ->get();
+        // foreach ($appointments as $appointment) {
+        //     $patient_id = $appointment->patient_id;
+        //     $patient = Patient::find($patient_id);
+        //     $user = $patient->user;
+        //     $appointment->patient = $user;
+        // }
+        // return $appointments;
+    }
+
+    public function appList()
+    {
+        $logged_user = Auth::user();
+        $doctor = $logged_user->doctor;
+
+        $appointments = Appointment::where('doctor_id', $doctor->doctor_id)
+            ->with('appointment_status')
+            ->where('appointment_status_id', 1)
+            ->get();
+        foreach ($appointments as $appointment) {
+            $patient_id = $appointment->patient_id;
+            $patient = Patient::find($patient_id);
+            $user = $patient->user;
+            $appointment->patient = $user;
         }
-
-        return $patient;
+        return $appointments;
     }
 }

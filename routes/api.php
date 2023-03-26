@@ -111,6 +111,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/appointments/patients', [AppointmentController::class, 'showDoctorsPatients']);
 // Not used for anything at this point, might come handy
 // Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);
+// Appointments doctor-list
+Route::get('/appointments/doctor/list', [AppointmentController::class, 'appList']);
 // posting new appointment for doctor
 Route::post('/appointments/doctor/update', [AppointmentController::class, 'updateAppointmentsDoctor']);
 // getting all the doctors for a patient and their appointments

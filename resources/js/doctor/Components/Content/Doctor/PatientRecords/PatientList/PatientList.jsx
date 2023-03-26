@@ -41,7 +41,7 @@ export default function PatientList({ patientList, setState, state }) {
                                 <td>
 
                                     <button className="btn btn-info" type="button" data-toggle="modal" data-target={`#detail${index}`}>Detail</button>
-                                    <button className="btn btn-danger" type="button" data-toggle="modal" data-target={`#delete${index}`}>Delete</button>
+                                    <button className="btn btn-danger" type="button" data-toggle="modal" data-target={`#delete${index}`}>Remove</button>
                                     {/* <!-- Modal Detail --> */}
                                     <div className="modal fade" id={`detail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`detailLabel${index}`} aria-hidden="true">
                                         <div className="modal-dialog" role="document">
@@ -78,7 +78,7 @@ export default function PatientList({ patientList, setState, state }) {
                                                 <div className="modal-body">
                                                     <div className="popup">
                                                         <div className="popup-content">
-                                                            <p>Are you sure you want to delete the user {result.user.first_name} {result.user.surname} ? </p>
+                                                            <p>Are you sure you want to remove {result.user.first_name} {result.user.surname} from your patients list ? </p>
                                                             <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close" onClick={(e) => handleDelete(e, result)}>Yes</button>
                                                             <button type="button" className="close btn btn-danger" data-dismiss="modal" aria-label="Close">No</button>
                                                         </div>
