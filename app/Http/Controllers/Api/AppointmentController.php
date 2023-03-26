@@ -71,7 +71,7 @@ class AppointmentController extends Controller
         $new_appointment->end = $hour_added_end;
         $new_appointment->description = $request->input("title");
         $new_appointment->doctor_id = $request->input('doctor_id');
-        $new_appointment->appointment_status_id = 3;
+        $new_appointment->appointment_status_id = 1;
         // dd($new_appointment);
         $new_appointment->save();
     }
@@ -86,18 +86,16 @@ class AppointmentController extends Controller
         $doctor = $logged_user->doctor;
         // finding patients for a doctor with users
         $patients = $doctor->patients()->with('user')->get();
+
         return $patients;
     }
 
     public function showPatientsDoctors()
     {
         $logged_user = Auth::user();
-        // $logged_user = 13;
-        // $found_user = User::findOrFail($logged_user);
-        // dd($found_user);
 
         $patient = $logged_user->patient;
-        // dd($patient->patient_id);
+
 
         $doctors = $patient->doctors;
 
@@ -105,7 +103,38 @@ class AppointmentController extends Controller
             $appointments = $doctor->appointments()->where('patient_id', $patient->patient_id)->get();
             $doctor->appointments = $appointments;
             $doctor->user;
-            // dd($appointments);
+        }
+
+        return $patient;
+    }
+
+    public function test()
+    {
+        // $logged_user_id = 11;
+        // $logged_user = User::findOrFail($logged_user_id);
+
+        // $doctor = $logged_user->doctor;
+        // $patients = $doctor->patients()->with('user')->get();
+
+        // return $patients;
+
+        // $logged_user = Auth::user();
+        $logged_user_id = 13;
+        $logged_user = User::findOrFail($logged_user_id);
+
+
+        $patient = $logged_user->patient;
+
+
+        $doctors = $patient->doctors;
+
+        foreach ($doctors as $doctor) {
+            $appointments = $doctor->appointments()
+                ->where('patient_id', $patient->patient_id)
+                ->where('appointment_status_id', 3)
+                ->get();
+            $doctor->appointments = $appointments;
+            $doctor->user;
         }
 
         return $patient;

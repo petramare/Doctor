@@ -55,7 +55,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                         <label htmlFor="choose_patient">Pick a patient:</label>
                         <select
                             className="form-control"
-                            value="selected"
+                            // value="selected"
                             name="patient_id"
                             id=""
                             onChange={(e) =>
