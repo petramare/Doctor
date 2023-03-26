@@ -50,7 +50,7 @@ export default function PatientRequest({ request, setRequest, applied }) {
                                                 <div className="modal-dialog" role="document">
                                                     <div className="modal-content">
                                                         <div className="modal-header">
-                                                            <h5 className="modal-title" id={`detail${index}`}>Patient name: {result.user.first_name} {result.user.surname} </h5>
+                                                            <h5 className="modal-title" id={`detail${index}`}>Doctor name: {result.user.first_name} {result.user.surname} </h5>
                                                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
