@@ -35,8 +35,20 @@ class MessageController extends Controller
         $message = new Message();
 
         $message->sender_user_id = Auth::id();
-        $message->doctor_id = $request->input('doctor_id');
-        $message->patient_id = Auth::User()->patient->patient_id;
+
+        // Need to know role of the user
+        $role = Auth::User()->role;
+
+        if ($role == "patient") {
+            // Case Patient
+            $message->doctor_id = $request->input('doctor_id');
+            $message->patient_id = Auth::User()->patient->patient_id;
+        } elseif ($role == "doctor") {
+            // Case Doctor
+            $message->doctor_id = Auth::User()->doctor->doctor_id;
+            $message->patient_id = $request->input('patient_id');
+        }
+
         // Do not know if we will use it
         $message->file_path = 'not available';
         $message->message = $request->input('message');
@@ -55,13 +67,29 @@ class MessageController extends Controller
         // Still I have all the doctors but I need only doctors that approved me as their patient
         $found_user = User::findOrFail($user_id);
         $patient = $found_user->patient;
-        $doctors = $patient->doctors;
+
+        // $doctors = $patient->doctors;
+        $doctors = $patient->acceptedDoctor;
+
         foreach ($doctors as $doctor) {
-            $appointments = $doctor->appointments()->where('patient_id', $patient->id)->get();
-            $doctor->appointments = $appointments;
             $doctor->user;
         }
         return $patient;
+    }
+
+    public function doctorPatients($user_id)
+    {
+        // Still I have all the doctors but I need only doctors that approved me as their patient
+        $found_user = User::findOrFail($user_id);
+        $doctor = $found_user->doctor;
+
+        // $patients = $doctor->patients;
+        $patients = $doctor->acceptedPatients;
+        
+        foreach ($patients as $patient) {
+            $patient->user;
+        }
+        return $doctor;
     }
 
     public function direct($doctor_id, $patient_id)

@@ -5,21 +5,21 @@ import UserContext from "../../../UserContext/UserContext";
 export default function Messages() {
     const { user } = useContext(UserContext);
     const [messages, setMessages] = useState([]);
-    const [doctors, setDoctors] = useState(null);
-    const [patientId, setPatientId] = useState(null);
-    const [selectedDoctor, setSelectedDoctor] = useState(null);
+    const [patients, setPatients] = useState(null);
+    const [doctorId, setDoctorId] = useState(null);
+    const [selectedPatient, setSelectedPatient] = useState(null);
     const [messageTypes, setMessageTypes] = useState(null);
     const [newMessage, setNewMessage] = useState(null);
     const [messageSent, setMessageSent] = useState(0);
 
-    const loadDoctors = async () => {
+    const loadPatients = async () => {
         try {
             let response = await axios.get(
-                `/api/messages/patient-doctor/${user.id}`
+                `/api/messages/doctor-patient/${user.id}`
             );
-            setDoctors(response.data.doctors);
-            setPatientId(response.data.patient_id);
-            // console.log(response.data.doctors);
+            setPatients(response.data.accepted_patients);
+            setDoctorId(response.data.doctor_id);
+            // console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -27,9 +27,8 @@ export default function Messages() {
 
     const loadMessages = async () => {
         try {
-            // let response = await axios.get("/api/messages");
             let response = await axios.get(
-                `/api/messages/dirrect/${selectedDoctor}/${patientId}`
+                `/api/messages/dirrect/${doctorId}/${patients[selectedPatient].patient_id}`
             );
             setMessages(response.data);
             // console.log(response.data);
@@ -48,12 +47,13 @@ export default function Messages() {
         }
     };
 
-    const handleSelectDoctor = (e) => {
-        setSelectedDoctor(e.target.value);
+    const handleSelectPatient = (e) => {
+        let selectedPatientId = patients[e.target.value].patient_id;
+        setSelectedPatient(e.target.value);
         setNewMessage((previous_values) => {
             return {
                 ...previous_values,
-                [e.target.name]: e.target.value,
+                [e.target.name]: selectedPatientId,
             };
         });
 
@@ -72,8 +72,8 @@ export default function Messages() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // console.log("send message click");
-            // console.log(newMessage);
+            console.log("send message click");
+            console.log(newMessage);
             const response = await axios.post(
                 "/api/messages/insert",
                 newMessage
@@ -105,44 +105,42 @@ export default function Messages() {
 
     useEffect(() => {
         if (user) {
-            loadDoctors();
+            loadPatients();
             loadMessages();
             loadMessageTypes();
         }
-    }, [user, messageSent, selectedDoctor]);
+    }, [user, messageSent, selectedPatient]);
 
     return (
         <>
             <div className="container">
                 <select
-                    name="doctor_id"
+                    name="patient_id"
                     className="form-control mt-2 mb-2"
                     aria-label="Floating label select example"
-                    onChange={handleSelectDoctor}
+                    onChange={handleSelectPatient}
                     required
                 >
                     <option value={null} disabled selected>
-                        -- Select Your Doctor --
+                        -- Select Your Patient --
                     </option>
-                    {doctors
-                        ? doctors.map((doctor, i) => {
+                    {patients
+                        ? patients.map((patient, i) => {
                               return (
-                                  <option value={doctor.doctor_id} key={i}>
-                                      {doctor.user.first_name}{" "}
-                                      {doctor.user.surname}
-                                      {" - "}
-                                      {doctor.specialization}
+                                  <option value={i} key={i}>
+                                      {patient.user.first_name}{" "}
+                                      {patient.user.surname}
                                   </option>
                               );
                           })
                         : "load"}
                 </select>
                 <h1>
-                    {selectedDoctor && doctors ? (
+                    {selectedPatient && patients ? (
                         <>
                             Communication with{" "}
-                            {doctors[selectedDoctor - 1].user.first_name}{" "}
-                            {doctors[selectedDoctor - 1].user.surname}
+                            {patients[selectedPatient].user.first_name}{" "}
+                            {patients[selectedPatient].user.surname}
                         </>
                     ) : (
                         ""
@@ -160,7 +158,7 @@ export default function Messages() {
                                 <div
                                     className={`alert alert-${
                                         message.sender_user_id ==
-                                        message.patient.user_id
+                                        message.doctor.user_id
                                             ? "light"
                                             : "dark"
                                     }`}
@@ -190,7 +188,7 @@ export default function Messages() {
                         );
                     })}
                 </div>
-                {selectedDoctor ? (
+                {selectedPatient ? (
                     <form action="" method="post" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <textarea
