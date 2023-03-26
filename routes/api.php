@@ -28,7 +28,7 @@ Route::get('/patient', [PatientController::class, 'index']);
 //Patient Search Route for Doctors
 Route::get('/patient/find', [PatientController::class, 'search']);
 //Patient detail info
-Route::get('/patient/{id}', [PatientController::class, 'show']);
+Route::get('/patient/show/{id}', [PatientController::class, 'show']);
 // Create new record in Patient Table
 Route::post('/patient/insert', [PatientController::class, 'insert']);
 //List of Insurance Companies

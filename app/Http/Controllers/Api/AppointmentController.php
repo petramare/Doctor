@@ -91,12 +91,12 @@ class AppointmentController extends Controller
 
     public function showPatientsDoctors()
     {
-        // $logged_user = Auth::user();
-        $logged_user = 13;
-        $found_user = User::findOrFail($logged_user);
+        $logged_user = Auth::user();
+        // $logged_user = 13;
+        // $found_user = User::findOrFail($logged_user);
         // dd($found_user);
 
-        $patient = $found_user->patient;
+        $patient = $logged_user->patient;
         // dd($patient->patient_id);
 
         $doctors = $patient->doctors;
