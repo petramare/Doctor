@@ -5,7 +5,7 @@ import axios from "axios";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 
-export default function DoctorDatepicker() {
+export default function DoctorDatepicker({ refresh, setRefresh }) {
     const [newAppointment, setNewAppointment] = useState({
         title: "",
         start: "",
@@ -16,9 +16,7 @@ export default function DoctorDatepicker() {
 
     const loadDoctorsPatients = async () => {
         try {
-            const response = await axios.get(
-                "/api/appointments/patients"
-            );
+            const response = await axios.get("/api/appointments/patients");
             setPatients(response.data);
         } catch (error) {
             console.log(error);
@@ -36,6 +34,13 @@ export default function DoctorDatepicker() {
                 "/api/appointments/doctor/update",
                 newAppointment
             );
+            setRefresh(!refresh);
+            setNewAppointment({
+                patient_id: "",
+                title: "",
+                start: "",
+                end: "",
+            });
         } catch (error) {
             console.log(error);
         }
@@ -50,6 +55,7 @@ export default function DoctorDatepicker() {
                         <label htmlFor="choose_patient">Pick a patient:</label>
                         <select
                             className="form-control"
+                            // value="selected"
                             name="patient_id"
                             id=""
                             onChange={(e) =>
@@ -59,7 +65,7 @@ export default function DoctorDatepicker() {
                                 })
                             }
                         >
-                            <option value="">Select a patient</option>
+                            <option value="selected">Select a patient</option>
                             {patients.map((patient) => (
                                 <option
                                     key={patient.patient_id}

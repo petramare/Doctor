@@ -117,3 +117,6 @@ Route::post('/appointments/doctor/update', [AppointmentController::class, 'updat
 Route::get('/appointments/doctors', [AppointmentController::class, 'showPatientsDoctors']);
 // posting a new a appointment for patient
 Route::post('/appointments/patient/update', [AppointmentController::class, "updateAppointmentPatient"]);
+
+// testing API for appointments
+Route::get('/test', [AppointmentController::class, 'test']);
