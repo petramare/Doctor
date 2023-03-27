@@ -45,6 +45,7 @@ export default function FindDoctor() {
                             </tr>
                         </thead>
                         <tbody>
+                            {console.log(search)}
                             {search.map((result, index) => (
                                 <tr key={index}>
                                     <th scope="row">{index + 1}</th>
@@ -54,7 +55,29 @@ export default function FindDoctor() {
                                         <PatientApply
                                             result={result}
                                             setApplied={setApplied} />
-                                        <button className="btn btn-info">Detail</button>
+                                        <button className="btn btn-info" type="button" data-toggle="modal" data-target={`#doctorDetail${index}`}>Detail</button>
+                                        {/* <!-- Modal Detail --> */}
+                                        <div className="modal fade" id={`doctorDetail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`doctorDetailLabel${index}`} aria-hidden="true">
+                                            <div className="modal-dialog" role="document">
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h5 className="modal-title" id={`doctorDetail${index}`}>Patient name: {result.first_name} {result.surname} </h5>
+                                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div className="modal-body">
+                                                        <div className="popup">
+                                                            <div className="popup-content">
+                                                                <h2>{result.first_name} {result.surname}</h2>
+                                                                <p><strong>Email:</strong> {result.email}</p>
+                                                                <p><strong>Specialization:</strong> {result.specialization}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             ))}

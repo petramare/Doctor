@@ -11,11 +11,21 @@ class Message extends Model
 
     public function patient()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Patient::class, 'patient_id');
     }
 
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctor::class, 'doctor_id');
+    }
+
+    public function message_type()
+    {
+        return $this->belongsTo(Message_type::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'sender_user_id');
     }
 }

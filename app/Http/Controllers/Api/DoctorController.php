@@ -138,6 +138,18 @@ class DoctorController extends Controller
         $doctor->patients()->updateExistingPivot($patientId, ['status' => $status]);
     }
 
+    public function rejectPatient(Request $request)
+    {
+
+        $user = Auth::user();
+
+        $doctor = $user->doctor;
+        $patientId = $request->input('patient');
+
+        $status = $request->input('status');
+        $doctor->patients()->updateExistingPivot($patientId, ['status' => $status]);
+    }
+
 
     // public function mytest()
     // {
@@ -146,9 +158,9 @@ class DoctorController extends Controller
 
     //     $user = User::findOrFail($userid);
 
-    //     $doctor = $user->doctor;
+    //     $patient = $user->patient;
 
-    //     $result = $doctor->acceptedPatients;
+    //     $result = $patient;
 
     //     return $result;
     // }

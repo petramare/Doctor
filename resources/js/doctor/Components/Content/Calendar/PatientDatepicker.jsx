@@ -4,8 +4,9 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
+import getDay from "date-fns/getDay";
 
-export default function PatientDatepicker({ doctor_id }) {
+export default function PatientDatepicker({ doctor_id, refresh, setRefresh }) {
     const [newAppointment, setNewAppointment] = useState({
         title: "",
         start: "",
@@ -14,15 +15,33 @@ export default function PatientDatepicker({ doctor_id }) {
     });
     const handleAddAppointment = async (e) => {
         e.preventDefault();
-        console.log(newAppointment);
         try {
             const response = await axios.post(
                 "/api/appointments/patient/update",
                 newAppointment
             );
+            setRefresh(!refresh);
+            setNewAppointment({
+                title: "",
+                start: "",
+                end: "",
+                doctor_id: doctor_id,
+            });
         } catch (error) {
             console.log(error);
         }
+    };
+    // filters the weeekday
+    const isWeekday = (date) => {
+        const day = getDay(date);
+        return day !== 0 && day !== 6;
+    };
+    // filters the time, you cannot select the time that has passed
+    const filterPassedTime = (time) => {
+        const currentDate = new Date();
+        const selectedDate = new Date(time);
+
+        return currentDate.getTime() < selectedDate.getTime();
     };
     return (
         <div className="row">
@@ -49,9 +68,12 @@ export default function PatientDatepicker({ doctor_id }) {
                     <label htmlFor="start">Start Date:</label>
                     <DatePicker
                         className="form-control"
-                        placeholderText="Start Date"
+                        placeholderText="Click to select a start date"
                         selected={newAppointment.start}
+                        filterDate={isWeekday}
+                        filterTime={filterPassedTime}
                         showTimeSelect
+                        withPortal
                         timeFormat="HH:mm"
                         injectTimes={[
                             setHours(setMinutes(new Date(), 1), 0),
@@ -68,9 +90,12 @@ export default function PatientDatepicker({ doctor_id }) {
                     <label htmlFor="end">End Date: </label>
                     <DatePicker
                         className="form-control"
-                        placeholderText="End Date"
+                        placeholderText="Click to select an end date"
                         selected={newAppointment.end}
+                        filterDate={isWeekday}
+                        filterTime={filterPassedTime}
                         showTimeSelect
+                        withPortal
                         timeFormat="HH:mm"
                         injectTimes={[
                             setHours(setMinutes(new Date(), 1), 0),

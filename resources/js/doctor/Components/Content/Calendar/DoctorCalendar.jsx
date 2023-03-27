@@ -16,6 +16,7 @@ export default function DoctorCalendarComponent() {
     // FOR THE CALENDER TO WORK
     const [appointments, setAppointments] = useState([]);
     const { user } = useContext(UserContext);
+    const [refresh, setRefresh] = useState(false);
     //setting up localizer for the calendar
     const localizer = dateFnsLocalizer({
         format,
@@ -30,7 +31,7 @@ export default function DoctorCalendarComponent() {
     // fetching appointments according to the doctor_id
     const loadAppointments = async () => {
         try {
-            const response = await axios.get(`api/doctors/${user.id}`);
+            const response = await axios.get(`api/doctors/show/${user.id}`);
             setAppointments(response.data.appointments);
         } catch (error) {
             console.log(error);
@@ -39,7 +40,7 @@ export default function DoctorCalendarComponent() {
 
     useEffect(() => {
         loadAppointments();
-    }, []);
+    }, [refresh]);
 
     //this is remaping data to the correct inputs for big calender component
     let meetings = [];
@@ -51,14 +52,14 @@ export default function DoctorCalendarComponent() {
                 start: new Date(appointment.start),
                 end: new Date(appointment.end),
                 allDay: false,
+                status: appointment.appointment_status_id,
             };
         });
     }
-    // console.log("render");
 
     return (
         <div>
-            <DoctorDatepicker />
+            <DoctorDatepicker refresh={refresh} setRefresh={setRefresh} />
             <DnDCalendar
                 localizer={localizer}
                 events={meetings}
@@ -70,6 +71,17 @@ export default function DoctorCalendarComponent() {
                     console.log("hey");
                 }}
                 onEventResize={function noRefCheck() {}}
+                eventPropGetter={(meetings) => {
+                    // const backgroundColor =
+                    //     ;
+                    const backgroundColor =
+                        meetings.end < new Date()
+                            ? "grey"
+                            : meetings.status === 1
+                            ? "#E0A553"
+                            : "#1A6BC7";
+                    return { style: { backgroundColor } };
+                }}
             />
         </div>
     );

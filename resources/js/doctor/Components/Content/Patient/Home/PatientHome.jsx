@@ -7,24 +7,25 @@ import PatientDatepicker from "../../Calendar/PatientDatepicker";
 export default function PatientHome() {
     const { user } = useContext(UserContext);
     const [doctorsAppointments, setDoctorsAppointments] = useState([]);
+    const [refresh, setRefresh] = useState(false);
 
     const loadDoctors = async () => {
         try {
-            const response = await axios.get(`api/appointments/doctors`);
-            setDoctorsAppointments(response.data.doctors);
-            console.log(response.data.doctors);
+            const response = await axios.get(`/api/appointments/doctors`);
+            setDoctorsAppointments(response.data.accepted_doctor);
         } catch (error) {
             console.log(error);
         }
     };
     useEffect(() => {
         loadDoctors();
-    }, []);
+    }, [refresh]);
 
     return (
         <>
             {user ? (
                 <div>
+                    {console.log(doctorsAppointments)}
                     <div className="container">
                         <div className="row">
                             <div className="col">
@@ -47,15 +48,14 @@ export default function PatientHome() {
                                         Schedule of Dr.{" "}
                                         {doctorAppointment.user.first_name}{" "}
                                         {doctorAppointment.user.surname}
-                                        {/* {console.log(
-                                                doctorAppointment.appointments
-                                            )} */}
                                     </h1>
                                     <div className="col align-self-center">
                                         <PatientDatepicker
                                             doctor_id={
                                                 doctorAppointment.doctor_id
                                             }
+                                            refresh={refresh}
+                                            setRefresh={setRefresh}
                                         />
                                     </div>
                                     <div className="col">

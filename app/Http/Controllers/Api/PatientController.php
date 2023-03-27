@@ -115,13 +115,23 @@ class PatientController extends Controller
 
     public function status()
     {
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        $user = User::find($user->id);
+        // $user = User::find($user->id);
+
+        // $patient = $user->patient;
+
+        // $result = $patient->doctors()->with('user')->get();
+
+        // return $result;
+
+        $user = Auth::user();
 
         $patient = $user->patient;
 
-        $result = $patient->doctors()->with('user')->get();
+        $appliedRequest = $patient->appliedDoctor;
+        $acceptedRequest = $patient->acceptedDoctor;
+        $result = array_merge($appliedRequest->toArray(), $acceptedRequest->toArray());
         return $result;
     }
 
@@ -138,21 +148,24 @@ class PatientController extends Controller
     //     dd($result);
     // }
 
-    // public function mytest()
-    // {
-    //     $userId = 13; // Auth::id()
+    public function mytest()
+    {
+        $userId = 11;
 
-    //     $user = User::find($userId);
+        // $user = Auth::user();
 
-    //     $doctor = $user->doctor()->with('user')->get();
+        $user = User::find($userId);
 
-    //     $doctor->patients()->
-    //     return $doctor;
+        $patient = $user->patient;
 
-    //     $patient = $user->patient;
+        // $result = $patient->doctors()->with('user')->get();
 
-    //     $result = $patient->appliedDoctor;
-    // }
+        $appliedRequest = $patient->appliedDoctor;
+        $acceptedRequest = $patient->acceptedDoctor;
+        // $result = [$appliedRequest, $acceptedRequest];
+        $result = array_merge($appliedRequest->toArray(), $acceptedRequest->toArray());
+        return $result;
+    }
 
     /**
      * write one self-reported condition into DB
