@@ -7,7 +7,6 @@ export default function AppointmentsList() {
     const [render, setRender] = useState(0);
     // List of Appointments which are Suggested
     const handleAppList = async () => {
-        // e.preventDefault();
         try {
             const response = await axios.get('/api/appointments/doctor/list')
             setAppList(response.data);
