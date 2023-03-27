@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Condition;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\User;
@@ -217,5 +218,53 @@ class PatientController extends Controller
             // ->toSql();
             ->get();
         return $doctors;
+    }
+
+    /**
+     * write one self-reported condition into DB
+     */
+    public function saveCondition(Request $request)
+    {
+        $user = Auth::user();
+        $patient = $user->patient;
+        $condition = new Condition();
+
+        $condition->patient_id = $patient->patient_id;
+        $condition->weight = $request->input('weight');
+        $condition->height = $request->input('height');
+        $condition->history = $request->input('history');
+        $date = new DateTime($request->input('date'));
+        $condition->date = $date;
+        $condition->save();
+        return $condition;     
+    }
+
+    /**
+     * displays all conditions for a patient
+     */
+    public function conditions(Request $request, $patientId = false)
+    {
+        if ($patientId) {
+            // request od doktora
+            $patient = null; // change later if we would like to add the feature that doctor can view pacient condition ;)
+        } else {
+            // request od pacienta
+            $user = Auth::user();
+            $patient = $user->patient;
+            if ($patient != null) {
+                $conditions = $patient->conditions;
+            } else {
+                $conditions = [];
+            }
+        }
+        return $conditions;
+    
+        $height = $request->input('height');
+        $weight = $request->input('weight');
+        $history = $request->input('history');
+        $date = $request->input('date');
+        
+       return ['height'=> $height, $weight, $history, $date];
+       // return response()->json();
     }
 }

@@ -8,6 +8,7 @@ import getDay from "date-fns/getDay";
 
 export default function DoctorDatepicker({ refresh, setRefresh }) {
     const [newAppointment, setNewAppointment] = useState({
+        patient_id: "selected",
         title: "",
         start: "",
         end: "",
@@ -37,7 +38,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
             );
             setRefresh(!refresh);
             setNewAppointment({
-                patient_id: "",
+                patient_id: "selected",
                 title: "",
                 start: "",
                 end: "",
@@ -72,7 +73,8 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                             // value="selected"
                             name="patient_id"
                             id=""
-                            defaultValue="selected"
+                            // defaultValue="selected"
+                            value={newAppointment.patient_id}
                             onChange={(e) =>
                                 setNewAppointment({
                                     ...newAppointment,
