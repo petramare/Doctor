@@ -193,19 +193,19 @@ class AppointmentController extends Controller
         //     $appointment->patient = $user;
         // }
         // return $appointments;
-        $logged_user_id = 13;
-        $logged_user = User::findOrFail($logged_user_id);
+
+        //$logged_user_id = 13;
+        //$logged_user = User::findOrFail($logged_user_id);
 
 
-        $patient = $logged_user->patient;
+        //$patient = $logged_user->patient;
 
+//$doctors = $patient->acceptedDoctor;
 
-        $doctors = $patient->acceptedDoctor;
-
-        foreach ($doctors as $doctor) {
-            $appointments = $doctor->appointments()
-                ->where(function ($query) use ($patient) {
-                    $query->where('patient_id', '!=', $patient->patient_id);
+        //foreach ($doctors as $doctor) {
+           // $appointments = $doctor->appointments()
+               // ->where(function ($query) use ($patient) {
+                //    $query->where('patient_id', '!=', $patient->patient_id);
                     $query->where('appointment_status_id', 3);
                 })
                 ->orWhere(function ($query) use ($patient) {
@@ -231,6 +231,21 @@ class AppointmentController extends Controller
 
 
         // return ([$appointments_other_patients, $appointments_patient]);
+
+
+        // $user = Auth::user();
+        // $doctor = $user->doctor;
+
+        $logged_user_id = 13;
+        $logged_user = User::findOrFail($logged_user_id);
+        $doctor = $logged_user->doctor;
+        // dd($doctor);
+
+        $appId = 4;
+        $status = 3;
+        $appointment = Appointment::findOrFail($appId);
+        $appointment->update(['appointment_status_id' => $status]);
+
     }
 
     public function appList()
@@ -249,5 +264,22 @@ class AppointmentController extends Controller
             $appointment->patient = $user;
         }
         return $appointments;
+    }
+
+    public function updateStatusAppointmentApproved(Request $request)
+    {
+        $appId = $request->input('appId');
+        $status = $request->input('value');
+        $appointment = Appointment::findOrFail($appId);
+        $appointment->update(['appointment_status_id' => $status]);
+    }
+
+    public function updateStatusAppointmentRejected(Request $request)
+    {
+
+        $appId = $request->input('appId');
+        $status = $request->input('value');
+        $appointment = Appointment::findOrFail($appId);
+        $appointment->update(['appointment_status_id' => $status]);
     }
 }

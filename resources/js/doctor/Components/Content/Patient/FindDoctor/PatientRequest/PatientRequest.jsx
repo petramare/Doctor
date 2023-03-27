@@ -44,13 +44,13 @@ export default function PatientRequest({ request, setRequest, applied }) {
                                         <td>{result.specialization}</td>
                                         <td>{result.pivot.status}</td>
                                         <td>
-                                            <button className="btn btn-info" type="button" data-toggle="modal" data-target={`#detail${index}`}>Detail</button>
+                                            <button className="btn btn-info" type="button" data-toggle="modal" data-target={`#patientDetail${index}`}>Detail</button>
                                             {/* <!-- Modal Detail --> */}
-                                            <div className="modal fade" id={`detail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`detailLabel${index}`} aria-hidden="true">
+                                            <div className="modal fade" id={`patientDetail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`patientDetailLabel${index}`} aria-hidden="true">
                                                 <div className="modal-dialog" role="document">
                                                     <div className="modal-content">
                                                         <div className="modal-header">
-                                                            <h5 className="modal-title" id={`detail${index}`}>Doctor name: {result.user.first_name} {result.user.surname} </h5>
+                                                            <h5 className="modal-title" id={`patientDetail${index}`}>Doctor name: {result.user.first_name} {result.user.surname} </h5>
                                                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -61,7 +61,7 @@ export default function PatientRequest({ request, setRequest, applied }) {
                                                                     <h2>{result.user.first_name} {result.user.surname}</h2>
                                                                     <p><strong>Email:</strong> {result.user.email}</p>
                                                                     <p><strong>Specialization:</strong> {result.specialization}</p>
-                                                                    <p><strong>Visiting days:</strong></p>
+                                                                    <p><strong>Working days:</strong></p>
                                                                     <div className="col">
                                                                         {Object.entries(JSON.parse(result.visiting_hours))
                                                                             .filter(([day, isOpen]) => isOpen)
@@ -70,11 +70,6 @@ export default function PatientRequest({ request, setRequest, applied }) {
                                                                             ))}
 
                                                                     </div >
-                                                                    {/* {JSON.parse(result.visiting_hours).map((day, index) => {
-                                                                        <div key={index}>
-                                                                            <h1>{day}</h1>
-                                                                        </div>
-                                                                    })} */}
                                                                 </div>
                                                             </div>
                                                         </div>
