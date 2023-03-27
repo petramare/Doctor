@@ -45,7 +45,7 @@ Route::post('/patient/condition', [PatientController::class, 'saveCondition']);
 
 
 
-Route::get('/mytest', [PatientController::class, 'patientsDoctors']);
+Route::get('/mytest', [PatientController::class, 'mytest']);
 
 
 
@@ -67,13 +67,23 @@ Route::get('/doctors', [DoctorController::class, 'index']);
 //Doctor Search Route for clinics
 Route::get('/doctors/find', [DoctorController::class, 'search']);
 // Doctor detail info
-Route::get('/doctors/{id}', [DoctorController::class, 'show']);
+Route::get('/doctors/show/{id}', [DoctorController::class, 'show']);
 //Doctor Search Route for clinics
 Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
+//Doctor patientRequests
+Route::get('/doctors/patient-request', [DoctorController::class, 'patientRequest']);
+//Doctor patientList
+Route::get('/doctors/patient-list', [DoctorController::class, 'patientList']);
+//Doctor patientDetail
+Route::get('/doctors/patient-detail', [DoctorController::class, 'patientDetail']);
 // Create new record in Doctors Table
 Route::post('/doctor/insert', [DoctorController::class, 'insert']);
 //Doctor edit info
 Route::post('/doctors/update', [DoctorController::class, 'update']);
+//Doctor accept patient
+Route::post('/doctors/accept', [DoctorController::class, 'acceptPatient']);
+//TEST DOCTOR API
+// Route::get('/doctor-mytest', [DoctorController::class, 'mytest']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -83,5 +93,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // Appointments API
-Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);
-Route::post('/appointments/update', [AppointmentController::class, 'updateAppointments']);
+// patients of a doctor for appointment selection
+Route::get('/appointments/patients', [AppointmentController::class, 'showDoctorsPatients']);
+// Not used for anything at this point, might come handy
+// Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);
+// posting new appointment for doctor
+Route::post('/appointments/doctor/update', [AppointmentController::class, 'updateAppointmentsDoctor']);
+// getting all the doctors for a patient and their appointments
+Route::get('/appointments/doctors', [AppointmentController::class, 'showPatientsDoctors']);
+// posting a new a appointment for patient
+Route::post('/appointments/patient/update', [AppointmentController::class, "updateAppointmentPatient"]);
