@@ -9,6 +9,10 @@ class Appointment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'appointment_status_id',
+    ];
+
     public function doctor()
     {
         return  $this->belongsTo(Doctor::class);

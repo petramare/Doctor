@@ -10,10 +10,12 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Relationship;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Database\Query\Builder;
 use DateTime;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
 {
@@ -28,25 +30,59 @@ class PatientController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
+        $user = Auth::user();
+
+        $patient = $user->patient;
+        $patientId = $patient->patient_id;
 
         if (strlen($search) < 2) {
-            $doctors = User::query()
-                ->with(['doctor'])
-                ->where('role', 'doctor')
-                ->get();
-            return $doctors;
-        } else if (strlen($search) >= 2) {
-            $doctors = User::query()
-                ->with(['doctor'])
-                ->where('role', 'doctor')
-                ->where(function ($query) use ($search) {
-                    $query->where('surname', 'like', "%$search%")
-                        ->orWhere('first_name', 'like', "%$search%");
+            $doctors = Doctor::query()
+                ->with('user')
+                ->whereNotIn('doctor_id', function (Builder $query) use ($patientId) {
+                    $query->select('doctor_id')
+                        ->from('doctor_patient')
+                        ->where('doctor_patient.patient_id', $patientId);
                 })
+                // ->toSql();
                 ->get();
-            return $doctors;
+        } else if (strlen($search) >= 2) {
+            $doctors = Doctor::query()
+                ->with('user')
+                ->whereHas('user', function ($query) use ($search) {
+                    $query->where('first_name', 'like', "%" . $search . "%");
+                })
+                ->whereNotIn('doctor_id', function (Builder $query) use ($patientId) {
+                    $query->select('doctor_id')
+                        ->from('doctor_patient')
+                        ->where('doctor_patient.patient_id', $patientId);
+                })
+                // ->toSql();
+                ->get();
         }
+
+        return $doctors;
+
+        // if (strlen($search) < 2) {
+        //     $doctors = Doctor::query()
+        //         ->with(['user'])
+        //         ->where('role', 'doctor')
+        //         ->wherePivot('status', '!=', 'applied')
+        //         ->wherePivot('status', '!=', 'accepted')
+        //         ->get();
+        //     return $doctors;
+        // } else if (strlen($search) >= 2) {
+        //     $doctors = User::query()
+        //         ->with(['doctor'])
+        //         ->where('role', 'doctor')
+        //         ->wherePivot('status', '!=', 'applied')
+        //         ->wherePivot('status', '!=', 'accepted')
+        //         ->where(function ($query) use ($search) {
+        //             $query->where('surname', 'like', "%$search%")
+        //                 ->orWhere('first_name', 'like', "%$search%");
+        //         })
+        //         ->get();
     }
+
 
 
 
@@ -150,21 +186,38 @@ class PatientController extends Controller
 
     public function mytest()
     {
+        // $userId = 11;
+
+        // // $user = Auth::user();
+
+        // $user = User::find($userId);
+
+        // $patient = $user->patient;
+
+        // // $result = $patient->doctors()->with('user')->get();
+
+        // $appliedRequest = $patient->appliedDoctor;
+        // $acceptedRequest = $patient->acceptedDoctor;
+        // // $result = [$appliedRequest, $acceptedRequest];
+        // $result = array_merge($appliedRequest->toArray(), $acceptedRequest->toArray());
+        // return $result;tor
         $userId = 11;
-
-        // $user = Auth::user();
-
         $user = User::find($userId);
 
         $patient = $user->patient;
+        $patientId = $patient->patient_id;
+        // dd(DB::table('doctor_patient')->select('doctor_id')->get());
 
-        // $result = $patient->doctors()->with('user')->get();
-
-        $appliedRequest = $patient->appliedDoctor;
-        $acceptedRequest = $patient->acceptedDoctor;
-        // $result = [$appliedRequest, $acceptedRequest];
-        $result = array_merge($appliedRequest->toArray(), $acceptedRequest->toArray());
-        return $result;
+        $doctors = Doctor::query()
+            ->with('user')
+            ->whereNotIn('doctor_id', function (Builder $query) use ($patientId) {
+                $query->select('doctor_id')
+                    ->from('doctor_patient')
+                    ->where('doctor_patient.patient_id', $patientId);
+            })
+            // ->toSql();
+            ->get();
+        return $doctors;
     }
 
     /**
