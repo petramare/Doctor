@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/patient', [PatientController::class, 'index']);
 //Patient Search Route for Doctors
 Route::get('/patient/find', [PatientController::class, 'search']);
+//Patient Condition - display inserted conditions
+Route::get('/patient/conditions', [PatientController::class, 'conditions']);
 //Patient detail info
 Route::get('/patient/show/{id}', [PatientController::class, 'show']);
 // Create new record in Patient Table
@@ -39,8 +41,13 @@ Route::get('/patient/request/status', [PatientController::class, 'status']);
 Route::post('/patient/update', [PatientController::class, 'update']);
 //Patient request
 Route::post('/patient/request', [PatientController::class, 'request']);
+//Patient Condition - save input inserted by patient
+Route::post('/patient/condition', [PatientController::class, 'saveCondition']);
+
+
 
 Route::get('/mytest', [PatientController::class, 'mytest']);
+
 
 
 //Managers
