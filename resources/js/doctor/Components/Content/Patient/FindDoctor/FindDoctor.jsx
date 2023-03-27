@@ -20,6 +20,9 @@ export default function FindDoctor() {
         }
     }
 
+    useEffect(() => {
+        handleSearch();
+    }, [applied]);
     return (
         <>
             <PatientRequest request={request} setRequest={setRequest} applied={applied} />
@@ -49,8 +52,8 @@ export default function FindDoctor() {
                             {search.map((result, index) => (
                                 <tr key={index}>
                                     <th scope="row">{index + 1}</th>
-                                    <td>{result.first_name} {result.surname}</td>
-                                    <td>{result.doctor ? result.doctor.specialization : ''}</td>
+                                    <td>{result.user.first_name} {result.user.surname}</td>
+                                    <td>{result.doctor_id ? result.specialization : ''}</td>
                                     <td>
                                         <PatientApply
                                             result={result}
@@ -61,7 +64,7 @@ export default function FindDoctor() {
                                             <div className="modal-dialog" role="document">
                                                 <div className="modal-content">
                                                     <div className="modal-header">
-                                                        <h5 className="modal-title" id={`doctorDetail${index}`}>Patient name: {result.first_name} {result.surname} </h5>
+                                                        <h5 className="modal-title" id={`doctorDetail${index}`}>Doctor name: {result.user.first_name} {result.user.surname} </h5>
                                                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -69,9 +72,17 @@ export default function FindDoctor() {
                                                     <div className="modal-body">
                                                         <div className="popup">
                                                             <div className="popup-content">
-                                                                <h2>{result.first_name} {result.surname}</h2>
-                                                                <p><strong>Email:</strong> {result.email}</p>
+                                                                <h2>{result.user.first_name} {result.user.surname}</h2>
+                                                                <p><strong>Email:</strong> {result.user.email}</p>
                                                                 <p><strong>Specialization:</strong> {result.specialization}</p>
+                                                                <p><strong>Working days:</strong> {result.specialization}</p>
+                                                                <div className="col">
+                                                                    {Object.entries(JSON.parse(result.visiting_hours))
+                                                                        .filter(([day, isOpen]) => isOpen)
+                                                                        .map(([a], i) => (
+                                                                            <button key={i} className="btn btn-success m-2">{a}</button>
+                                                                        ))}
+                                                                </div >
                                                             </div>
                                                         </div>
                                                     </div>

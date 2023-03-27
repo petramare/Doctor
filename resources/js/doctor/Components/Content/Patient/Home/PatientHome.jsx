@@ -27,8 +27,8 @@ export default function PatientHome() {
     return (
         <>
             {user ? (
-                <div className="container">
-                    {console.log(doctorsAppointments)}
+                <div>
+                    {/* {console.log(doctorsAppointments)} */}
                     <div className="container">
                         <div className="row">
                             <div className="col">
@@ -87,6 +87,9 @@ export default function PatientHome() {
                                             }
                                             refresh={refresh}
                                             setRefresh={setRefresh}
+                                            visiting_hours={
+                                                doctorAppointment.visiting_hours
+                                            }
                                             />
                                     <div className="doctor_picker_bubble--woman">
                                         <h1 >

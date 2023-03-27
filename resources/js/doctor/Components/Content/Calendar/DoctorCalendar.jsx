@@ -56,6 +56,9 @@ export default function DoctorCalendarComponent() {
             };
         });
     }
+    // setting min a max time for the days view to show
+    const minTime = new Date(new Date().setHours(8, 0, 0));
+    const maxTime = new Date(new Date().setHours(17, 0, 0));
 
     return (
         <div>
@@ -65,6 +68,8 @@ export default function DoctorCalendarComponent() {
                 events={meetings}
                 startAccessor="start"
                 selectable
+                min={minTime}
+                max={maxTime}
                 endAccessor="end"
                 style={{ height: 500, margin: "50px" }}
                 onEventDrop={function noRefCheck() {
@@ -72,8 +77,6 @@ export default function DoctorCalendarComponent() {
                 }}
                 onEventResize={function noRefCheck() {}}
                 eventPropGetter={(meetings) => {
-                    // const backgroundColor =
-                    //     ;
                     const backgroundColor =
                         meetings.end < new Date()
                             ? "grey"

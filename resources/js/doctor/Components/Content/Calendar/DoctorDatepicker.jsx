@@ -85,15 +85,17 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                             <option value="selected" disabled>
                                 Select a patient
                             </option>
-                            {patients.map((patient) => (
-                                <option
-                                    key={patient.patient_id}
-                                    value={patient.patient_id}
-                                >
-                                    {patient.user.first_name}{" "}
-                                    {patient.user.surname}
-                                </option>
-                            ))}
+                            {patients.map((patient) => {
+                                return (
+                                    <option
+                                        key={patient.pivot.id}
+                                        value={patient.patient_id}
+                                    >
+                                        {patient.user.first_name}{" "}
+                                        {patient.user.surname}
+                                    </option>
+                                );
+                            })}
                         </select>
                     </div>
                     <div className="form-group">
@@ -121,6 +123,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                             selected={newAppointment.start}
                             filterTime={filterPassedTime}
                             filterDate={isWeekday}
+                            calendarStartDay={1}
                             showTimeSelect
                             withPortal
                             timeFormat="HH:mm"
@@ -142,6 +145,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                             placeholderText="Click to select an end date"
                             filterTime={filterPassedTime}
                             filterDate={isWeekday}
+                            calendarStartDay={1}
                             selected={newAppointment.end}
                             showTimeSelect
                             withPortal

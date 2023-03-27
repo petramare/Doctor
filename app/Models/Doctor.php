@@ -24,7 +24,7 @@ class Doctor extends Model
 
     public function patients()
     {                                           // name of the table, id-> doctor_id, id->patient_id
-        return $this->belongsToMany(Patient::class, 'doctor_patient', 'doctor_id', 'patient_id')->with('user')->withPivot('status')->orderBy("patient_id");
+        return $this->belongsToMany(Patient::class, 'doctor_patient', 'doctor_id', 'patient_id')->with('user')->withPivot('id', 'status')->orderBy("patient_id");
         // all code here, will be replaced with just ( patients() ) below this code. so it does not repeat.
     }
 
