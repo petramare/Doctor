@@ -25,7 +25,7 @@ export default function PatientHome() {
         <>
             {user ? (
                 <div>
-                    {console.log(doctorsAppointments)}
+                    {/* {console.log(doctorsAppointments)} */}
                     <div className="container">
                         <div className="row">
                             <div className="col">
@@ -40,6 +40,7 @@ export default function PatientHome() {
                             </div>
                         </div>
                     </div>
+
                     {doctorsAppointments.map((doctorAppointment, index) => {
                         return (
                             <div key={index} className="container">
@@ -56,6 +57,9 @@ export default function PatientHome() {
                                             }
                                             refresh={refresh}
                                             setRefresh={setRefresh}
+                                            visiting_hours={
+                                                doctorAppointment.visiting_hours
+                                            }
                                         />
                                     </div>
                                     <div className="col">
