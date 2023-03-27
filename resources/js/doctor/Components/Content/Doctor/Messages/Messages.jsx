@@ -5,6 +5,7 @@ import UserContext from "../../../UserContext/UserContext";
 export default function Messages() {
     const { user } = useContext(UserContext);
     const [messages, setMessages] = useState([]);
+    const [messageCount, setMessageCount] = useState(0);
     const [patients, setPatients] = useState(null);
     const [doctorId, setDoctorId] = useState(null);
     const [selectedPatient, setSelectedPatient] = useState(null);
@@ -37,8 +38,8 @@ export default function Messages() {
             let response = await axios.get(
                 `/api/messages/dirrect/${doctorId}/${patients[selectedPatient].patient_id}`
             );
+            setMessageCount(response.data.length)
             setMessages(response.data);
-            // console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -113,15 +114,26 @@ export default function Messages() {
     useEffect(() => {
         if (user) {
             loadPatients();
-            loadMessages();
             loadMessageTypes();
+            loadMessages();
+            scrollToBottom();
         }
     }, [user, messageSent, selectedPatient]);
 
     // Seems to be working for scrolling on new message and change of conversation
     useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [messageCount]);
+
+    // trying interval
+    useEffect(() => {
+        if (selectedPatient) {
+            const interval = setInterval(() => {
+                loadMessages();
+            }, 3000);
+            return () => clearInterval(interval);
+        }
+    }, [selectedPatient]);
 
     return (
         <>
