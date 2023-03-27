@@ -164,6 +164,19 @@ class AppointmentController extends Controller
         //     $appointment->patient = $user;
         // }
         // return $appointments;
+
+        // $user = Auth::user();
+        // $doctor = $user->doctor;
+
+        $logged_user_id = 13;
+        $logged_user = User::findOrFail($logged_user_id);
+        $doctor = $logged_user->doctor;
+        // dd($doctor);
+
+        $appId = 4;
+        $status = 3;
+        $appointment = Appointment::findOrFail($appId);
+        $appointment->update(['appointment_status_id' => $status]);
     }
 
     public function appList()
@@ -182,5 +195,22 @@ class AppointmentController extends Controller
             $appointment->patient = $user;
         }
         return $appointments;
+    }
+
+    public function updateStatusAppointmentApproved(Request $request)
+    {
+        $appId = $request->input('appId');
+        $status = $request->input('value');
+        $appointment = Appointment::findOrFail($appId);
+        $appointment->update(['appointment_status_id' => $status]);
+    }
+
+    public function updateStatusAppointmentRejected(Request $request)
+    {
+
+        $appId = $request->input('appId');
+        $status = $request->input('value');
+        $appointment = Appointment::findOrFail($appId);
+        $appointment->update(['appointment_status_id' => $status]);
     }
 }
