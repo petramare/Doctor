@@ -19,15 +19,24 @@ export default function Patientnavbar() {
                     Find Doctor
                 </Link>
             </li>
+            
+
             <li className="nav-item">
                 <Link to="patient/condition" className="nav-link">
                     Health condition
                     </Link>
             </li>
+<<<<<<< HEAD
 
             <li className="nav-item">
                 <Link to="/patient/messages" className="nav-link">
                     Messages
+=======
+              <li className="nav-item">
+                <Link to="/patient/messages" className="nav-link">
+                    Messages
+
+>>>>>>> main
                 </Link>
             </li>
             <li className="nav-item">

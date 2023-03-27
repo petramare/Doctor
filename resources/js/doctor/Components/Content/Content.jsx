@@ -15,9 +15,10 @@ import DoctorInfo from './Doctor/EditInfo/EditInfo';
 import DoctorHome from './Doctor/Home/DoctorHome';
 import DoctorPatientRecords from './Doctor/PatientRecords/PatientRecords';
 import ManagerHome from './Manager/Home/ManagerHome';
+import PatientCondition from './Patient/Condition/Condition';
 import PatientMessages from "./Patient/Messages/Messages";
 import DoctorMessages from "./Doctor/Messages/Messages";
-import PatientCondition from './Patient/Condition/Condition';
+
 
 export default function Content() {
     return (
