@@ -18,7 +18,7 @@ export default function Messages() {
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
-
+ 
     const loadDoctors = async () => {
         try {
             let response = await axios.get(
