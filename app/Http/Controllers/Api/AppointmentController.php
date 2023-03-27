@@ -200,24 +200,24 @@ class AppointmentController extends Controller
 
         //$patient = $logged_user->patient;
 
-//$doctors = $patient->acceptedDoctor;
+        //$doctors = $patient->acceptedDoctor;
 
         //foreach ($doctors as $doctor) {
-           // $appointments = $doctor->appointments()
-               // ->where(function ($query) use ($patient) {
-                //    $query->where('patient_id', '!=', $patient->patient_id);
-                    $query->where('appointment_status_id', 3);
-                })
-                ->orWhere(function ($query) use ($patient) {
-                    $query->where('patient_id', $patient->patient_id);
-                    $query->whereIn('appointment_status_id', [1, 2, 3]);
-                })
-                ->get();
+        // $appointments = $doctor->appointments()
+        // ->where(function ($query) use ($patient) {
+        //    $query->where('patient_id', '!=', $patient->patient_id);
+        //             $query->where('appointment_status_id', 3);
+        //         })
+        //         ->orWhere(function ($query) use ($patient) {
+        //             $query->where('patient_id', $patient->patient_id);
+        //             $query->whereIn('appointment_status_id', [1, 2, 3]);
+        //         })
+        //         ->get();
 
-            $doctor->appointments = $appointments;
-            $doctor->user;
-        }
-        return $patient;
+        //     $doctor->appointments = $appointments;
+        //     $doctor->user;
+        // }
+        // return $patient;
         // foreach ($doctors as $doctor) {
         //     $appointments_patient = $doctor->appointments()
         //         ->where('patient_id', $patient->patient_id)
@@ -236,15 +236,15 @@ class AppointmentController extends Controller
         // $user = Auth::user();
         // $doctor = $user->doctor;
 
-        $logged_user_id = 13;
-        $logged_user = User::findOrFail($logged_user_id);
-        $doctor = $logged_user->doctor;
-        // dd($doctor);
+        // $logged_user_id = 13;
+        // $logged_user = User::findOrFail($logged_user_id);
+        // $doctor = $logged_user->doctor;
+        // // dd($doctor);
 
-        $appId = 4;
-        $status = 3;
-        $appointment = Appointment::findOrFail($appId);
-        $appointment->update(['appointment_status_id' => $status]);
+        // $appId = 4;
+        // $status = 3;
+        // $appointment = Appointment::findOrFail($appId);
+        // $appointment->update(['appointment_status_id' => $status]);
 
     }
 
