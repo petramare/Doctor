@@ -11,7 +11,7 @@ export default function PatientApply({ result, setApplied }) {
         e.preventDefault();
         try {
             const response = await axios.post(`/api/patient/request`, {
-                doctor: result.doctor.doctor_id,
+                doctor: result.doctor_id,
                 status: 'applied'
             })
             console.log(response)

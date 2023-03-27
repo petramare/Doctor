@@ -6,7 +6,12 @@ import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
 
-export default function PatientDatepicker({ doctor_id, refresh, setRefresh }) {
+export default function PatientDatepicker({
+    doctor_id,
+    refresh,
+    setRefresh,
+    visiting_hours,
+}) {
     const [newAppointment, setNewAppointment] = useState({
         title: "",
         start: "",
@@ -31,11 +36,25 @@ export default function PatientDatepicker({ doctor_id, refresh, setRefresh }) {
             console.log(error);
         }
     };
-    // filters the weeekday
-    const isWeekday = (date) => {
-        const day = getDay(date);
-        return day !== 0 && day !== 6;
+
+    const visiting_hours_stringified = JSON.parse(visiting_hours);
+
+    const getFalseDays = (visiting_hours) => {
+        const falseDays = [];
+        Object.keys(visiting_hours).forEach((day, index) => {
+            if (!visiting_hours[day]) {
+                falseDays.push(index);
+            }
+        });
+        return falseDays;
     };
+
+    const isWeekdayWithVisitingHours = (date, visiting_hours) => {
+        const falseDays = getFalseDays(visiting_hours);
+        const day = getDay(date);
+        return day !== 0 && day !== 6 && !falseDays.includes(day);
+    };
+
     // filters the time, you cannot select the time that has passed
     const filterPassedTime = (time) => {
         const currentDate = new Date();
@@ -70,11 +89,17 @@ export default function PatientDatepicker({ doctor_id, refresh, setRefresh }) {
                         className="form-control"
                         placeholderText="Click to select a start date"
                         selected={newAppointment.start}
-                        filterDate={isWeekday}
+                        filterDate={(date) =>
+                            isWeekdayWithVisitingHours(
+                                date,
+                                visiting_hours_stringified
+                            )
+                        }
                         filterTime={filterPassedTime}
                         showTimeSelect
                         withPortal
                         timeFormat="HH:mm"
+                        calendarStartDay={1}
                         injectTimes={[
                             setHours(setMinutes(new Date(), 1), 0),
                             setHours(setMinutes(new Date(), 5), 12),
@@ -92,7 +117,13 @@ export default function PatientDatepicker({ doctor_id, refresh, setRefresh }) {
                         className="form-control"
                         placeholderText="Click to select an end date"
                         selected={newAppointment.end}
-                        filterDate={isWeekday}
+                        calendarStartDay={1}
+                        filterDate={(date) =>
+                            isWeekdayWithVisitingHours(
+                                date,
+                                visiting_hours_stringified
+                            )
+                        }
                         filterTime={filterPassedTime}
                         showTimeSelect
                         withPortal
