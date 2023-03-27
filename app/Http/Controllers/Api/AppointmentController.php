@@ -79,13 +79,16 @@ class AppointmentController extends Controller
     public function showDoctorsPatients()
     {
 
-
+        // $logged_user_id = 11;
+        // $logged_user = User::findOrFail($logged_user_id);
         // getting locked in user
         $logged_user = Auth::user();
         // connecting user with doctor
         $doctor = $logged_user->doctor;
         // finding patients for a doctor with users
         $patients = $doctor->acceptedPatients;
+
+        // dd($patients[0]->pivot);
 
         return $patients;
     }
@@ -94,6 +97,26 @@ class AppointmentController extends Controller
     {
         $logged_user = Auth::user();
 
+        // $patient = $logged_user->patient;
+
+
+        // $doctors = $patient->acceptedDoctor;
+
+        // foreach ($doctors as $doctor) {
+        //     $appointments = $doctor->appointments()
+        //         // ->where('patient_id', $patient->patient_id)
+        //         ->where('appointment_status_id', 3)
+        //         ->get();
+        //     $doctor->appointments = $appointments;
+        //     $doctor->user;
+        // }
+
+        // return $patient;
+
+        // $logged_user_id = 13;
+        // $logged_user = User::findOrFail($logged_user_id);
+
+
         $patient = $logged_user->patient;
 
 
@@ -101,13 +124,19 @@ class AppointmentController extends Controller
 
         foreach ($doctors as $doctor) {
             $appointments = $doctor->appointments()
-                ->where('patient_id', $patient->patient_id)
-                ->where('appointment_status_id', 3)
+                ->where(function ($query) use ($patient) {
+                    $query->where('patient_id', '!=', $patient->patient_id);
+                    $query->where('appointment_status_id', 3);
+                })
+                ->orWhere(function ($query) use ($patient) {
+                    $query->where('patient_id', $patient->patient_id);
+                    $query->whereIn('appointment_status_id', [1, 2, 3]);
+                })
                 ->get();
+
             $doctor->appointments = $appointments;
             $doctor->user;
         }
-
         return $patient;
     }
 
@@ -164,6 +193,44 @@ class AppointmentController extends Controller
         //     $appointment->patient = $user;
         // }
         // return $appointments;
+        $logged_user_id = 13;
+        $logged_user = User::findOrFail($logged_user_id);
+
+
+        $patient = $logged_user->patient;
+
+
+        $doctors = $patient->acceptedDoctor;
+
+        foreach ($doctors as $doctor) {
+            $appointments = $doctor->appointments()
+                ->where(function ($query) use ($patient) {
+                    $query->where('patient_id', '!=', $patient->patient_id);
+                    $query->where('appointment_status_id', 3);
+                })
+                ->orWhere(function ($query) use ($patient) {
+                    $query->where('patient_id', $patient->patient_id);
+                    $query->whereIn('appointment_status_id', [1, 2, 3]);
+                })
+                ->get();
+
+            $doctor->appointments = $appointments;
+            $doctor->user;
+        }
+        return $patient;
+        // foreach ($doctors as $doctor) {
+        //     $appointments_patient = $doctor->appointments()
+        //         ->where('patient_id', $patient->patient_id)
+        //         ->whereIn('appointment_status_id', [1, 2, 3])
+
+        //         ->get();
+        // }
+
+
+
+
+
+        // return ([$appointments_other_patients, $appointments_patient]);
     }
 
     public function appList()
