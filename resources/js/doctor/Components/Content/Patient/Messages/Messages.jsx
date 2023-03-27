@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import UserContext from "../../../UserContext/UserContext";
 
 export default function Messages() {
@@ -11,6 +11,13 @@ export default function Messages() {
     const [messageTypes, setMessageTypes] = useState(null);
     const [newMessage, setNewMessage] = useState(null);
     const [messageSent, setMessageSent] = useState(0);
+
+    // Implement scroll at the last message - also included in useEffect
+    const messagesEndRef = useRef(null);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     const loadDoctors = async () => {
         try {
@@ -72,8 +79,8 @@ export default function Messages() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log("send message click");
-            console.log(newMessage);
+            // console.log("send message click");
+            // console.log(newMessage);
             const response = await axios.post(
                 "/api/messages/insert",
                 newMessage
@@ -106,10 +113,16 @@ export default function Messages() {
     useEffect(() => {
         if (user) {
             loadDoctors();
-            loadMessages();
             loadMessageTypes();
+            loadMessages();
+            scrollToBottom();
         }
     }, [user, messageSent, selectedDoctor]);
+
+    // Seems to be working for scrolling on new message and change of conversation
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
 
     return (
         <>
@@ -157,6 +170,7 @@ export default function Messages() {
                     {messages.map((message, i) => {
                         return (
                             <div key={i}>
+                                <div ref={messagesEndRef} />
                                 <div
                                     className={`alert alert-${
                                         message.sender_user_id ==
