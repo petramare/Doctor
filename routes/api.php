@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ManagerController;
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\api\InsuranceCompanyController;
+use App\Http\Controllers\api\MessageController;
 use App\Models\Insurance_company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::get('/patient/find', [PatientController::class, 'search']);
 //Patient Condition - display inserted conditions
 Route::get('/patient/conditions', [PatientController::class, 'conditions']);
 //Patient detail info
-Route::get('/patient/{id}', [PatientController::class, 'show']);
+Route::get('/patient/show/{id}', [PatientController::class, 'show']);
 // Create new record in Patient Table
 Route::post('/patient/insert', [PatientController::class, 'insert']);
 //List of Insurance Companies
@@ -45,7 +46,7 @@ Route::post('/patient/condition', [PatientController::class, 'saveCondition']);
 
 
 
-Route::get('/mytest', [PatientController::class, 'patientsDoctors']);
+Route::get('/mytest', [PatientController::class, 'mytest']);
 
 
 
@@ -67,13 +68,43 @@ Route::get('/doctors', [DoctorController::class, 'index']);
 //Doctor Search Route for clinics
 Route::get('/doctors/find', [DoctorController::class, 'search']);
 // Doctor detail info
-Route::get('/doctors/{id}', [DoctorController::class, 'show']);
+Route::get('/doctors/show/{id}', [DoctorController::class, 'show']);
 //Doctor Search Route for clinics
 Route::get('/doctor/findPatients', [DoctorController::class, 'searchPatients']);
+//Doctor patientRequests
+Route::get('/doctors/patient-request', [DoctorController::class, 'patientRequest']);
+//Doctor patientList
+Route::get('/doctors/patient-list', [DoctorController::class, 'patientList']);
+//Doctor patientDetail
+Route::get('/doctors/patient-detail', [DoctorController::class, 'patientDetail']);
 // Create new record in Doctors Table
 Route::post('/doctor/insert', [DoctorController::class, 'insert']);
 //Doctor edit info
 Route::post('/doctors/update', [DoctorController::class, 'update']);
+//Doctor accept patient
+Route::post('/doctors/accept', [DoctorController::class, 'acceptPatient']);
+//Doctor reject/delete patient
+Route::post('/doctor/reject', [DoctorController::class, 'rejectPatient']);
+//TEST DOCTOR API
+// Route::get('/doctor-mytest', [DoctorController::class, 'mytest']);
+
+//Messages
+// Display list of message types
+Route::get('/message-types', [MessageController::class, 'messageTypes'])->name('api.messages.types');
+// Display list of messages
+Route::get('/messages', [MessageController::class, 'list'])->name('api.messages.list');
+// Display details of one message
+Route::post('/messages/insert', [MessageController::class, 'insert'])->name('api.messages.insert');
+// Display pacients and their doctors
+Route::get('/messages/patient-doctor', [MessageController::class, 'patientsDoctors']);
+// Display pacient and his/her doctors
+Route::get('/messages/patient-doctor/{patient_user_id}', [MessageController::class, 'patientDoctors']);
+// Display doctor and his/her patients
+Route::get('/messages/doctor-patient/{doctor_user_id}', [MessageController::class, 'doctorPatients']);
+// Display details of one message
+Route::get('/messages/{id}', [MessageController::class, 'details'])->name('api.messages.detail');
+// Display dirrect messages between 1 patient and 1 doctor
+Route::get('/messages/dirrect/{doctor_id}/{patient_id}', [MessageController::class, 'direct']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -83,5 +114,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // Appointments API
-Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);
-Route::post('/appointments/update', [AppointmentController::class, 'updateAppointments']);
+// patients of a doctor for appointment selection
+Route::get('/appointments/patients', [AppointmentController::class, 'showDoctorsPatients']);
+// Not used for anything at this point, might come handy
+// Route::get('/appointments/{doctor_id}', [AppointmentController::class, 'showAppointments']);
+// Appointments doctor-list
+Route::get('/appointments/doctor/list', [AppointmentController::class, 'appList']);
+// posting new appointment for doctor
+Route::post('/appointments/doctor/update', [AppointmentController::class, 'updateAppointmentsDoctor']);
+// getting all the doctors for a patient and their appointments
+Route::get('/appointments/doctors', [AppointmentController::class, 'showPatientsDoctors']);
+// posting a new a appointment for patient
+Route::post('/appointments/patient/update', [AppointmentController::class, "updateAppointmentPatient"]);
+
+// testing API for appointments
+Route::get('/test', [AppointmentController::class, 'test']);

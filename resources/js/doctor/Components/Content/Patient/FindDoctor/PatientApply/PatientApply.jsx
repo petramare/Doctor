@@ -1,13 +1,12 @@
 import axios from "axios";
 
-export default function PatientApply({ result, status, setStatus }) {
-
+export default function PatientApply({ result, setApplied }) {
+    // Apply button
     const handleClick = (e) => {
         e.preventDefault();
         sendRequest(e);
-        setStatus(status + 1);
     }
-
+    //change in table doctor_patient->status('applied')
     const sendRequest = async (e) => {
         e.preventDefault();
         try {
@@ -15,6 +14,8 @@ export default function PatientApply({ result, status, setStatus }) {
                 doctor: result.doctor.doctor_id,
                 status: 'applied'
             })
+            console.log(response)
+            setApplied(response.data)
         } catch (error) {
             console.log(error);
         }

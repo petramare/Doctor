@@ -20,7 +20,7 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->get();
         return $patients;
     }
@@ -53,10 +53,12 @@ class PatientController extends Controller
 
     public function show($id)
     {
+
         $patient = Patient::query()
-            ->with(['user'])
+            ->with(['user', 'appointments'])
             ->where('user_id', $id)
             ->first();
+        // dd($patient);
         return $patient;
     }
 
@@ -107,31 +109,62 @@ class PatientController extends Controller
         //second argument is array, with what column => the input status string 
         //maybe its not even like that but ...
         $doctor->patients()->attach($user->patient->patient_id, ['status' => $request->input('status')]);
+
+        return $doctor;
     }
 
     public function status()
     {
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        $user = User::find($user->id);
+        // $user = User::find($user->id);
+
+        // $patient = $user->patient;
+
+        // $result = $patient->doctors()->with('user')->get();
+
+        // return $result;
+
+        $user = Auth::user();
 
         $patient = $user->patient;
 
-        $result = $patient->doctors()->with('user')->get();
+        $appliedRequest = $patient->appliedDoctor;
+        $acceptedRequest = $patient->acceptedDoctor;
+        $result = array_merge($appliedRequest->toArray(), $acceptedRequest->toArray());
         return $result;
     }
 
-    public function patientsDoctors()
+    // public function patientsDoctors()
+    // {
+    //     $userId = 11; // Auth::id()
+
+    //     $user = User::find($userId);
+
+    //     $patient = $user->patient;
+
+    //     $result = $patient->appliedDoctor;
+
+    //     dd($result);
+    // }
+
+    public function mytest()
     {
-        $userId = 11; // Auth::id()
+        $userId = 11;
+
+        // $user = Auth::user();
 
         $user = User::find($userId);
 
         $patient = $user->patient;
 
-        $result = $patient->appliedDoctor;
+        // $result = $patient->doctors()->with('user')->get();
 
-        dd($result);
+        $appliedRequest = $patient->appliedDoctor;
+        $acceptedRequest = $patient->acceptedDoctor;
+        // $result = [$appliedRequest, $acceptedRequest];
+        $result = array_merge($appliedRequest->toArray(), $acceptedRequest->toArray());
+        return $result;
     }
 
     /**

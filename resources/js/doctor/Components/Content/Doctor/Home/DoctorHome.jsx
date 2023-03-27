@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import UserContext from "../../../UserContext/UserContext";
-import CalendarComponent from "../../Calendar/DoctorCalendar";
+import DoctorCalendarComponent from "../../Calendar/DoctorCalendar";
+import AppointmentsList from "./AppointmentsList/AppointmentsList";
 
 export default function DoctorHome() {
     const { user } = useContext(UserContext);
@@ -22,7 +23,9 @@ export default function DoctorHome() {
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <div className="calendar"></div>
+                                <div className="calendar">
+                                    <AppointmentsList />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,15 +40,18 @@ export default function DoctorHome() {
                         <div className="row">
                             <div className="col">
                                 <div className="calendar">
-                                    <CalendarComponent />
+                                    <DoctorCalendarComponent />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             ) : (
-                // add a loader
-                <div>loading...</div>
+                <div className="text-center">
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
             )}
         </>
     );
