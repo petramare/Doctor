@@ -5,6 +5,8 @@ import UserContext from "../../../UserContext/UserContext";
 export default function EditInfo() {
     const { user } = useContext(UserContext);
     const [doctor, setDoctor] = useState(null);
+    const [errorMessages, setErrorMessages] = useState([]);
+    const [successMessage, setSuccessMessage] = useState("");
 
     const loadData = async () => {
         try {
@@ -61,11 +63,14 @@ export default function EditInfo() {
         e.preventDefault();
         try {
             const response = await axios.post("/api/doctors/update", doctor);
+            setErrorMessages([]);
+            setSuccessMessage(response.status);
         } catch (error) {
             console.log(error);
+            setSuccessMessage("");
+            setErrorMessages(error.response.data.errors);
         }
     };
-
     return (
         <>
             <div className="container">
@@ -292,8 +297,40 @@ export default function EditInfo() {
                                         </label>
                                     </div>
                                 </div>
-
-                                <button type="submit" className="btn btn-dark">
+                                {errorMessages
+                                    ? Object.values(errorMessages).map(
+                                          (message, i) => {
+                                              return (
+                                                  <div
+                                                      key={i}
+                                                      className="alert alert-danger"
+                                                      role="alert"
+                                                  >
+                                                      {message}
+                                                  </div>
+                                              );
+                                          }
+                                      )
+                                    : ""}
+                                {successMessage == 200 ? (
+                                <div
+                                    className="alert alert-success alert-dismissible fade show di"
+                                    role="alert"
+                                >
+                                    Record have been updated{" "}
+                                    <button
+                                        type="button"
+                                        className="btn close"
+                                        data-dismiss="alert"
+                                        aria-label="Close"
+                                    >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                                <button type="submit" className="btn btn-primary">
                                     Update
                                 </button>
                             </form>
