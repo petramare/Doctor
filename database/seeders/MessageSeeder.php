@@ -111,7 +111,155 @@ class MessageSeeder extends Seeder
                 "message_type_id" => 2,
                 "created_at" => date('Y-m-d H:i:s')
             ],
-            //conversation prescription
+            //conversation prescription doctor_1
+            [
+                "doctor_id" => 1,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 1,
+                "patient_id" => 5,
+                "sender_user_id" => 14,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 1,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 1,
+                "patient_id" => 5,
+                "sender_user_id" => 14,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            //conversation prescription doctor_2
+            [
+                "doctor_id" => 2,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 2,
+                "patient_id" => 5,
+                "sender_user_id" => 15,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 2,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 2,
+                "patient_id" => 5,
+                "sender_user_id" => 15,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+             //conversation prescription doctor_3
+             [
+                "doctor_id" => 3,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 3,
+                "patient_id" => 5,
+                "sender_user_id" => 16,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 3,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 3,
+                "patient_id" => 5,
+                "sender_user_id" => 16,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+             //conversation prescription doctor_4
+             [
+                "doctor_id" => 4,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 4,
+                "patient_id" => 5,
+                "sender_user_id" => 17,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 4,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 4,
+                "patient_id" => 5,
+                "sender_user_id" => 17,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            //conversation prescription doctor_5
             [
                 "doctor_id" => 5,
                 "patient_id" => 5,
@@ -148,8 +296,192 @@ class MessageSeeder extends Seeder
                 "message_type_id" => 4,
                 "created_at" => date('Y-m-d H:i:s')
             ],
-            
-
+            //conversation prescription doctor_6
+            [
+                "doctor_id" => 6,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 6,
+                "patient_id" => 5,
+                "sender_user_id" => 19,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 6,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 6,
+                "patient_id" => 5,
+                "sender_user_id" => 19,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+              //conversation prescription doctor_7
+              [
+                "doctor_id" => 7,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 7,
+                "patient_id" => 5,
+                "sender_user_id" => 20,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 7,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 7,
+                "patient_id" => 5,
+                "sender_user_id" => 20,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+             //conversation prescription doctor_8
+             [
+                "doctor_id" => 8,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 8,
+                "patient_id" => 5,
+                "sender_user_id" => 21,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 8,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 8,
+                "patient_id" => 5,
+                "sender_user_id" => 21,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+             //conversation prescription doctor_9
+             [
+                "doctor_id" => 9,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 9,
+                "patient_id" => 5,
+                "sender_user_id" => 22,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 9,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 9,
+                "patient_id" => 5,
+                "sender_user_id" => 22,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+             //conversation prescription doctor_10
+             [
+                "doctor_id" => 10,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Hello, please can you send me a prescription for Cardisure?",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 10,
+                "patient_id" => 5,
+                "sender_user_id" => 23,
+                "message" => "Hello, we can not send the prescription for Cardisure without previous visit. Please pick a date at our reservation system for a visit.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 10,
+                "patient_id" => 5,
+                "sender_user_id" => 8,
+                "message" => "Okey, I will see you on Wednesday at 11am. have a nice day.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+            [
+                "doctor_id" => 10,
+                "patient_id" => 5,
+                "sender_user_id" => 23,
+                "message" => "Perfect, you too.",
+                "file_path" => "c:/prescription",
+                "message_type_id" => 4,
+                "created_at" => date('Y-m-d H:i:s')
+            ],
+           
         ];
 
         DB::table('messages')->insert($messages);
