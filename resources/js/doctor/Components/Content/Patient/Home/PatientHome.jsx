@@ -31,56 +31,44 @@ export default function PatientHome() {
                     {/* {console.log(doctorsAppointments)} */}
                     <div className="container">
                         <div className="row">
-                            <div className="col">
-                                <div className="greetings text-center" >
-                                    <h1 className=" ">
-                                        Welcome back, {user.first_name}{" "}
-                                        {user.surname}
-                                    </h1>
-                                
-                                    <h3 className="text-center">
-                                        Here are your doctors schedule for this
-                                        month
-                                    </h3>
-                                </div >
+                            <div className="text-center">
+                                <h1 >
+                                    Welcome back, {user.first_name}{" "}
+                                    {user.surname}
+                                </h1>                           
+                                <h3>
+                                    Here are your doctors schedule for this
+                                    month
+                                </h3>                            
                             </div>
                         </div>
                     </div>
-                    <br />
-                    <br />
+       
                     {doctorsAppointments.map((doctorAppointment, index) => {
                         return (
                             <div key={index} className="container">
-                               <div className="schedule_doctor-photo__man">
-                                    
-                                    <div className="col schedule_of-calendar">
-                                       
-                                         
-                                         <div className="calendar">
+                               <div className="calendar_man">                                                                                               
+                                         <div className="col calendar">
                                                 <PatientCalendarComponent
                                                     doctorAppointment={
                                                         doctorAppointment
                                                     }
                                                 />
-                                        </div>
-                   
-                                    </div>
+                                        </div>                   
     
-                                    < div className="col doctor_picker_bubble--man" >
-                                         <h1 className="schedule_of-heading">
+                                    < div className="col bubble_man" >
+                                         <h1>
                                             <p class="bubble speech">
- 
                                                 Here you see the schedule of Dr.{" "}
                                                 {doctorAppointment.user.first_name}{" "}
                                                 {doctorAppointment.user.surname}. 
                                             </p>
                                         </h1> 
-                                        <img className="animated_doctor" src={doctor7} />
+                                        <img className="man" src={doctor7} />
                                     </div>
-
                                 </div>
 
-                                <div className="schedule_doctor-photo__woman">
+                                <div className="picker_woman">
                                         <PatientDatepicker
                                             doctor_id={
                                                 doctorAppointment.doctor_id
@@ -91,17 +79,15 @@ export default function PatientHome() {
                                                 doctorAppointment.visiting_hours
                                             }
                                             />
-                                    <div className="doctor_picker_bubble--woman">
+                                    <div className="bubble_woman">
                                         <h1 >
                                             <p class="bubble speech">
                                                 Set an appointment.
                                             </p>
                                         </h1> 
-                                        <img className="animated_doctor-woman" src={doctor6} />
+                                        <img className="woman" src={doctor6} />
                                     </div >
-                                </div>
-                                    
-                                 
+                                </div>       
                             </div>
                         );
                     })}

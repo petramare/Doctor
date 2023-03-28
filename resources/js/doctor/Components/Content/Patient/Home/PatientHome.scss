@@ -1,31 +1,27 @@
-.greetings {
-    margin-top: 6rem;
 
-}
-
-.schedule_of-calendar{
+.calendar{
    display: flex;
    flex-direction: column;
     align-items:  center;
 }
 
-.animated_doctor{
+.man{
     width: 40%;
     padding-bottom:2rem;
 }
 
-.animated_doctor-woman{
+.woman{
     width: 100%;
     padding-bottom:2rem;
 }
 
-.schedule_doctor-photo__man{
+.calendar_man{
     display:flex;
     flex-direction: row-reverse;
     justify-items: stretch;
 }
 
-.schedule_doctor-photo__woman{
+.picker_woman{
     display:grid;
     // flex-direction: row;
     // justify-items:end;
@@ -38,13 +34,13 @@
     }
 }
 
-.doctor_picker_bubble--man{
+.bubble_man{
     display: flex;
     flex-direction: column;
     //width: 50%;
 }
 
-.doctor_picker_bubble--woman {
+.bubble_woman {
     display: grid;
     grid-template-columns: 40% 20% 40%;
     grid-template-rows: 1fr;
