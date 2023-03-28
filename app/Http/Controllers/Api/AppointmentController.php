@@ -33,17 +33,20 @@ class AppointmentController extends Controller
         //cool shit
         // getting the doctor that has the belongs to the user id
         $doctor = $logged_user->doctor;
-        // dd($doctor);
+
+        // striping the name of the timezone from the string
+        $start = explode(' (', $request->input('start'))[0];
+        $end = explode(' (', $request->input('end'))[0];
+
+
         // creating new Appointment
         $new_appointment = new Appointment();
         // adding one hour to start of the appointment
-        $hour_added_start = new Carbon($request->input("start"));
-        $hour_added_start->addHours(1);
-        $new_appointment->start = $hour_added_start;
+        $start_date = new Carbon($start);
+        $new_appointment->start = $start_date;
         // adding one hout to end of the apppointment
-        $hour_added_end = new Carbon($request->input('end'));
-        $hour_added_end->addHours(1);
-        $new_appointment->end = $hour_added_end;
+        $end_date = new Carbon($end);
+        $new_appointment->end = $end_date;
         $new_appointment->description = $request->input("title");
         $new_appointment->patient_id = $request->input('patient_id');
         // adding the doctor id from the doctor
@@ -59,16 +62,15 @@ class AppointmentController extends Controller
         $logged_user = Auth::user();
         $patient = $logged_user->patient;
 
-
+        $start = explode(' (', $request->input('start'))[0];
+        $end = explode(' (', $request->input('end'))[0];
 
         $new_appointment = new Appointment();
         $new_appointment->patient_id = $patient->patient_id;
-        $hour_added_start = new Carbon($request->input("start"));
-        $hour_added_start->addHours(1);
-        $new_appointment->start = $hour_added_start;
-        $hour_added_end = new Carbon($request->input('end'));
-        $hour_added_end->addHours(1);
-        $new_appointment->end = $hour_added_end;
+        $start_date = new Carbon($start);
+        $new_appointment->start = $start_date;
+        $end_date = new Carbon($end);
+        $new_appointment->end = $end_date;
         $new_appointment->description = $request->input("title");
         $new_appointment->doctor_id = $request->input('doctor_id');
         $new_appointment->appointment_status_id = 1;
