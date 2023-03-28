@@ -5,6 +5,7 @@ import axios from "axios";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
+import { addMinutes } from "date-fns";
 
 export default function DoctorDatepicker({ refresh, setRefresh }) {
     const [newAppointment, setNewAppointment] = useState({
@@ -31,10 +32,18 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
 
     const handleAddAppointment = async (e) => {
         e.preventDefault();
+        console.log(newAppointment);
+        let { title, start, end, patient_id } = newAppointment;
+        let dataToSend = {
+            title: title,
+            start: start.toString(),
+            end: end.toString(),
+            patient_id: patient_id,
+        };
         try {
             const response = await axios.post(
                 "/api/appointments/doctor/update",
-                newAppointment
+                dataToSend
             );
             setRefresh(!refresh);
             setNewAppointment({
@@ -48,9 +57,13 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
         }
     };
     // filters the weeekday
-    const isWeekday = (date) => {
-        const day = getDay(date);
-        return day !== 0 && day !== 6;
+    const isWeekdayWithPassedTime = (date) => {
+        const currentDate = new Date(new Date().setHours(0, 0, 0, 0));
+        const selectedDate = new Date(new Date(date).setHours(0, 0, 0, 0));
+        return (
+            selectedDate >= currentDate &&
+            (selectedDate.getDay() !== 0 || selectedDate.getDay() !== 6)
+        );
     };
 
     // filters the time, you cannot select the time that has passed
@@ -60,6 +73,15 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
 
         return currentDate.getTime() < selectedDate.getTime();
     };
+    // this used effect for checking if the newAppointment.start has changed, if it did
+    // and it is not an empty string it will create a new varriable that is new date with half hour plus
+    // and sets it as newappointment end
+    useEffect(() => {
+        if (newAppointment.start !== "") {
+            let end = new Date(addMinutes(newAppointment.start, 30));
+            setNewAppointment({ ...newAppointment, end });
+        }
+    }, [newAppointment.start]);
 
     return (
         <div className="container">
@@ -122,7 +144,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                             placeholderText="Click to select a start date"
                             selected={newAppointment.start}
                             filterTime={filterPassedTime}
-                            filterDate={isWeekday}
+                            filterDate={(date) => isWeekdayWithPassedTime(date)}
                             calendarStartDay={1}
                             showTimeSelect
                             withPortal
@@ -133,9 +155,10 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                                 setHours(setMinutes(new Date(), 59), 23),
                             ]}
                             dateFormat="MMMM d, yyyy h:mm"
-                            onChange={(start) =>
-                                setNewAppointment({ ...newAppointment, start })
-                            }
+                            onChange={(start) => {
+                                console.log(start);
+                                setNewAppointment({ ...newAppointment, start });
+                            }}
                         />
                     </div>
                     <div className="form-group">
@@ -144,7 +167,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                             className="form-control"
                             placeholderText="Click to select an end date"
                             filterTime={filterPassedTime}
-                            filterDate={isWeekday}
+                            filterDate={(date) => isWeekdayWithPassedTime(date)}
                             calendarStartDay={1}
                             selected={newAppointment.end}
                             showTimeSelect
@@ -156,9 +179,9 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                                 setHours(setMinutes(new Date(), 59), 23),
                             ]}
                             dateFormat="MMMM d, yyyy h:mm"
-                            onChange={(end) =>
-                                setNewAppointment({ ...newAppointment, end })
-                            }
+                            onChange={(end) => {
+                                setNewAppointment({ ...newAppointment, end });
+                            }}
                         />
                     </div>
                     <button
