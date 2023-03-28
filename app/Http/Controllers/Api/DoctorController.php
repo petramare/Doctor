@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Clinic;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 
 class DoctorController extends Controller
@@ -55,6 +56,41 @@ class DoctorController extends Controller
 
     public function update(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer',
+            'doctor_id' => 'required|integer',
+            
+            'user.first_name' => 'required|min:4|max:20',
+            'user.surname' => 'required|min:4|max:20',
+            'user.email' => 'required|email',
+            'user.date_of_birth' => 'required|date|date_format:d.m.Y|before:today',
+            'user.id_number' => 'required|min:6|max:10',
+            'specialization' => 'required|min:3|max:20',
+            'doctor_license_number' => 'required|min:3|max:20'
+
+        ], [
+            'user.email.required' => 'Email is required',
+            'user.email.email' => 'Email is invalid',
+            'user.first_name.required' => 'First name is required',
+            'user.first_name.min' => 'First name is too short',
+            'user.first_name.max' => 'First name is too long',
+
+            'specialization.required' => 'Specialization is required',
+            'specialization.min' => 'Specialization is too short',
+            'specialization.max' => 'Specialization is too long',
+
+            'doctor_license_number.required' => 'Doctor License Number is required',
+            'doctor_license_number.min' => 'Doctor License Number is too short',
+            'doctor_license_number.max' => 'Doctor License Number is too long',
+
+            'user.surname.required' => 'Surname is required',
+            'user.surname.min' => 'Surname is too short',
+            'user.surname.max' => 'Surname is too long',
+            'user.id_number.required' => 'Id number is required',
+            'user.date_of_birth' => "Please enter a valid date in past in format dd.mm.yyy (e.g. 12.04.1982)"
+        ])->validate();
+
         // Find existing Doctor and User records
         $doctor = Doctor::findOrFail($request->input('doctor_id'));
         $user = User::findOrFail($request->input('user_id'));
@@ -78,6 +114,21 @@ class DoctorController extends Controller
 
     public function insert(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'doctor.specialization' => 'required|min:3|max:20',
+            'doctor.doctor_license_number' => 'required|min:3|max:20'
+
+        ], [
+            'doctor.specialization.required' => 'Specialization is required',
+            'doctor.specialization.min' => 'Specialization is too short',
+            'doctor.specialization.max' => 'Specialization is too long',
+
+            'doctor.doctor_license_number.required' => 'Doctor License Number is required',
+            'doctor.doctor_license_number.min' => 'Doctor License Number is too short',
+            'doctor.doctor_license_number.max' => 'Doctor License Number is too long',
+        ])->validate();
+
         // Create new Doctor record and fill it with data
 
         // Default visiting hours

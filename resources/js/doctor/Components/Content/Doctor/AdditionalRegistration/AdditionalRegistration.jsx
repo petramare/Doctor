@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function AdditionalRegistration() {
     const [doctor, setDoctor] = useState("");
+    const [errorMessages, setErrorMessages] = useState([]);
+    const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -35,9 +37,13 @@ export default function AdditionalRegistration() {
         try {
             let response = await axios.post("/api/doctor/insert", doctor);
             console.log(response.data);
+            setErrorMessages([]);
+            setSuccessMessage(response.status);
             navigate("/doctor/edit");
         } catch (error) {
             console.log(error);
+            setSuccessMessage("");
+            setErrorMessages(error.response.data.errors);
         }
     };
 
@@ -149,6 +155,19 @@ export default function AdditionalRegistration() {
                         <button type="submit" className="btn btn-primary">
                             Submit
                         </button>
+                        {errorMessages
+                            ? Object.values(errorMessages).map((message, i) => {
+                                  return (
+                                      <div
+                                          key={i}
+                                          className="alert alert-danger"
+                                          role="alert"
+                                      >
+                                          {message}
+                                      </div>
+                                  );
+                              })
+                            : ""}
                     </form>
                 </div>
             </div>

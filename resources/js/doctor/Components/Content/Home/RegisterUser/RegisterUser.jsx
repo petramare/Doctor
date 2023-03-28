@@ -16,6 +16,7 @@ export default function RegisterUser() {
         password: "",
         password_confirmation: "",
     });
+    const [errorMessages, setErrorMessages] = useState([]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -44,6 +45,7 @@ export default function RegisterUser() {
             }
         } catch (error) {
             // if the response code is not 2xx (success)
+            setErrorMessages(error.response.data.errors);
             switch (error.response.status) {
                 case 422:
                     // handle validation errors here
@@ -150,6 +152,19 @@ export default function RegisterUser() {
             />
             <br />
             <br />
+            {errorMessages
+                ? Object.values(errorMessages).map((message, i) => {
+                      return (
+                          <div
+                              key={i}
+                              className="alert alert-danger"
+                              role="alert"
+                          >
+                              {message}
+                          </div>
+                      );
+                  })
+                : ""}
             <button>Register</button>
         </form>
     );
