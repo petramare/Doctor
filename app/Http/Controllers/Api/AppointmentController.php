@@ -128,8 +128,9 @@ class AppointmentController extends Controller
                     $query->where('patient_id', '!=', $patient->patient_id);
                     $query->where('appointment_status_id', 3);
                 })
-                ->orWhere(function ($query) use ($patient) {
+                ->orWhere(function ($query) use ($patient, $doctor) {
                     $query->where('patient_id', $patient->patient_id);
+                    $query->where('doctor_id', $doctor->doctor_id);
                     $query->whereIn('appointment_status_id', [1, 2, 3]);
                 })
                 ->get();
@@ -194,30 +195,32 @@ class AppointmentController extends Controller
         // }
         // return $appointments;
 
-        //$logged_user_id = 13;
-        //$logged_user = User::findOrFail($logged_user_id);
+        $logged_user_id = 11;
+        $logged_user = User::findOrFail($logged_user_id);
 
 
-        //$patient = $logged_user->patient;
+        $patient = $logged_user->patient;
 
-        //$doctors = $patient->acceptedDoctor;
+        $doctors = $patient->acceptedDoctor;
 
-        //foreach ($doctors as $doctor) {
-        // $appointments = $doctor->appointments()
-        // ->where(function ($query) use ($patient) {
-        //    $query->where('patient_id', '!=', $patient->patient_id);
-        //             $query->where('appointment_status_id', 3);
-        //         })
-        //         ->orWhere(function ($query) use ($patient) {
-        //             $query->where('patient_id', $patient->patient_id);
-        //             $query->whereIn('appointment_status_id', [1, 2, 3]);
-        //         })
-        //         ->get();
+        foreach ($doctors as $doctor) {
+            $appointments = $doctor->appointments()
+                ->where(function ($query) use ($patient) {
+                    $query->where('patient_id', '!=', $patient->patient_id);
+                    $query->where('appointment_status_id', 3);
+                })
+                ->orWhere(function ($query) use ($patient, $doctor) {
+                    $query->where('patient_id', $patient->patient_id);
 
-        //     $doctor->appointments = $appointments;
-        //     $doctor->user;
-        // }
-        // return $patient;
+                    $query->where('doctor_id', $doctor->doctor_id);
+                    $query->whereIn('appointment_status_id', [1, 2, 3]);
+                })
+                ->get();
+
+            $doctor->appointments = $appointments;
+            $doctor->user;
+        }
+        return $patient;
         // foreach ($doctors as $doctor) {
         //     $appointments_patient = $doctor->appointments()
         //         ->where('patient_id', $patient->patient_id)
