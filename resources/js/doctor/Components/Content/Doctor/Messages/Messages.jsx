@@ -199,7 +199,7 @@ export default function Messages() {
                                             </p>
                                         </div>
                                         <div
-                                            className={`btn btn-outline-${handleType(
+                                            className={`btn btn-${handleType(
                                                 message.message_type_id
                                             )} btn-sm mx-2 my-0 px-2 py-0 d-flex justify-content-center align-items-center`}
                                         >
