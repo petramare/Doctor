@@ -5,6 +5,7 @@ import axios from "axios";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import getDay from "date-fns/getDay";
+import { addMinutes } from "date-fns";
 
 export default function PatientDatepicker({
     doctor_id,
@@ -18,13 +19,23 @@ export default function PatientDatepicker({
         end: "",
         doctor_id: doctor_id,
     });
+
     const handleAddAppointment = async (e) => {
         e.preventDefault();
+
+        let { title, start, end, doctor_id } = newAppointment;
+        let dataToSend = {
+            title: title,
+            start: start.toString(),
+            end: end.toString(),
+            doctor_id: doctor_id,
+        };
         try {
             const response = await axios.post(
                 "/api/appointments/patient/update",
-                newAppointment
+                dataToSend
             );
+
             setRefresh(!refresh);
             setNewAppointment({
                 title: "",
@@ -49,12 +60,6 @@ export default function PatientDatepicker({
         return falseDays;
     };
 
-    const isWeekdayWithVisitingHours = (date, visiting_hours) => {
-        const falseDays = getFalseDays(visiting_hours);
-        const day = getDay(date);
-        return day !== 0 && day !== 6 && !falseDays.includes(day);
-    };
-
     // filters the time, you cannot select the time that has passed
     const filterPassedTime = (time) => {
         const currentDate = new Date();
@@ -62,6 +67,27 @@ export default function PatientDatepicker({
 
         return currentDate.getTime() < selectedDate.getTime();
     };
+
+    const isWeekdayWithVisitingHoursWithPassedTime = (date, visiting_hours) => {
+        const falseDays = getFalseDays(visiting_hours);
+        const currentDate = new Date(new Date().setHours(0, 0, 0, 0));
+        const selectedDate = new Date(new Date(date).setHours(0, 0, 0, 0));
+
+        return (
+            selectedDate >= currentDate &&
+            !falseDays.includes(selectedDate.getDay()) &&
+            selectedDate.getDay() !== 0 &&
+            selectedDate.getDay() !== 6
+        );
+    };
+
+    useEffect(() => {
+        if (newAppointment.start !== "") {
+            let end = new Date(addMinutes(newAppointment.start, 30));
+            setNewAppointment({ ...newAppointment, end });
+        }
+    }, [newAppointment.start]);
+
     return (
         <div className="row">
             <div className="col text-center">
@@ -90,7 +116,7 @@ export default function PatientDatepicker({
                         placeholderText="Click to select a start date"
                         selected={newAppointment.start}
                         filterDate={(date) =>
-                            isWeekdayWithVisitingHours(
+                            isWeekdayWithVisitingHoursWithPassedTime(
                                 date,
                                 visiting_hours_stringified
                             )
@@ -119,7 +145,7 @@ export default function PatientDatepicker({
                         selected={newAppointment.end}
                         calendarStartDay={1}
                         filterDate={(date) =>
-                            isWeekdayWithVisitingHours(
+                            isWeekdayWithVisitingHoursWithPassedTime(
                                 date,
                                 visiting_hours_stringified
                             )
