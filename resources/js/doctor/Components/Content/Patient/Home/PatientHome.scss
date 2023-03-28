@@ -38,8 +38,6 @@
     }
 }
 
-
-
 .doctor_picker_bubble--man{
     display: flex;
     flex-direction: column;
@@ -61,17 +59,7 @@
     .bubble {
         margin-top: 0px;
     }
-    // display: flex;
-    // flex-direction: column;
-    // flex-direction: row-reverse;
 }
-
-body {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
-    background: rgb(34,114,195);
-    background: linear-gradient(0deg, rgba(34,114,195,1) 2%, rgba(255,255,255,1) 85%);
-}
-
 
 //styling of the talking bubble
 p.bubble {
@@ -139,4 +127,4 @@ p.thought:after {
 	border-radius: 18px;
 }
 
-//here it ends
+//here bubble styling ends
