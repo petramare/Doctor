@@ -12,6 +12,8 @@ export default function Messages() {
     const [messageTypes, setMessageTypes] = useState(null);
     const [newMessage, setNewMessage] = useState(null);
     const [messageSent, setMessageSent] = useState(0);
+    const [errorMessages, setErrorMessages] = useState([]);
+    const [successMessage, setSuccessMessage] = useState("");
 
     // Implement scroll at the last message - also included in useEffect
     const messagesEndRef = useRef(null);
@@ -80,8 +82,6 @@ export default function Messages() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // console.log("send message click");
-            // console.log(newMessage);
             const response = await axios.post(
                 "/api/messages/insert",
                 newMessage
@@ -89,8 +89,11 @@ export default function Messages() {
             setMessageSent(messageSent + 1);
             e.target.message_type_id.value = 99;
             e.target.message.value = "";
+            setErrorMessages([]);
+            setSuccessMessage(response.status);
         } catch (error) {
-            console.log(error);
+            setSuccessMessage("");
+            setErrorMessages(error.response.data.errors);
         }
     };
 
@@ -224,14 +227,12 @@ export default function Messages() {
                                 rows="5"
                                 placeholder="Enter Your Message"
                                 onChange={handleChange}
-                                required
                             ></textarea>
                             <select
                                 name="message_type_id"
                                 className="form-control mt-2 mb-2"
                                 aria-label="Floating label select example"
                                 onChange={handleChange}
-                                required
                             >
                                 <option value={99} disabled selected>
                                     -- Select Message Type --
@@ -246,6 +247,21 @@ export default function Messages() {
                                       })
                                     : "load"}
                             </select>
+                            {errorMessages
+                                ? Object.values(errorMessages).map(
+                                      (message, i) => {
+                                          return (
+                                              <div
+                                                  key={i}
+                                                  className="alert alert-danger"
+                                                  role="alert"
+                                              >
+                                                  {message}
+                                              </div>
+                                          );
+                                      }
+                                  )
+                                : ""}
                             <button
                                 type="submit"
                                 className="btn mt-2 mb-2 btn-primary"
