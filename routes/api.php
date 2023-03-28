@@ -126,6 +126,9 @@ Route::post('/appointments/doctor/update', [AppointmentController::class, 'updat
 Route::get('/appointments/doctors', [AppointmentController::class, 'showPatientsDoctors']);
 // posting a new a appointment for patient
 Route::post('/appointments/patient/update', [AppointmentController::class, "updateAppointmentPatient"]);
-
+// // On click change status of Appointment from Suggested(1) to Approved(3)
+Route::post('/appointments/doctor/status/approved', [AppointmentController::class, 'updateStatusAppointmentApproved']);
+// On click, change status of Appointment from Suggested(1) to Rejected(2)
+Route::post('/appointments/doctor/status/rejected', [AppointmentController::class, 'updateStatusAppointmentRejected']);
 // testing API for appointments
 Route::get('/test', [AppointmentController::class, 'test']);

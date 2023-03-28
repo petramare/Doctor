@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class UserSeeder extends Seeder
         $users = [
             [
                 "email" => "arny@neznam.cz",
-                "password" => "krtecek",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Arnošt",
                 "surname" => "Křiklan",
                 "date_of_birth" => "30-02-1987",
@@ -27,7 +28,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "e.svarna@bigboss.eu",
-                "password" => "gucci",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Evelína",
                 "surname" => "Švarná",
                 "date_of_birth" => "14-03-1992",
@@ -36,7 +37,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "pavel@rakl.cz",
-                "password" => "granat",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Pavel",
                 "surname" => "Rakl",
                 "date_of_birth" => "14-03-1992",
@@ -45,7 +46,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "maso@slavia.cz",
-                "password" => "ligamistru",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Lukáš",
                 "surname" => "Masopust",
                 "date_of_birth" => "14-03-1992",
@@ -54,7 +55,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "radio@gaga.com",
-                "password" => "popopopoker",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Lady",
                 "surname" => "Gaga",
                 "date_of_birth" => "14-03-1992",
@@ -63,7 +64,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "dan@pudil.cz",
-                "password" => "boleslav",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Daniel",
                 "surname" => "Pudil",
                 "date_of_birth" => "14-03-1992",
@@ -72,7 +73,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "weirdo@weirdo.cz",
-                "password" => "moneybag",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Karel",
                 "surname" => "Janeček",
                 "date_of_birth" => "14-03-1992",
@@ -82,7 +83,7 @@ class UserSeeder extends Seeder
             [
 
                 "email" => "pzel@poodle.com",
-                "password" => "kamion",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Pavlína",
                 "surname" => "Zelená",
                 "date_of_birth" => "14-03-1992",
@@ -91,7 +92,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "rud@neznam.cz",
-                "password" => "fagaerhrt",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Rudolf",
                 "surname" => "Blatný",
                 "date_of_birth" => "14-03-1992",
@@ -100,7 +101,7 @@ class UserSeeder extends Seeder
             ],
             [
                 "email" => "angie@yahoo.com",
-                "password" => "fgsrth",
+                "password" => Hash::make('qwertqwert'),
                 "first_name" => "Angelika",
                 "surname" => "Rajská",
                 "date_of_birth" => "14-03-1992",
