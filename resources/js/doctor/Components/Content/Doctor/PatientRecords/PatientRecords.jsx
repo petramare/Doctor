@@ -38,23 +38,27 @@ export default function PatientRecords() {
 
     return (
         <>
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <PatientRequest
-                            request={request}
-                            state={state}
-                            setState={setState} />
+            <div className="container mt-4">
+                <div className="row justify-content-center">
+                    <div className="col col-md-8 col-sm-12">
+                        <div className="card p-2">
+                            <PatientRequest
+                                request={request}
+                                state={state}
+                                setState={setState} />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <PatientList
-                            patientList={patientList}
-                            state={state}
-                            setState={setState} />
+            <div className="container mt-4">
+                <div className="row justify-content-center">
+                    <div className="col col-md-8 col-sm-12">
+                        <div className="card">
+                            <PatientList
+                                patientList={patientList}
+                                state={state}
+                                setState={setState} />
+                        </div>
                     </div>
                 </div>
             </div>

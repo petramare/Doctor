@@ -45,30 +45,32 @@ export default function PatientRequest({ request, setState, state }) {
             {
                 request ?
                     <div>
-                        <h1 className="text-center">Register requests:</h1>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Request:</th>
-                                    <th scope="col">Name:</th>
-                                    <th scope="col">Status:</th>
-                                    <th scope="col">Action:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {request.map((result, index) => (
-                                    <tr key={index}>
-                                        <th scope="row">{index + 1}</th>
-                                        <td>{result.user.first_name} {result.user.surname}</td>
-                                        <td className="text-capitalize">{result.pivot.status}</td>
-                                        <td>
-                                            <button className="btn btn-success" onClick={(e) => handleClickAccept(e, result)}>Accept</button>
-                                            <button className="btn btn-danger" onClick={(e) => handleClickDelete(e, result)}>Reject</button>
-                                        </td>
+                        <h2 className="text-center">New Registration requests:</h2>
+                        <div className="table-responsive">
+                            <table className="table table-striped table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th className="text-center" scope="col">#</th>
+                                        <th className="text-center" scope="col">Name:</th>
+                                        <th className="text-center" scope="col">Status:</th>
+                                        <th className="text-center" scope="col">Action:</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {request.map((result, index) => (
+                                        <tr key={index}>
+                                            <th className="text-center" scope="row">{index + 1}</th>
+                                            <td className="text-center">{result.user.first_name} {result.user.surname}</td>
+                                            <td className="text-capitalize text-center">{result.pivot.status}</td>
+                                            <td className="text-center">
+                                                <button type="button" className="btn btn-success btn-rounded" onClick={(e) => handleClickAccept(e, result)}>Accept</button>
+                                                <button className="btn btn-danger btn-rounded" onClick={(e) => handleClickDelete(e, result)}>Reject</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     :
                     ''
