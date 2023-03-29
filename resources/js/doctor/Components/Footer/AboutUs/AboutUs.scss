@@ -1,0 +1,93 @@
+blockquote {
+    font-size: 1.5em;
+    line-height: 1.6em;
+    padding: 20px 20px 20px 40px;
+    border-left: none;
+    position: relative;
+    text-indent: -19px;
+}
+
+section#block_content {
+    min-height: 400px;
+    padding-top: 40px;
+    text-align: left;
+}
+
+blockquote p {
+    font-size: 1em;
+}
+
+blockquote:before,
+blockquote:after {
+    font-family: Arial, serif;
+    font-size: 2.5em;
+    vertical-align: middle;
+    line-height: 0;
+}
+
+blockquote:before {
+    content: open-quote;
+    margin-right: 4px;
+}
+
+blockquote:after {
+    content: close-quote;
+    margin-left: 3px;
+}
+
+blockquote.blockstyle,
+blockquote.style2 {
+    background: #fff;
+    font-style: italic;
+}
+
+blockquote.blockstyle p,
+blockquote.style2 p {
+    display: inline;
+}
+
+blockquote.blockstyle {
+    border-left: 3px solid #3F72AF;
+    position: relative;
+}
+
+blockquote.blockstyle:before,
+blockquote.blockstyle:after {
+    color: #3F72AF;
+}
+
+blockquote.blockstyle.border-color-blue {
+    border-color: #01b7f2;
+}
+
+blockquote.blockstyle.border-color-yellow {
+    border-color: #fdb714;
+}
+
+.petra {
+    background-image: url("/img/about-us/petra.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+
+.honza {
+    background-image: url("/img/about-us/honza.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+
+.jenda {
+    background-image: url("/img/about-us/jenda.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+
+.lukas {
+    background-image: url("/img/about-us/lukas.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}

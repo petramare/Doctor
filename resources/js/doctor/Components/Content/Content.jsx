@@ -18,6 +18,8 @@ import ManagerHome from './Manager/Home/ManagerHome';
 import PatientCondition from './Patient/Condition/Condition';
 import PatientMessages from "./Patient/Messages/Messages";
 import DoctorMessages from "./Doctor/Messages/Messages";
+import AboutUs from "../Footer/AboutUs/AboutUs";
+import TechStack from "../Footer/TechStack/TechStack";
 
 
 export default function Content() {
@@ -51,6 +53,10 @@ export default function Content() {
                     <Route path='/doctor/edit' element={< DoctorInfo />} />
                     <Route path='/doctor/find' element={< DoctorFind />} />
                     <Route path='/doctor/patientRecords' element={<DoctorPatientRecords />} />
+
+                    {/* footer routes */}
+                    <Route path='/about-us' element={<AboutUs />} />
+                    <Route path='/techstack' element={<TechStack />} />
                 </Routes>
             </div>
         </main>
