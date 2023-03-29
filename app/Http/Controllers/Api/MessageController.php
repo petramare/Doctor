@@ -9,6 +9,7 @@ use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
@@ -32,6 +33,18 @@ class MessageController extends Controller
 
     public function insert(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'message' => 'required|min:3|:max:255',
+            'message_type_id' => 'required|integer|min:1|max:10',
+        ], [
+            'message.required' => 'Please enter your Message',
+            'message.min' => 'Your Message is too short',
+            'message.max' => 'Your Message is too long',
+            'message_type_id.required' => 'Please enter Type of Message',
+            'message_type_id.min' => 'Please enter Type of Message',
+            'message_type_id.max' => 'Please enter Type of Message',
+        ])->validate();
+
         $message = new Message();
 
         $message->sender_user_id = Auth::id();

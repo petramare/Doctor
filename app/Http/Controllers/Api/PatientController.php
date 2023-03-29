@@ -13,6 +13,7 @@ use Auth;
 use Illuminate\Database\Query\Builder;
 use DateTime;
 use Dflydev\DotAccessData\Data;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\DB;
@@ -100,27 +101,82 @@ class PatientController extends Controller
 
     public function update(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer',
+            'patient_id' => 'required|integer',
+            'insurance_number' => 'required',
+            'user.email' => 'required|email',
+            'user.first_name' => 'required|min:4|max:20',
+            'user.surname' => 'required|min:4|max:20',
+            'user.id_number' => 'required|min:6|max:10',
+        ], [
+            'user.email.required' => 'Email is required',
+            'user.email.email' => 'Email is invalid',
+            'user.first_name.required' => 'First name is required',
+            'user.first_name.min' => 'First name is too short',
+            'user.first_name.max' => 'First name is too long',
+            'user.surname.required' => 'Surname is required',
+            'user.surname.min' => 'Surname is too short',
+            'user.surname.max' => 'Surname is too long',
+            'user.id_number.required' => 'Id number is required',
+        ])->validate();
+
+
 
         // search for record in tables Patient and User
         $user = User::findOrFail($request->input('user_id'));
-        // $patient = Patient::findOrFail($request->input('patient_id'));
-        $patient = Patient::where('patient_id', $request->input('patient_id'))->first();
+        $patient = Patient::findOrFail($request->input('patient_id'));
 
         // set what to be changed in table Patient
         $patient->insurance_number = $request->input('insurance_number');
         $patient->save();
 
         // set what to be changed in table User
-        $user->email = $request->input('user.email');
-        $user->first_name = $request->input('user.first_name');
-        $user->surname = $request->input('user.surname');
-        $user->date_of_birth = $request->input('user.date_of_birth');
-        $user->id_number = $request->input('user.id_number');
+        $user->email = $request->input('email');
+        $user->first_name = $request->input('first_name');
+        $user->surname = $request->input('surname');
+        $user->date_of_birth = $request->input('date_of_birth');
+        $user->id_number = $request->input('id_number');
         $user->save();
+
+
+
+
+        // //CODE THAT WORKS
+        // // search for record in tables Patient and User
+        // $user = User::findOrFail($request->input('user_id'));
+        // // $patient = Patient::findOrFail($request->input('patient_id'));
+        // $patient = Patient::where('patient_id', $request->input('patient_id'))->first();
+
+        // // set what to be changed in table Patient
+        // $patient->insurance_number = $request->input('insurance_number');
+        // $patient->save();
+
+        // // set what to be changed in table User
+        // $user->email = $request->input('user.email');
+        // $user->first_name = $request->input('user.first_name');
+        // $user->surname = $request->input('user.surname');
+        // $user->date_of_birth = $request->input('user.date_of_birth');
+        // $user->id_number = $request->input('user.id_number');
+        // $user->save();
     }
 
     public function insert(Request $request)
     {
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'patient.insurance_number' => 'required',
+                'patient.insurance_company_id' => 'required',
+            ],
+            [
+                'patient.insurance_number.required' => 'Insurance number is required.',
+                'patient.insurance_company_id.required' => 'Its required to choose your insurence company',
+            ]
+        )->validate();
+
+
         // create new patient fill it with data and store it in db
         $patient = new Patient();
         $patient->user_id = Auth::id();
@@ -225,6 +281,24 @@ class PatientController extends Controller
      */
     public function saveCondition(Request $request)
     {
+
+        // dd($request->all());
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'weight' => 'required|integer',
+                'height' => 'required|integer',
+                'history' => 'required|string',
+            ],
+            [
+                'weight.required' => 'Weight is required',
+                'height.required' => 'Weight is required',
+                'weight.integer' => 'It has to be a number',
+                'height.integer' => 'It has to be a number',
+                'height.string' => 'Please insert some text',
+            ]
+        )->validate();
+
         $user = Auth::user();
         $patient = $user->patient;
         $condition = new Condition();
@@ -236,7 +310,7 @@ class PatientController extends Controller
         $date = new DateTime($request->input('date'));
         $condition->date = $date;
         $condition->save();
-        return $condition;     
+        return $condition;
     }
 
     /**
@@ -258,13 +332,13 @@ class PatientController extends Controller
             }
         }
         return $conditions;
-    
+
         $height = $request->input('height');
         $weight = $request->input('weight');
         $history = $request->input('history');
         $date = $request->input('date');
-        
-       return ['height'=> $height, $weight, $history, $date];
-       // return response()->json();
+
+        return ['height' => $height, $weight, $history, $date];
+        // return response()->json();
     }
 }
