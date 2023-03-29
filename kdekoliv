@@ -2,3 +2,5 @@ mysqldump db_doctor -u root -p --result-file=jan.sql --opt --quick --add-drop-ta
 
 
 mysql -h 138.201.247.130 -P 3306 -u c1_calendr -p c1_calendr < jan.sql 
+
+
