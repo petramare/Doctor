@@ -16,10 +16,15 @@ export default function Footer() {
                         </a>
                     </li>
                     <li className="nav-item active">
-                <Link to='/about-us' className="nav-link" >
-                    About Us
-                </Link>
-            </li>
+                        <Link to="/about-us" className="nav-link">
+                            About Us
+                        </Link>
+                    </li>
+                    <li className="nav-item active">
+                        <Link to="/techstack" className="nav-link">
+                            Tech Stack
+                        </Link>
+                    </li>
                     <li className="nav-item">
                         <a className="nav-link px-2 text-muted" href="#">
                             Pricing

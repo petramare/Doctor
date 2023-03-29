@@ -1,5 +1,5 @@
 blockquote {
-    font-size: 1.1em;
+    font-size: 1.5em;
     line-height: 1.6em;
     padding: 20px 20px 20px 40px;
     border-left: none;
@@ -47,39 +47,47 @@ blockquote.style2 p {
 }
 
 blockquote.blockstyle {
-    border-left: 3px solid #f0715f;
+    border-left: 3px solid #3F72AF;
     position: relative;
-}
-
-blockquote.blockstyle > span.triangle:before {
-    text-indent: 0;
-    content: "\f0da";
-    font-family: FontAwesome;
-    color: #f0715f;
-    position: absolute;
-    left: -1px;
-    top: 50%;
-    margin-top: -11px;
-    font-style: normal;
 }
 
 blockquote.blockstyle:before,
 blockquote.blockstyle:after {
-    color: #f0715f;
+    color: #3F72AF;
 }
 
 blockquote.blockstyle.border-color-blue {
     border-color: #01b7f2;
 }
 
-blockquote.blockstyle.border-color-blue > span.triangle:before {
-    color: #01b7f2;
-}
-
 blockquote.blockstyle.border-color-yellow {
     border-color: #fdb714;
 }
 
-blockquote.blockstyle.border-color-yellow > span.triangle:before {
-    color: #fdb714;
+.petra {
+    background-image: url("/img/about-us/petra.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+
+.honza {
+    background-image: url("/img/about-us/honza.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+
+.jenda {
+    background-image: url("/img/about-us/jenda.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+
+.lukas {
+    background-image: url("/img/about-us/lukas.jpg");
+    width: 100%;
+    height: 300px;
+    background-size: cover;
 }
