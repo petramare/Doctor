@@ -34,7 +34,7 @@ export default function FindDoctor() {
             }}>
                 <label htmlFor="search">Search for a doctor by Name:</label><br></br>
                 <input type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
-                <button>Submit</button>
+                <button className="btn ">Submit</button>
             </form>
             {
                 search ?

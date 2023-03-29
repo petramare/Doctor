@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { useEffect } from "react";
+import "./PatientList.scss";
 
 export default function PatientList({ patientList, setState, state }) {
 
@@ -22,25 +22,25 @@ export default function PatientList({ patientList, setState, state }) {
         <>
             <div>
                 <h1 className="text-center">Your patients:</h1>
-                <table className="table">
+                <table className="table table-striped table-hover table-bordered">
 
                     <thead>
                         <tr>
-                            <th scope="col">Result:</th>
-                            <th scope="col">Name:</th>
-                            <th scope="col">Email:</th>
-                            <th scope="col"></th>
+                            <th className="text-center" scope="col">Result:</th>
+                            <th className="text-center" scope="col">Name:</th>
+                            <th className="text-center" scope="col">Email:</th>
+                            <th className="text-center" scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         {patientList.map((result, index) => (
                             <tr key={index}>
-                                <th scope="row">{index + 1}</th>
-                                <td>{result.user.first_name} {result.user.surname}</td>
-                                <td>{result.user.email}</td>
-                                <td>
+                                <th className="text-center" scope="row">{index + 1}</th>
+                                <td className="text-center">{result.user.first_name} {result.user.surname}</td>
+                                <td className="text-center" >{result.user.email}</td>
+                                <td className="text-center" >
 
-                                    <button className="btn btn-info" type="button" data-toggle="modal" data-target={`#detail${index}`}>Detail</button>
+                                    <button className="btn btn-info btn-info-custom" type="button" data-toggle="modal" data-target={`#detail${index}`}>Detail</button>
                                     <button className="btn btn-danger" type="button" data-toggle="modal" data-target={`#delete${index}`}>Remove</button>
                                     {/* <!-- Modal Detail --> */}
                                     <div className="modal fade" id={`detail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`detailLabel${index}`} aria-hidden="true">

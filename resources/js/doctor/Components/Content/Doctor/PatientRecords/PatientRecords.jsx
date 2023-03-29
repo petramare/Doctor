@@ -39,9 +39,9 @@ export default function PatientRecords() {
     return (
         <>
             <div className="container mt-4">
-                <div className="row">
-                    <div className="card">
-                        <div className="col-md-12">
+                <div className="row justify-content-center">
+                    <div className="col col-md-8 col-sm-12">
+                        <div className="card p-2">
                             <PatientRequest
                                 request={request}
                                 state={state}
@@ -51,9 +51,9 @@ export default function PatientRecords() {
                 </div>
             </div>
             <div className="container mt-4">
-                <div className="row">
-                    <div className="card">
-                        <div className="col">
+                <div className="row justify-content-center">
+                    <div className="col col-md-8 col-sm-12">
+                        <div className="card">
                             <PatientList
                                 patientList={patientList}
                                 state={state}
