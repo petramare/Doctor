@@ -21,15 +21,23 @@ export default function AboutUs() {
                         <div className="card p-0 m-0">
                             <div className="card-img-top petra"></div>
                             <div className="card-body d-flex flex-column justify-content-center align-items-center align-self-center">
-                                <h5 className="card-title">
-                                    Petra Marešová
-                                </h5>
+                                <h5 className="card-title">Petra Marešová</h5>
                                 <p className="card-text text-center">
                                     CSO - Chief Seeders Officer
                                 </p>
-                                <div className="container d-flex">
-                                <a href="" className="btn btn-primary text-decoration-none mx-1">LinkedIn 👈</a>
-                                <a href="" className="btn btn-primary text-decoration-none mx-1">GitHub 👈</a>
+                                <div className="container d-flex justify-content-center align-items-center align-self-center">
+                                    <a
+                                        href=""
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        LinkedIn 👈
+                                    </a>
+                                    <a
+                                        href=""
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        GitHub 👈
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -40,15 +48,24 @@ export default function AboutUs() {
                         <div className="card p-0 m-0">
                             <div className="card-img-top honza"></div>
                             <div className="card-body d-flex flex-column justify-content-center align-items-center align-self-center">
-                                <h5 className="card-title">
-                                    Jan Šebesta
-                                </h5>
+                                <h5 className="card-title">Jan Šebesta</h5>
                                 <p className="card-text text-center">
-                                    Director of Doctor-Patient Mapping Relationships
+                                    Director of Doctor-Patient Mapping
+                                    Relationships
                                 </p>
-                                <div className="container d-flex">
-                                <a href="" className="btn btn-primary text-decoration-none mx-1">LinkedIn 👈</a>
-                                <a href="" className="btn btn-primary text-decoration-none mx-1">GitHub 👈</a>
+                                <div className="container d-flex justify-content-center align-items-center align-self-center">
+                                    <a
+                                        href=""
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        LinkedIn 👈
+                                    </a>
+                                    <a
+                                        href=""
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        GitHub 👈
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -80,15 +97,23 @@ export default function AboutUs() {
                         <div className="card p-0 m-0">
                             <div className="card-img-top jenda"></div>
                             <div className="card-body d-flex flex-column justify-content-center align-items-center align-self-center">
-                                <h5 className="card-title">
-                                    Jan Illetško
-                                </h5>
+                                <h5 className="card-title">Jan Illetško</h5>
                                 <p className="card-text text-center">
                                     Chairman of big-react-calendar & Datepicker
                                 </p>
-                                <div className="container d-flex">
-                                <a href="" className="btn btn-primary text-decoration-none mx-1">LinkedIn 👈</a>
-                                <a href="" className="btn btn-primary text-decoration-none mx-1">GitHub 👈</a>
+                                <div className="container d-flex justify-content-center align-items-center align-self-center">
+                                    <a
+                                        href=""
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        LinkedIn 👈
+                                    </a>
+                                    <a
+                                        href=""
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        GitHub 👈
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -99,15 +124,24 @@ export default function AboutUs() {
                         <div className="card p-0 m-0">
                             <div className="card-img-top lukas"></div>
                             <div className="card-body d-flex flex-column justify-content-center align-items-center align-self-center">
-                                <h5 className="card-title">
-                                    Lukáš Vítů
-                                </h5>
+                                <h5 className="card-title">Lukáš Vítů</h5>
                                 <p className="card-text text-center">
-                                    Executive director of Doctor-Patient Messages & Poor DB Design
+                                    Executive director of Doctor-Patient
+                                    Messages & Poor DB Design
                                 </p>
-                                <div className="container d-flex">
-                                <a href="https://www.linkedin.com/in/lukas-vitu/" className="btn btn-primary text-decoration-none mx-1">LinkedIn 👈</a>
-                                <a href="https://github.com/MarioJedna" className="btn btn-primary text-decoration-none mx-1">GitHub 👈</a>
+                                <div className="container d-flex justify-content-center align-items-center align-self-center">
+                                    <a
+                                        href="https://www.linkedin.com/in/lukas-vitu/"
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        LinkedIn 👈
+                                    </a>
+                                    <a
+                                        href="https://github.com/MarioJedna"
+                                        className="btn btn-primary text-decoration-none mx-1"
+                                    >
+                                        GitHub 👈
+                                    </a>
                                 </div>
                             </div>
                         </div>

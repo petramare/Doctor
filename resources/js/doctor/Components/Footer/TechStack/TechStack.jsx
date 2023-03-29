@@ -11,42 +11,42 @@ export default function TechStack() {
                 <hr />
                 <div className="container">
                     <div className="container d-flex flex-wrap justify-content-center align-items-center align-self-center">
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/html.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/css.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/js.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/php.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/laravel.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/react.png"
@@ -56,42 +56,42 @@ export default function TechStack() {
                     </div>
 
                     <div className="container d-flex">
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/composer.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/npm.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/vitejs.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/github.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/slack.png"
                                 alt="Card image cap"
                             />
                         </div>
-                        <div className="card">
+                        <div className="card stack">
                             <img
                                 className="card-img-top"
                                 src="img/techstack/trello.png"
