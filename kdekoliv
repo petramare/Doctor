@@ -1,4 +1,4 @@
 mysqldump db_doctor -u root -p --result-file=jan.sql --opt --quick --add-drop-table --add-locks --default-character-set=utf8 --disable-keys --extended-insert --lock-tables --no-create-db --triggers
 
 
-mysql -h 138.201.247.130 -P 3306 -u c1_calendr -p c1_calendr < jan.sql
+mysql -h 138.201.247.130 -P 3306 -u c1_calendr -p c1_calendr < jan.sql 
