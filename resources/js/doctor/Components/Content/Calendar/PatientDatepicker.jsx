@@ -57,6 +57,7 @@ export default function PatientDatepicker({
                 falseDays.push(index);
             }
         });
+        console.log(falseDays);
         return falseDays;
     };
 
