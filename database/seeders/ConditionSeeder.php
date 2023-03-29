@@ -18,31 +18,73 @@ class ConditionSeeder extends Seeder
         $conditions = [
             [
                 "patient_id" => 1,
-                "weight" => 105,
-                "height" => 194,
-                "history" => "strong as bear",
+                "weight" => 95,
+                "height" => 184,
+                "history" => "cardiac",
+                "date" => date('Y-m-d H:i:s')
+            ],
+            [
+                "patient_id" => 2,
+                "weight" => 77,
+                "height" => 176,
+                "history" => "diabetic",
+                "date" => date('Y-m-d H:i:s')
+            ],
+            [
+                "patient_id" => 3,
+                "weight" => 70,
+                "height" => 154,
+                "history" => "After patella surgery",
                 "date" => date('Y-m-d H:i:s')
             ],
             [
                 "patient_id" => 4,
+                "weight" => 88,
+                "height" => 194,
+                "history" => "After heart surgery",
+                "date" =>  date('Y-m-d H:i:s')
+            ],
+            [
+                "patient_id" => 5,
+                "weight" => 105,
+                "height" => 194,
+                "history" => "After brain surgery",
+                "date" => date('Y-m-d H:i:s')
+            ],
+            [
+                "patient_id" => 6,
                 "weight" => 77,
                 "height" => 176,
-                "history" => "almost dead",
+                "history" => "cardiac",
+                "date" => date('Y-m-d H:i:s')
+            ],
+            [
+                "patient_id" => 7,
+                "weight" => 70,
+                "height" => 154,
+                "history" => "After lung cancer",
                 "date" => date('Y-m-d H:i:s')
             ],
             [
                 "patient_id" => 8,
-                "weight" => 70,
-                "height" => 154,
-                "history" => "surviving",
+                "weight" => 88,
+                "height" => 194,
+                "history" => "after anorexia",
                 "date" => date('Y-m-d H:i:s')
             ],
             [
-                "patient_id" => 1,
+                "patient_id" => 9,
+                "weight" => 70,
+                "height" => 154,
+                "history" => "Insomniac",
+                "date" => date('Y-m-d H:i:s')
+            ],
+            [
+                "patient_id" => 10,
                 "weight" => 88,
                 "height" => 194,
-                "history" => "light af",
-                "date" => "20070523"
+                "history" => "heavy smoker",
+                "date" => date('Y-m-d H:i:s')
             ],
         ];
 
