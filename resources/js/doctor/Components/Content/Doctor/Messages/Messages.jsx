@@ -137,6 +137,7 @@ export default function Messages() {
     return (
         <>
             <div className="container">
+                {/* <iframe  width={800} height={800} src="https://embed.lottiefiles.com/animation/96413"></iframe> */}
                 <select
                     name="patient_id"
                     className="form-control mt-2 mb-2"
@@ -169,7 +170,6 @@ export default function Messages() {
                         ""
                     )}
                 </h1>
-
                 <div
                     className="row overflow-auto"
                     style={{ height: 400 + "px" }}
