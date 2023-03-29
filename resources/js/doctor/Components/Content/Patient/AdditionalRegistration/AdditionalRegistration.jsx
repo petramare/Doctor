@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function AdditionalRegistration() {
     const [insuranceCompanies, setInsuranceCompanies] = useState(null);
     const [patient, setPatient] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const loadInsuranceCompanies = async () => {
@@ -39,6 +40,7 @@ export default function AdditionalRegistration() {
             navigate("/patient/edit");
         } catch (error) {
             console.log(error);
+            setErrorMessage(error.response.data.errors);
         }
     };
 
@@ -75,14 +77,25 @@ export default function AdditionalRegistration() {
                             </option>
                             {insuranceCompanies
                                 ? insuranceCompanies.map((company, i) => {
-                                      return (
-                                          <option value={company.id} key={i}>
-                                              {company.name}
-                                          </option>
-                                      );
-                                  })
+                                    return (
+                                        <option value={company.id} key={i}>
+                                            {company.name}
+                                        </option>
+                                    );
+                                })
                                 : "load"}
                         </select>
+                        {errorMessage ? (
+                            Object.values(errorMessage).map((message, index) => {
+                                return (
+                                    <div className="alert alert-danger" role="alert" key={index}>{message}</div>
+                                )
+                            })
+
+                        )
+                            :
+                            ''
+                        }
                         <button type="submit" className="btn btn-primary">
                             Submit
                         </button>

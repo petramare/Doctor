@@ -1,16 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function AppointmentsList() {
+export default function AppointmentsList({ appList, setAppList }) {
 
-    const [appList, setAppList] = useState([]);
+
     const [render, setRender] = useState(0);
     // List of Appointments which are Suggested
     const handleAppList = async () => {
         try {
             const response = await axios.get('/api/appointments/doctor/list')
             setAppList(response.data);
-            console.log(response.data);
         } catch (error) {
             console.log(error);
         }
