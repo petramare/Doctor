@@ -30,16 +30,16 @@ class ClinicSeeder extends Seeder
             ],
             [
                 "name" => "Gamma Clinic",
-                "address" => "Jeremenkova 161/11, Ostrava-Vítkovice PSČ: 703 00",
+                "address" => "Jeremenkova 161/11, 703 00 Ostrava-Vítkovice",
                 "registration_code" => "1454636",
                 "tax_registration_code" => "47672234",
             ],
-            [
-                "name" => "Omega Clinic",
-                "address" => "1, Roškotova 1225, 140 00 Praha",
-                "registration_code" => "1234145",
-                "tax_registration_code" => "47114321",
-            ],
+            // [
+            //     "name" => "Omega Clinic",
+            //     "address" => "Roškotova 1225/1, 140 00 Praha",
+            //     "registration_code" => "1234145",
+            //     "tax_registration_code" => "47114321",
+            // ],
         ];
 
         DB::table('clinics')->insert($clinics);
