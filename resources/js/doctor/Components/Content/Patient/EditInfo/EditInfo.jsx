@@ -5,6 +5,7 @@ import UserContext from "../../../UserContext/UserContext";
 export default function EditInfo() {
     const { user } = useContext(UserContext);
     const [patient, setPatient] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const loadData = async () => {
         try {
@@ -27,6 +28,7 @@ export default function EditInfo() {
             const response = await axios.post("/api/patient/update", patient);
         } catch (error) {
             console.log(error);
+            setErrorMessage(error.response.data.errors);
         }
     };
 
@@ -153,6 +155,17 @@ export default function EditInfo() {
                                         onChange={handlePatient}
                                     />
                                 </div>
+                                {errorMessage ? (
+                                    Object.values(errorMessage).map((message, index) => {
+                                        return (
+                                            <div className="alert alert-danger" role="alert" key={index}>{message}</div>
+                                        )
+                                    })
+
+                                )
+                                    :
+                                    ''
+                                }
                                 <button type="submit" className="btn btn-dark">
                                     Update
                                 </button>
