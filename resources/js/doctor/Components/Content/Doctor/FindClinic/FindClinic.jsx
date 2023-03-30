@@ -22,20 +22,22 @@ export default function FindClinic() {
     return (
 
         <>
-            <h1>Find your clinic:</h1>
-            <form action="" onSubmit={(e) => {
+            <h1 className="text-center mt-5" style={{ color: '#112D4E' }}>Find your clinic:</h1>
+            <form action="" className="text-center w-100 mb-5" onSubmit={(e) => {
                 e.preventDefault();
 
                 handleSearch();
             }}>
-                <label htmlFor="search">Search for a clinic by Name:
-                </label>
+                <div>
+                    <label htmlFor="search">Search for a clinic by Name:
+                    </label>
+                </div>
                 <br></br>
-                <input className="search-item" type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
+                <input className="search-item w-20" type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
                 <button className="submit-button">Submit</button>
             </form>
             {
-                search ?
+                search.length > 0 ?
                     <table className="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
@@ -57,7 +59,7 @@ export default function FindClinic() {
                         </tbody>
                     </table>
                     :
-                    'loading'
+                    ''
             }
 
         </>

@@ -38,6 +38,13 @@ export default function PatientRecords() {
 
     return (
         <>
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h1 className="text-center mt-5" style={{ color: '#112D4E' }}>Patient Records</h1>
+                    </div>
+                </div>
+            </div>
             <div className="container mt-4">
                 <div className="row justify-content-center">
                     <div className="col col-md-8 col-sm-12">
