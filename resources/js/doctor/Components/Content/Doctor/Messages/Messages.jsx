@@ -275,7 +275,7 @@ export default function Messages() {
                             )} */}
                             <button
                                 type="submit"
-                                className="btn mt-2 mb-2 btn-primary"
+                                className="btn mt-2 mb-2 accept-button"
                             >
                                 Send Message
                             </button>

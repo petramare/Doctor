@@ -28,13 +28,13 @@ export default function AboutUs() {
                                 <div className="container d-flex justify-content-center align-items-center align-self-center">
                                     <a
                                         href="https://www.linkedin.com/in/petra-maresova/"
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         LinkedIn 👈
                                     </a>
                                     <a
                                         href="https://github.com/petramare"
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         GitHub 👈
                                     </a>
@@ -55,14 +55,14 @@ export default function AboutUs() {
                                 </p>
                                 <div className="container d-flex justify-content-center align-items-center align-self-center">
                                     <a
-                                        href=""
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        href="https://www.linkedin.com/in/jansebestacz"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         LinkedIn 👈
                                     </a>
                                     <a
-                                        href=""
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        href="https://github.com/seja88"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         GitHub 👈
                                     </a>
@@ -104,13 +104,13 @@ export default function AboutUs() {
                                 <div className="container d-flex justify-content-center align-items-center align-self-center">
                                     <a
                                         href="https://www.linkedin.com/in/janilletsko/"
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         LinkedIn 👈
                                     </a>
                                     <a
                                         href="https://github.com/Koleckoo"
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         GitHub 👈
                                     </a>
@@ -132,13 +132,13 @@ export default function AboutUs() {
                                 <div className="container d-flex justify-content-center align-items-center align-self-center">
                                     <a
                                         href="https://www.linkedin.com/in/lukas-vitu/"
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         LinkedIn 👈
                                     </a>
                                     <a
                                         href="https://github.com/MarioJedna"
-                                        className="btn btn-primary text-decoration-none mx-1"
+                                        className="btn accept-button text-decoration-none mx-1"
                                     >
                                         GitHub 👈
                                     </a>
