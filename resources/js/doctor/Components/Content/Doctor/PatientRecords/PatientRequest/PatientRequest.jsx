@@ -63,8 +63,8 @@ export default function PatientRequest({ request, setState, state }) {
                                             <td className="text-center">{result.user.first_name} {result.user.surname}</td>
                                             <td className="text-capitalize text-center">{result.pivot.status}</td>
                                             <td className="text-center">
-                                                <button type="button" className="btn btn-success btn-rounded" onClick={(e) => handleClickAccept(e, result)}>Accept</button>
-                                                <button className="btn btn-danger btn-rounded" onClick={(e) => handleClickDelete(e, result)}>Reject</button>
+                                                <button type="button" className="accept-button" onClick={(e) => handleClickAccept(e, result)}>Accept</button>
+                                                <button className="reject-button" onClick={(e) => handleClickDelete(e, result)}>Reject</button>
                                             </td>
                                         </tr>
                                     ))}

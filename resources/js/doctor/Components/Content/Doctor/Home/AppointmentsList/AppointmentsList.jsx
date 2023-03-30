@@ -48,7 +48,7 @@ export default function AppointmentsList({ appList, setAppList }) {
     return (
 
         <>
-            {appList ?
+            {appList.length !== 0 ?
                 <div>
                     <h1>List of requested appointment:</h1>
                     <table className="table">
@@ -64,9 +64,9 @@ export default function AppointmentsList({ appList, setAppList }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {console.log(appList)}
                             {appList.map((result, index) => (
                                 <tr key={index}>
+                                    {console.log(appList)}
                                     <th scope="row">{index + 1}</th>
                                     <td>{result.patient.first_name} {result.patient.surname}</td>
                                     <td>{result.start}</td>
@@ -98,7 +98,7 @@ export default function AppointmentsList({ appList, setAppList }) {
                     </table>
                 </div>
                 :
-                <div>NO APPOINTMENTS</div>
+                ''
             }
         </>
     )
