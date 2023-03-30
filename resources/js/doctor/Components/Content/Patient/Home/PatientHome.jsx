@@ -26,22 +26,25 @@ export default function PatientHome() {
         <>
             {user ? (
                 <div>
+                    
                     {/* {console.log(doctorsAppointments)} */}
+                    <iframe width="560" height="315" className="mt-5" src="https://embed.lottiefiles.com/animation/100854"></iframe>
                     <div className="container">
                         <div className="row">
-                            <div className="col">
+                            <div className="col text-center ms-5">
                                 <h1>
                                     Welcome back, {user.first_name}{" "}
                                     {user.surname}
                                 </h1>
+                                
                                 <h3>
-                                    Here are your doctors schedule for this
+                                    Here are your doctors schedules for this
                                     month:
                                 </h3>
                             </div>
                         </div>
                     </div>
-
+                
                     {doctorsAppointments.map((doctorAppointment, index) => {
                         return (
                             <div key={index} className="container">
