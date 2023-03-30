@@ -1,76 +1,11 @@
 import { Link } from "react-router-dom";
 import "./LandingPage.scss";
 
+<Link to="/register"></Link>;
+
 export default function LandingPage() {
     return (
         <>
-            {/* <div className="jumbotron jumbotron-fluid">
-                <div className="text-white text-center my-5">
-                    <h2 className="display-3">
-                        Virtual personal assistent CalenDr.
-                    </h2>
-                    <p>
-                        Offering private healthcare services for international
-                        and Czech clients in Prague
-                    </p>
-                </div>
-            </div>
-
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col text-center">
-                        <Link to="/login">
-                            <button className="btn btn-primary btn-lg">
-                                Login
-                            </button>
-                        </Link>
-                    </div>
-                    <div className="col text-center">
-                        <Link to="/register">
-                            <button className="btn btn-primary btn-lg">
-                                Register
-                            </button>
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col">
-                        <h4 className="text-center text-uppercase">
-                            Info about the platform
-                        </h4>
-                        <p className="text-justify">
-                            The platform for doctors is a powerful tool designed
-                            to streamline the process of scheduling appointments
-                            between doctors and their patients. With this
-                            platform, doctors can easily manage their schedules
-                            and plan their appointments in an efficient manner,
-                            without the need for manual appointment bookings.
-                            The platform features a calendar system that allows
-                            doctors to set their availability and schedule
-                            appointments with ease. This makes it easier for
-                            doctors to manage their busy schedules and ensures
-                            that patients can easily find a convenient time to
-                            schedule an appointment. Patients can also sign in
-                            to the platform and schedule a meeting with a doctor
-                            that suits their needs. Additionally, the platform
-                            can be used by clinics to oversee the schedules of
-                            multiple doctors and plan their time in a way that
-                            maximizes efficiency. This feature is particularly
-                            useful for large clinics that have multiple doctors
-                            working at the same time. With its user-friendly
-                            interface and powerful scheduling tools, the
-                            platform for doctors is the ideal solution for
-                            doctors, clinics, and patients alike. It simplifies
-                            the process of scheduling appointments, saves time,
-                            and ensures that patients receive the care they need
-                            when they need it.
-                        </p>
-                    </div>
-                </div>
-            </div> */}
             <div className="container mt-5">
                 <div className="row">
                     <div className="col">
@@ -91,21 +26,21 @@ export default function LandingPage() {
                                 <div className="container">
                                     <div className="row align-items-center my-5 py-5">
                                         <div className="col-md-6 d-flex flex-column align-items-end px-3">
-                                            <h1>
+                                            <h1 className="text-end">
                                                 Be reachable to your Patients
                                             </h1>
-                                            <p className="text-right">
-                                                Allow new patients to find You
-                                                and Your current Patients to
-                                                schedule an Appointment with you
-                                                on few clicks.
+                                            <p className="lh-lg text-end">
+                                                Allow potential patients to find
+                                                You, and Your current Patients
+                                                to schedule an Appointment with
+                                                you in a few clicks.
                                             </p>
-                                            <a
-                                                href="#"
+                                            <Link
                                                 className="btn btn-primary btn-lg"
+                                                to="/register"
                                             >
                                                 Register as a Doctor
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="col-md-6">
                                             <iframe
@@ -115,10 +50,11 @@ export default function LandingPage() {
                                             ></iframe>
                                         </div>
                                     </div>
-                                    <blockquote className="col display-5 lh-base my-5 py-5 text-primary">
-                                        Whether You are Patient or Doctor our
-                                        platform aim to make communication
-                                        between Patients and Doctors effective.
+                                    <blockquote className="col display-5 lh-base text-left my-5 py-5 text-primary">
+                                        Whether You are a Patient or a Doctor
+                                        our platform aims to make the
+                                        communication between Patients and
+                                        Doctors effective.
                                     </blockquote>
                                     <div className="row align-items-center my-5 py-5">
                                         <div className="col-md-6">
@@ -129,30 +65,41 @@ export default function LandingPage() {
                                             ></iframe>
                                         </div>
                                         <div className="col-md-6">
-                                            <h1>Your Personal Calendar</h1>
-                                            <p>
-                                                Keep track of your schedule with
-                                                our easy-to-use calendar app.
+                                            <h1>
+                                                Have messages from Your Doctors
+                                                in one place
+                                            </h1>
+                                            <p className="lh-lg">
+                                                There is no need to dig in your
+                                                email account for memos from
+                                                your Doctor. Have all the
+                                                information available to stay
+                                                healthy and informed.
                                             </p>
-                                            <a
-                                                href="#"
+                                            <Link
                                                 className="btn btn-primary btn-lg"
+                                                to="/register"
                                             >
                                                 Register as a Patient
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
-                                    <blockquote className="col display-5 lh-base my-5 py-5 text-primary">
-                                        Be able to contact your Doctor directly
-                                        - have all the communication at one
-                                        place.{" "}
+                                    <blockquote className="col display-5 lh-base my-5 py-5 text-end text-primary">
+                                        Contacting your Doctor has never been
+                                        easier.
                                     </blockquote>
                                     <div className="row align-items-center my-5 py-5">
                                         <div className="col-md-6 d-flex flex-column align-items-end">
-                                            <h1>Your Personal Calendar</h1>
-                                            <p>
-                                                Keep track of your schedule with
-                                                our easy-to-use calendar app.
+                                            <h1 className="text-end">
+                                                Find specialist to suit your
+                                                needs{" "}
+                                            </h1>
+                                            <p className="lh-lg text-end">
+                                                Found a new Doctor? Let them
+                                                know you want to be their
+                                                patient. Once they will approve
+                                                you - you can schedule your
+                                                first appointment.
                                             </p>
                                             <a
                                                 href="#"
@@ -170,10 +117,9 @@ export default function LandingPage() {
                                         </div>
                                     </div>
                                     <blockquote className="col display-5 lh-base my-5 py-5 text-primary">
-                                        Search for Specialists who will help you
-                                        with your Health Issues - Be visible for
-                                        your potential new patients, let them
-                                        contact you via CalenDr.
+                                        Be visible to your potential patients,
+                                        and let them contact you via
+                                        <strong> CalenDr.</strong>
                                     </blockquote>
                                     <div className="row align-items-center my-5 py-5">
                                         <div className="col-md-6">
@@ -184,17 +130,26 @@ export default function LandingPage() {
                                             ></iframe>
                                         </div>
                                         <div className="col-md-6">
-                                            <h1>Your Personal Calendar</h1>
-                                            <p>
-                                                Keep track of your schedule with
-                                                our easy-to-use calendar app.
+                                            <h1>Do you miss some feature?</h1>
+                                            <p className="lh-lg text-primary">
+                                                Let us know what would You like
+                                                see in CalenDr and we can
+                                                promise You -{" "}
+                                                <strong className="text-primary">
+                                                    we will never do it. -
+                                                    Because this is just Final
+                                                    Project dude - We've got
+                                                    bills to pay - ain't nobody
+                                                    got time for that.
+                                                </strong>
                                             </p>
-                                            <a
-                                                href="#"
+                                            <Link
                                                 className="btn btn-primary btn-lg"
+                                                to="/about-us"
                                             >
-                                                Contact Us
-                                            </a>
+                                                <strong>Contact Us</strong><br/>{" "}
+                                                (preferably with job offers)
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

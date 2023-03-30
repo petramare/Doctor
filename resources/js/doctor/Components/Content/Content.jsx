@@ -20,6 +20,9 @@ import PatientMessages from "./Patient/Messages/Messages";
 import DoctorMessages from "./Doctor/Messages/Messages";
 import AboutUs from "../Footer/AboutUs/AboutUs";
 import TechStack from "../Footer/TechStack/TechStack";
+import LessonsLearnt from "../Footer/LessonsLearnt/LessonsLearnt";
+import NextSteps from "../Footer/NextSteps/NextSteps";
+import QA from "../Footer/QA/QA";
 
 
 export default function Content() {
@@ -57,6 +60,9 @@ export default function Content() {
                     {/* footer routes */}
                     <Route path='/about-us' element={<AboutUs />} />
                     <Route path='/techstack' element={<TechStack />} />
+                    <Route path='/lessons-learnt' element={<LessonsLearnt />} />
+                    <Route path='/next-steps' element={<NextSteps />} />
+                    <Route path='/qa' element={<QA />} />
                 </Routes>
             </div>
         </main>

@@ -10,11 +10,6 @@ export default function Footer() {
                             Home
                         </a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link px-2 text-muted" href="#">
-                            About us
-                        </a>
-                    </li>
                     <li className="nav-item active">
                         <Link to="/about-us" className="nav-link">
                             About Us
@@ -25,10 +20,20 @@ export default function Footer() {
                             Tech Stack
                         </Link>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link px-2 text-muted" href="#">
-                            Pricing
-                        </a>
+                    <li className="nav-item active">
+                        <Link to="/lessons-learnt" className="nav-link">
+                            Lessons Learnt
+                        </Link>
+                    </li>
+                    <li className="nav-item active">
+                        <Link to="/next-steps" className="nav-link">
+                            Next Steps
+                        </Link>
+                    </li>
+                    <li className="nav-item active">
+                        <Link to="/qa" className="nav-link">
+                            Q&A
+                        </Link>
                     </li>
                 </ul>
 
