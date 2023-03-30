@@ -48,12 +48,10 @@ export default function PatientRecords() {
             <div className="container mt-4">
                 <div className="row justify-content-center">
                     <div className="col col-md-8 col-sm-12">
-                        <div className="card p-2">
-                            <PatientRequest
-                                request={request}
-                                state={state}
-                                setState={setState} />
-                        </div>
+                        <PatientRequest
+                            request={request}
+                            state={state}
+                            setState={setState} />
                     </div>
                 </div>
             </div>
