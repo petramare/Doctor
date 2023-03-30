@@ -86,12 +86,11 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
     return (
         <div className="container">
             <div className="row">
-                <div className="col text-center">
+                <div className="col text-center registration-form datepicker">
                     <h2>Add a New Event</h2>
                     <div>
-                        <label htmlFor="choose_patient">Pick a patient:</label>
                         <select
-                            className="form-control"
+                            className="form-control item"
                             // value="selected"
                             name="patient_id"
                             id=""
@@ -121,10 +120,8 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="title">Title: </label>
-                        <br />
                         <input
-                            className="form-control"
+                            className="form-control item"
                             type="text"
                             name="title"
                             placeholder="Add a appointment title"
@@ -138,9 +135,8 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="start">Start Date:</label>
                         <DatePicker
-                            className="form-control"
+                            className="form-control item"
                             placeholderText="Click to select a start date"
                             selected={newAppointment.start}
                             filterTime={filterPassedTime}
@@ -162,9 +158,8 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="end">End Date: </label>
                         <DatePicker
-                            className="form-control"
+                            className="form-control item"
                             placeholderText="Click to select an end date"
                             filterTime={filterPassedTime}
                             filterDate={(date) => isWeekdayWithPassedTime(date)}
@@ -185,7 +180,7 @@ export default function DoctorDatepicker({ refresh, setRefresh }) {
                         />
                     </div>
                     <button
-                        className="btn btn-success mt-4"
+                        className="accept-button"
                         onClick={handleAddAppointment}
                     >
                         Schedule Meeting
