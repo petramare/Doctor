@@ -44,8 +44,8 @@ export default function PatientRequest({ request, setState, state }) {
     return (
         <>
             {
-                request ?
-                    <div>
+                request.length > 0 ?
+                    <div className="card p-2">
                         <h2 className="text-center">New Registration requests:</h2>
                         <div className="table-responsive">
                             <table className="table table-striped table-hover table-bordered">
