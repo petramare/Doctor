@@ -42,7 +42,7 @@ export default function PatientCalendarComponent({ doctorAppointment }) {
 
     return (
         <div>
-            {console.log(meetings)}
+            {/* {console.log(meetings)} */}
             {/* {console.log(doctorAppointment)} */}
             <Calendar
                 localizer={localizer}

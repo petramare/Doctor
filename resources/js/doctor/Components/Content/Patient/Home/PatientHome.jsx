@@ -64,7 +64,7 @@ export default function PatientHome() {
                                     </div>
                                     <div className="col">
                                         <div className="calendar">
-                                            {console.log(doctorAppointment)}
+                                            {/* {console.log(doctorAppointment)} */}
                                             <PatientCalendarComponent
                                                 doctorAppointment={
                                                     doctorAppointment
