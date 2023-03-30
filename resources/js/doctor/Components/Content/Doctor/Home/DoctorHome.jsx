@@ -14,8 +14,9 @@ export default function DoctorHome() {
                 <div>
                     <div className="container">
                         <div className="row">
-                            <div className="col">
-                                <h1 className="text-center mt-5 mb-5">
+                            <iframe width="560" height="315" className="mt-5 col" src="https://embed.lottiefiles.com/animation/100854"></iframe>
+                            <div className="col-7 mt-5 me-5 d-flex flex-column justify-content-center">
+                                <h1>
                                     Welcome back, {user.first_name}{" "}
                                     {user.surname}
                                 </h1>
