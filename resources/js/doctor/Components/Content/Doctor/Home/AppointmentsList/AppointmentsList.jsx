@@ -126,7 +126,7 @@ export default function AppointmentsList({ appList, setAppList }) {
                                     </td>
                                     <td className="align-middle text-center">
                                         <button
-                                            className="accept-button"
+                                            className="accept-button mb-1"
                                             type="button"
                                             data-toggle="modal"
                                             data-target={`#doctorAppAccept${index}`}

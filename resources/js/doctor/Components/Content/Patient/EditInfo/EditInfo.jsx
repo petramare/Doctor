@@ -57,7 +57,7 @@ export default function EditInfo() {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <h1>Edit your information</h1>
+                        <h1 className="text-center mt-5" style={{ color: '#112D4E' }}>Edit your information</h1>
                     </div>
                 </div>
             </div>

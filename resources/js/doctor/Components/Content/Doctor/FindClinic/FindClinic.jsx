@@ -29,8 +29,7 @@ export default function FindClinic() {
                 handleSearch();
             }}>
                 <div>
-                    <label htmlFor="search">Search for a clinic by Name:
-                    </label>
+                    <label htmlFor="search">Search for a clinic by Name:</label>
                 </div>
                 <br></br>
                 <input className="search-item w-20" type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />

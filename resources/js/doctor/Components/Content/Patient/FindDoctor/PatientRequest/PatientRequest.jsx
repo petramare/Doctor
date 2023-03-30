@@ -24,8 +24,7 @@ export default function PatientRequest({ request, setRequest, applied }) {
             {
                 request ?
                     <div>
-                        {console.log(request)}
-                        <h1>Your Doctors:</h1>
+                        <h1 className="text-center mt-5 mb-5" style={{ color: '#112D4E' }}>Your Doctors:</h1>
                         <table className="table">
                             <thead>
                                 <tr>
