@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import './Condition.scss';
 
 export default function PatientCondition() {
 
@@ -59,37 +60,47 @@ export default function PatientCondition() {
   }, [savedCondition]);
 
   return (
-    <div>
+    <div className="condtion-form">
 
       <form onSubmit={handleSubmit}>
 
-        <label htmlFor="height">Height:</label>
-        <input
-          type="text"
-          id="height"
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-        />
+        <div className="form-group">
+              <label htmlFor="height">Height:</label>
+              <input
+                className="form-control item"
+                type="text"
+                id="height"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+              />
+        </div>
 
-        <label htmlFor="weight">Weight:</label>
-        <input
-          type="text"
-          id="weight"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-        />
+        <div className="form-group">
+              <label htmlFor="weight">Weight:</label>
+              <input
+                className="form-control item"
+                type="text"
+                id="weight"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+              />
+          </div>
 
-        <label htmlFor="history">Medical History:</label>
-        <textarea
-          id="history"
-          value={history}
-          onChange={(e) => setHistory(e.target.value)}
-        ></textarea>
-
-        <input type="hidden" id="date" value={new Date().toISOString()} />
-
-        <button type="submit" >Submit</button>
+        <div className="form-group">
+              <label htmlFor="history">Medical History:</label>
+              <textarea
+                className="form-control item"
+                id="history"
+                value={history}
+                onChange={(e) => setHistory(e.target.value)}
+              ></textarea>
+          </div>    
+                
+              <input className="form-control item" type="hidden" id="date" value={new Date().toISOString()} />
+              <button type="submit" >Submit</button>
       </form>
+      </div>
+
       <div className="patient_condition_history" >
 
         {/* data are being showed below the form with input */}
@@ -118,7 +129,8 @@ export default function PatientCondition() {
           Object.values(messages.messages).map((message, index) => {
             return (
 
-              <div className={messages.status == 'success' ? "alert alert-success" : "alert alert-danger"} role="alert" key={index}>{message}</div>
+              <div className={messages.status == 'success' ? "alert alert-success" : "alert alert-danger"} role="alert" key={index}>{message}
+              </div>
             )
           })
 
@@ -127,6 +139,6 @@ export default function PatientCondition() {
           ''
         }
       </div>
-    </div>
+    
   )
 }
