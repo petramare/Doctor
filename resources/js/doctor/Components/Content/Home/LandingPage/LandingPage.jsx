@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./LandingPage.scss";
 
 <Link to="/register"></Link>;
 
 export default function LandingPage() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <div className="container mt-5">
