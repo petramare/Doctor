@@ -5,7 +5,7 @@ import UserContext from "../../../UserContext/UserContext";
 export default function Messages() {
     const { user } = useContext(UserContext);
     const [messages, setMessages] = useState([]);
-    const [messageCount, setMessageCount] = useState(0)
+    const [messageCount, setMessageCount] = useState(0);
     const [doctors, setDoctors] = useState(null);
     const [patientId, setPatientId] = useState(null);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
@@ -40,7 +40,7 @@ export default function Messages() {
             let response = await axios.get(
                 `/api/messages/dirrect/${doctors[selectedDoctor].doctor_id}/${patientId}`
             );
-            setMessageCount(response.data.length)
+            setMessageCount(response.data.length);
             setMessages(response.data);
         } catch (error) {
             console.log(error);
@@ -263,7 +263,7 @@ export default function Messages() {
                                 : ""}
                             <button
                                 type="submit"
-                                className="btn mt-2 mb-2 btn-primary"
+                                className="btn mt-2 mb-2 accept-button"
                             >
                                 Send Message
                             </button>
