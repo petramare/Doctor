@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import './Condition.scss';
+
 
 export default function PatientCondition() {
-
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [history, setHistory] = useState("");
@@ -31,7 +32,7 @@ export default function PatientCondition() {
       console.log(response);
       setMessages({
         status: 'success',
-        messages: ['Success message']
+        messages: ['Condition successfully added']
       })
     } catch (error) {
       console.log(error);
@@ -59,74 +60,91 @@ export default function PatientCondition() {
   }, [savedCondition]);
 
   return (
-    <div>
-
-      <form onSubmit={handleSubmit}>
-
-        <label htmlFor="height">Height:</label>
-        <input
-          type="text"
-          id="height"
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-        />
-
-        <label htmlFor="weight">Weight:</label>
-        <input
-          type="text"
-          id="weight"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-        />
-
-        <label htmlFor="history">Medical History:</label>
-        <textarea
-          id="history"
-          value={history}
-          onChange={(e) => setHistory(e.target.value)}
-        ></textarea>
-
-        <input type="hidden" id="date" value={new Date().toISOString()} />
-
-        <button type="submit" >Submit</button>
-      </form>
-      <div className="patient_condition_history" >
-
-        {/* data are being showed below the form with input */}
-        <h2>Patient Data</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Weight</th>
-              <th>Height</th>
-              <th>History</th>
-            </tr>
-          </thead>
-          <tbody>
-            {results.map((result, index) => (
-              <tr key={index}>
-                <td>{result.date}</td>
-                <td>{result.weight}</td>
-                <td>{result.height}</td>
-                <td>{result.history}</td>
+    <>
+      <div className="condition-form">
+  
+        <form onSubmit={handleSubmit}>
+  
+          <div className="form-group">
+                <input
+                  className="form-control item"
+                  placeholder="Height"
+                  type="text"
+                  id="height"
+                  value={height}
+                  onChange={(e) => setHeight(e.target.value)}
+                />
+          </div>
+  
+          <div className="form-group">
+                <input
+                  className="form-control item"
+                  placeholder="Weight"
+                  type="text"
+                  id="weight"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                />
+            </div>
+  
+          <div className="form-group">
+                <textarea
+                  className="form-control item"
+                  placeholder="History"
+                  id="history"
+                  value={history}
+                  onChange={(e) => setHistory(e.target.value)}
+                ></textarea>
+            </div>    
+            <input className="form-control item" type="hidden" id="date" value={new Date().toISOString()} />
+              <div className="form-group">
+                <button 
+                className="create-form" type="submit" >
+                  Submit
+                </button>
+              </div>
+        </form>
+        </div>
+  
+        <div className="patient_condition_history" >
+  
+          
+          <h2>Patients' condition: </h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Weight</th>
+                <th>Height</th>
+                <th>History</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {messages.messages ? (
-          Object.values(messages.messages).map((message, index) => {
-            return (
-
-              <div className={messages.status == 'success' ? "alert alert-success" : "alert alert-danger"} role="alert" key={index}>{message}</div>
-            )
-          })
-
-        )
-          :
-          ''
-        }
-      </div>
-    </div>
+            </thead>
+            <tbody>
+              {results.map((result, index) => (
+                <tr key={index}>
+                  <td>{result.date}</td>
+                  <td>{result.weight}</td>
+                  <td>{result.height}</td>
+                  <td>{result.history}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {messages.messages ? (
+            Object.values(messages.messages).map((message, index) => {
+              return (
+  
+                <div className={messages.status == 'success' ? "alert alert-success" : "alert alert-danger"} role="alert" key={index}>{message}
+                </div>
+              )
+            })
+  
+          )
+            :
+            ''
+          }
+        </div>
+    </>
+    
   )
 }

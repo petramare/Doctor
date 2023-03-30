@@ -84,7 +84,7 @@ export default function EditInfo() {
             {doctor ? (
                 <div className="container">
                     <div className="row">
-                        <div className="col">
+                        <div className="col registration-form">
                             <form
                                 action=""
                                 method="post"
@@ -96,7 +96,7 @@ export default function EditInfo() {
                                     </label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="first_name"
                                         value={doctor.user.first_name || ""}
                                         onChange={handleChangeUser}
@@ -106,7 +106,7 @@ export default function EditInfo() {
                                     <label htmlFor="surname">Surname</label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="surname"
                                         value={doctor.user.surname || ""}
                                         onChange={handleChangeUser}
@@ -116,7 +116,7 @@ export default function EditInfo() {
                                     <label htmlFor="email">Email</label>
                                     <input
                                         type="email"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="email"
                                         value={doctor.user.email || ""}
                                         // onChange={handleChangeUser}
@@ -130,7 +130,7 @@ export default function EditInfo() {
                                     </label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="date_of_birth"
                                         value={doctor.user.date_of_birth || ""}
                                         onChange={handleChangeUser}
@@ -141,7 +141,7 @@ export default function EditInfo() {
                                     <input
                                         type="text"
                                         name="role"
-                                        className="form-control"
+                                        className="form-control item"
                                         value={doctor.user.role || ""}
                                         // onChange={handleChangeUser}
                                         readOnly
@@ -152,7 +152,7 @@ export default function EditInfo() {
                                     <label htmlFor="id_number">ID number</label>
                                     <input
                                         type="number"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="id_number"
                                         value={doctor.user.id_number || ""}
                                         onChange={handleChangeUser}
@@ -164,7 +164,7 @@ export default function EditInfo() {
                                     </label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="specialization"
                                         value={doctor.specialization || ""}
                                         onChange={handleChangeDoctor}
@@ -177,7 +177,7 @@ export default function EditInfo() {
                                     </label>
                                     <input
                                         type="number"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="doctor_license_number"
                                         value={
                                             doctor.doctor_license_number || ""
@@ -277,7 +277,7 @@ export default function EditInfo() {
                                     </div>
                                     <div className="form-check checkbox-xl">
                                         <input
-                                            className="form-check-input"
+                                            className="form-check-input btn-color-same"
                                             type="checkbox"
                                             name="friday"
                                             checked={
@@ -299,38 +299,38 @@ export default function EditInfo() {
                                 </div>
                                 {errorMessages
                                     ? Object.values(errorMessages).map(
-                                          (message, i) => {
-                                              return (
-                                                  <div
-                                                      key={i}
-                                                      className="alert alert-danger"
-                                                      role="alert"
-                                                  >
-                                                      {message}
-                                                  </div>
-                                              );
-                                          }
-                                      )
+                                        (message, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="alert alert-danger"
+                                                    role="alert"
+                                                >
+                                                    {message}
+                                                </div>
+                                            );
+                                        }
+                                    )
                                     : ""}
                                 {successMessage == 200 ? (
-                                <div
-                                    className="alert alert-success alert-dismissible fade show di"
-                                    role="alert"
-                                >
-                                    Record have been updated{" "}
-                                    <button
-                                        type="button"
-                                        className="btn close"
-                                        data-dismiss="alert"
-                                        aria-label="Close"
+                                    <div
+                                        className="alert alert-success alert-dismissible fade show di"
+                                        role="alert"
                                     >
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            ) : (
-                                ""
-                            )}
-                                <button type="submit" className="btn btn-primary">
+                                        Record have been updated{" "}
+                                        <button
+                                            type="button"
+                                            className="btn close"
+                                            data-dismiss="alert"
+                                            aria-label="Close"
+                                        >
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
+                                <button type="submit" className="create-account">
                                     Update
                                 </button>
                             </form>
