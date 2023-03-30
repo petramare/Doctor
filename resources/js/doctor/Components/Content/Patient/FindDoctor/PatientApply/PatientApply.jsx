@@ -23,7 +23,7 @@ export default function PatientApply({ result, setApplied }) {
 
     return (
         <>
-            <button className="btn btn-success" onClick={handleClick}>Apply</button>
+            <button className="accept-button" onClick={handleClick}>Apply</button>
         </>
     )
 }

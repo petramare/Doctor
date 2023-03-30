@@ -21,22 +21,19 @@ export default function DoctorHome() {
                             </div>
                         </div>
                     </div>
-                    {appList.length !== 0 ?
-                        <div className="container">
-                            <div className="row">
-                                <div className="col">
-                                    <div className="calendar">
-                                        <AppointmentsList
-                                            appList={appList}
-                                            setAppList={setAppList}
-                                        />
-                                    </div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <div className="calendar">
+                                    <AppointmentsList
+                                        appList={appList}
+                                        setAppList={setAppList}
+                                    />
                                 </div>
                             </div>
                         </div>
-                        :
-                        ''
-                    }
+                    </div>
+
                     {/* <div className="container">
                         <div className="row">
                             <div className="col">

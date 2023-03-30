@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
+import './PatientRequest.scss';
 
 export default function PatientRequest({ request, setState, state }) {
     //Accept button
@@ -59,12 +60,12 @@ export default function PatientRequest({ request, setState, state }) {
                                 <tbody>
                                     {request.map((result, index) => (
                                         <tr key={index}>
-                                            <th className="text-center" scope="row">{index + 1}</th>
-                                            <td className="text-center">{result.user.first_name} {result.user.surname}</td>
-                                            <td className="text-capitalize text-center">{result.pivot.status}</td>
-                                            <td className="text-center">
-                                                <button type="button" className="btn btn-success btn-rounded" onClick={(e) => handleClickAccept(e, result)}>Accept</button>
-                                                <button className="btn btn-danger btn-rounded" onClick={(e) => handleClickDelete(e, result)}>Reject</button>
+                                            <th className="text-center align-middle" scope="row">{index + 1}</th>
+                                            <td className="text-center align-middle">{result.user.first_name} {result.user.surname}</td>
+                                            <td className="text-capitalize text-center align-middle">{result.pivot.status}</td>
+                                            <td className="text-center align-middle">
+                                                <button type="button" className="accept-button" onClick={(e) => handleClickAccept(e, result)}>Accept</button>
+                                                <button className="reject-button" onClick={(e) => handleClickDelete(e, result)}>Reject</button>
                                             </td>
                                         </tr>
                                     ))}
