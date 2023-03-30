@@ -13,11 +13,11 @@ export default function LandingPage() {
                             <div className="m-5 col-6 container d-flex flex-row justify-content-center align-items-center">
                                 <h1 className="col-9 mx-5 px-4 display-5">
                                     Welcome to{" "}
-                                    <div className="display-1 text-strong text-primary">
+                                    <div className="display-1 text-strong light-blue">
                                         <b>CalenDr.</b>
                                     </div>
                                 </h1>
-                                <blockquote className="col-9 display-5 lh-base text-primary">
+                                <blockquote className="col-9 display-5 lh-base light-blue">
                                     Bringing Patients and Doctors closer
                                 </blockquote>
                             </div>
@@ -36,7 +36,7 @@ export default function LandingPage() {
                                                 you in a few clicks.
                                             </p>
                                             <Link
-                                                className="btn btn-primary btn-lg"
+                                                className="btn accept-button btn-lg"
                                                 to="/register"
                                             >
                                                 Register as a Doctor
@@ -50,7 +50,7 @@ export default function LandingPage() {
                                             ></iframe>
                                         </div>
                                     </div>
-                                    <blockquote className="col display-5 lh-base text-left my-5 py-5 text-primary">
+                                    <blockquote className="col display-5 lh-base text-left my-5 py-5 light-blue">
                                         Whether You are a Patient or a Doctor
                                         our platform aims to make the
                                         communication between Patients and
@@ -77,14 +77,14 @@ export default function LandingPage() {
                                                 healthy and informed.
                                             </p>
                                             <Link
-                                                className="btn btn-primary btn-lg"
+                                                className="btn accept-button btn-lg"
                                                 to="/register"
                                             >
                                                 Register as a Patient
                                             </Link>
                                         </div>
                                     </div>
-                                    <blockquote className="col display-5 lh-base my-5 py-5 text-end text-primary">
+                                    <blockquote className="col display-5 lh-base my-5 py-5 text-end light-blue">
                                         Contacting your Doctor has never been
                                         easier.
                                     </blockquote>
@@ -101,12 +101,13 @@ export default function LandingPage() {
                                                 you - you can schedule your
                                                 first appointment.
                                             </p>
-                                            <a
-                                                href="#"
-                                                className="btn btn-primary btn-lg"
+                                            <Link
+                                                className="btn accept-button btn-lg"
+                                                to="/register"
                                             >
-                                                Contact Us
-                                            </a>
+                                                Start Using{" "}
+                                                <strong>CalenDr.</strong>
+                                            </Link>
                                         </div>
                                         <div className="col-md-6">
                                             <iframe
@@ -116,7 +117,7 @@ export default function LandingPage() {
                                             ></iframe>
                                         </div>
                                     </div>
-                                    <blockquote className="col display-5 lh-base my-5 py-5 text-primary">
+                                    <blockquote className="col display-5 lh-base my-5 py-5 light-blue">
                                         Be visible to your potential patients,
                                         and let them contact you via
                                         <strong> CalenDr.</strong>
@@ -131,11 +132,11 @@ export default function LandingPage() {
                                         </div>
                                         <div className="col-md-6">
                                             <h1>Do you miss some feature?</h1>
-                                            <p className="lh-lg text-primary">
+                                            <p className="lh-lg light-blue">
                                                 Let us know what would You like
                                                 see in CalenDr and we can
                                                 promise You -{" "}
-                                                <strong className="text-primary">
+                                                <strong className="blue">
                                                     we will never do it. -
                                                     Because this is just Final
                                                     Project dude - We've got
@@ -144,11 +145,12 @@ export default function LandingPage() {
                                                 </strong>
                                             </p>
                                             <Link
-                                                className="btn btn-primary btn-lg"
+                                                className="btn accept-button btn-lg"
                                                 to="/about-us"
                                             >
-                                                <strong>Contact Us</strong><br/>{" "}
-                                                (preferably with job offers)
+                                                <strong>Contact Us</strong>
+                                                <br /> (preferably with job
+                                                offers)
                                             </Link>
                                         </div>
                                     </div>
