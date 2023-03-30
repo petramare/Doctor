@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 export default function QA() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <section id="about-us" class="py-5">

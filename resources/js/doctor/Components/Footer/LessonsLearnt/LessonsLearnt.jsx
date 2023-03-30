@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 export default function LessonsLearnt() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <section id="lessons-learned" className="bg-light py-5">

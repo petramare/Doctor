@@ -96,7 +96,7 @@ export default function PatientDatepicker({
                     <h2>Add a New Event</h2>
                     <div className="datepicker-items">
                         <input
-                            className="form-control item-picker datepicker-item"
+                            className="form-control item datepicker-item"
                             type="text"
                             name="title"
                             placeholder="Add a appointment title"

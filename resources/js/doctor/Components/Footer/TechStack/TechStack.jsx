@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import style from "./TechStack.scss";
 
 export default function TechStack() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <div className="container my-5 d-flex flex-column justify-content-center align-items-center align-self-center">
