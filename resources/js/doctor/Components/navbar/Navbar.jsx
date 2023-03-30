@@ -37,7 +37,7 @@ export default function Navbar() {
                 <Link to="/" className="navbar-brand navbar-brand-text">
                     <img
                         className="mr-2"
-                        src="img/icons8-calendar-64.png"
+                        src="/img/icons8-calendar-64.png"
                         alt=""
                     />
                     CalenDr.
