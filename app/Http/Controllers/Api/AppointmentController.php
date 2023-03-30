@@ -287,4 +287,5 @@ class AppointmentController extends Controller
         $appointment = Appointment::findOrFail($appId);
         $appointment->update(['appointment_status_id' => $status]);
     }
+
 }

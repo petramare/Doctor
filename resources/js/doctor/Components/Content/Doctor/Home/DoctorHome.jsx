@@ -3,6 +3,7 @@ import UserContext from "../../../UserContext/UserContext";
 import DoctorCalendarComponent from "../../Calendar/DoctorCalendar";
 import AppointmentsList from "./AppointmentsList/AppointmentsList";
 import { useState } from "react";
+import ColorLegendDoctor from "../ColorLegend/ColorLegendDoctor";
 
 export default function DoctorHome() {
     const [appList, setAppList] = useState([]);
@@ -21,22 +22,19 @@ export default function DoctorHome() {
                             </div>
                         </div>
                     </div>
-                    {appList.length !== 0 ?
-                        <div className="container">
-                            <div className="row">
-                                <div className="col">
-                                    <div className="calendar">
-                                        <AppointmentsList
-                                            appList={appList}
-                                            setAppList={setAppList}
-                                        />
-                                    </div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <div className="calendar">
+                                    <AppointmentsList
+                                        appList={appList}
+                                        setAppList={setAppList}
+                                    />
                                 </div>
                             </div>
                         </div>
-                        :
-                        ''
-                    }
+                    </div>
+
                     {/* <div className="container">
                         <div className="row">
                             <div className="col">
@@ -61,6 +59,7 @@ export default function DoctorHome() {
                     </div>
                 </div>
             )}
+            < ColorLegendDoctor />
         </>
     );
 }

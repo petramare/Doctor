@@ -30,6 +30,80 @@ html {
     }
 }
 
+
 footer {
     background-color: #3f72af;
+}
+.accept-button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #16A085;
+    border: none;
+    color: white;
+}
+
+.accept-button:hover {
+    background-color: #19bb9b  ;
+}
+
+.detail-button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #6aaaf4;
+    border: none;
+    color: white;
+}
+
+.detail-button:hover {
+    background-color: #8bbcf5  ;
+}
+
+.reject-button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #a93636;
+    border: none;
+    color: white;
+}
+
+.reject-button:hover {
+    background-color: #c94e4e  ;
+}
+
+.submit-button{
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #112D4E;
+    border: none;
+    color: white;
+    margin-left: 10px;
+}
+
+.submit-button {
+    border-radius: 5px; 
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #112D4E;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.submit-button:hover {
+    background-color: #dbe2ef;
+    color: black;
+}
+
+.margin-button-left {
+    margin-left: 10px;
 }

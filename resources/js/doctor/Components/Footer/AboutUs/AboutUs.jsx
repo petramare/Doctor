@@ -3,7 +3,7 @@ import style from "./AboutUs.scss";
 export default function AboutUs() {
     return (
         <>
-            <div className="container my-5">
+            <div id="test" className="container my-5">
                 <h1>About Us</h1>
                 <hr />
                 <div className="row my-5 d-flex justify-content-center align-items-center align-self-center">
@@ -27,13 +27,13 @@ export default function AboutUs() {
                                 </p>
                                 <div className="container d-flex justify-content-center align-items-center align-self-center">
                                     <a
-                                        href=""
+                                        href="https://www.linkedin.com/in/petra-maresova/"
                                         className="btn btn-primary text-decoration-none mx-1"
                                     >
                                         LinkedIn 👈
                                     </a>
                                     <a
-                                        href=""
+                                        href="https://github.com/petramare"
                                         className="btn btn-primary text-decoration-none mx-1"
                                     >
                                         GitHub 👈

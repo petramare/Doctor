@@ -65,7 +65,7 @@ export default function EditInfo() {
             {patient ? (
                 <div className="container">
                     <div className="row">
-                        <div className="col">
+                        <div className="col registration-form">
                             <form
                                 action=""
                                 method="post"
@@ -77,7 +77,7 @@ export default function EditInfo() {
                                     </label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control item"
                                         name="first_name"
                                         id="first_name"
                                         value={patient.user.first_name || ""}
@@ -88,7 +88,7 @@ export default function EditInfo() {
                                     <label htmlFor="surname">Last name</label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control item"
                                         id="surname"
                                         name="surname"
                                         value={patient.user.surname || ""}
@@ -99,7 +99,7 @@ export default function EditInfo() {
                                     <label htmlFor="email">Email</label>
                                     <input
                                         type="email"
-                                        className="form-control"
+                                        className="form-control item"
                                         id="email"
                                         name="email"
                                         value={patient.user.email || ""}
@@ -112,7 +112,7 @@ export default function EditInfo() {
                                     <label htmlFor="dob">Date of Birth</label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control item"
                                         id="date_of_birth"
                                         name="date_of_birth"
                                         value={patient.user.date_of_birth || ""}
@@ -124,7 +124,7 @@ export default function EditInfo() {
                                     <input
                                         type="text"
                                         name="role"
-                                        className="form-control"
+                                        className="form-control item"
                                         value={patient.user.role || ""}
                                         // onChange={handleChange}
                                         readOnly
@@ -135,7 +135,7 @@ export default function EditInfo() {
                                     <label htmlFor="dob">ID number</label>
                                     <input
                                         type="number"
-                                        className="form-control"
+                                        className="form-control item"
                                         id="id_number"
                                         name="id_number"
                                         value={patient.user.id_number || ""}
@@ -148,7 +148,7 @@ export default function EditInfo() {
                                     </label>
                                     <input
                                         type="number"
-                                        className="form-control"
+                                        className="form-control item"
                                         id="insurance_number"
                                         name="insurance_number"
                                         value={patient.insurance_number || ""}
@@ -166,7 +166,7 @@ export default function EditInfo() {
                                     :
                                     ''
                                 }
-                                <button type="submit" className="btn btn-dark">
+                                <button type="submit" className="submit-button">
                                     Update
                                 </button>
                             </form>

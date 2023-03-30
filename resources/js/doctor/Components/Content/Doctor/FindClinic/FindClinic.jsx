@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import './FindClinic.scss'
 
 export default function FindClinic() {
-    
-    
+
+
     const [search, setSearch] = useState([]);
     const [query, setQuery] = useState('');
 
@@ -11,7 +12,7 @@ export default function FindClinic() {
         try {
             let response = await axios.get(`/api/doctors/find?search=${query}`)
             setSearch(response.data);
-            
+
         }
         catch (error) {
             console.log(error);
@@ -19,7 +20,7 @@ export default function FindClinic() {
     }
 
     return (
-     
+
         <>
             <h1>Find your clinic:</h1>
             <form action="" onSubmit={(e) => {
@@ -30,27 +31,26 @@ export default function FindClinic() {
                 <label htmlFor="search">Search for a clinic by Name:
                 </label>
                 <br></br>
-                <input type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
-                <button>Submit</button>
+                <input className="search-item" type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
+                <button className="submit-button">Submit</button>
             </form>
             {
                 search ?
-                    <table className="table">
+                    <table className="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Name:</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Address:</th>
-                                <th scope="col">Registration code:</th>
                             </tr>
                         </thead>
                         <tbody>
                             {search.map((result, index) => (
                                 <tr key={index}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{result.name} {result.address}</td>
-                                    <td>{result.clinic ? result.clinic.registration_code : ''}</td>
-                                    <td> <button className="btn btn-success">Apply</button>
-                                        <button className="btn btn-info">Detail</button>
+                                    <th className="align-middle" scope="row">{index + 1}</th>
+                                    <td className="align-middle">{result.name} {result.address}</td>
+                                    <td className="align-middle text-center">
+                                        <button className="accept-button">Apply</button>
+                                        <button className="detail-button margin-button-left">Detail</button>
                                     </td>
                                 </tr>
                             ))}
