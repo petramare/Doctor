@@ -3,6 +3,7 @@ import UserContext from "../../../UserContext/UserContext";
 import DoctorCalendarComponent from "../../Calendar/DoctorCalendar";
 import AppointmentsList from "./AppointmentsList/AppointmentsList";
 import { useState } from "react";
+import ColorLegendDoctor from "../ColorLegend/ColorLegendDoctor";
 
 export default function DoctorHome() {
     const [appList, setAppList] = useState([]);
@@ -58,6 +59,7 @@ export default function DoctorHome() {
                     </div>
                 </div>
             )}
+            < ColorLegendDoctor />
         </>
     );
 }
