@@ -67,6 +67,7 @@ export default function DoctorCalendarComponent() {
                 localizer={localizer}
                 events={meetings}
                 startAccessor="start"
+                defaultView={"week"}
                 selectable
                 min={minTime}
                 max={maxTime}

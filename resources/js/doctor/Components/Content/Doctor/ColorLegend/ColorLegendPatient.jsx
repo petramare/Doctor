@@ -60,20 +60,6 @@ const ColorLegendPatient = () => {
       >
         Rejected
       </button>
-
-      <button
-        style={{ backgroundColor: '#1A6BC7', cursor: 'default',
-          marginBottom: '20px',
-          borderRadius: '50%',
-          width: '75px',
-          height: '75px',
-          boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)',
-          color: '#fffeea',
-        }}
-        disabled
-      >
-        Completed
-      </button>
     </div>
   );
 };
