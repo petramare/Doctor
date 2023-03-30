@@ -54,7 +54,7 @@ export default function PatientDatepicker({
         const falseDays = [];
         Object.keys(visiting_hours).forEach((day, index) => {
             if (!visiting_hours[day]) {
-                falseDays.push(index);
+                falseDays.push(index + 1);
             }
         });
         console.log(falseDays);
