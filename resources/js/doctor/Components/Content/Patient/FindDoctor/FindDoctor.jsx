@@ -27,18 +27,18 @@ export default function FindDoctor() {
         <>
             <PatientRequest request={request} setRequest={setRequest} applied={applied} />
 
-            <h1>Find your Doctor:</h1>
-            <form action="" onSubmit={(e) => {
+            <h1 className="text-center mt-5" style={{ color: '#112D4E' }}>Find your Doctor:</h1>
+            <form className="text-center w-100 mb-5" action="" onSubmit={(e) => {
                 e.preventDefault();
 
                 handleSearch();
             }}>
                 <label htmlFor="search">Search for a doctor by Name:</label><br></br>
                 <input className="search-item" type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
-                <button className="submit-button">Submit</button>
+                <button className="submit-button">Search</button>
             </form>
             {
-                search ?
+                search.length > 0 ?
                     <table className="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
