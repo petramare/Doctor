@@ -1,3 +1,12 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+html {
+    padding: 0;
+    margin: 0;
+}
+
 .navbar {
     background-color: #3f72af;
 }
@@ -21,18 +30,22 @@
     }
 }
 
+
+footer {
+    background-color: #3f72af;
+}
 .accept-button {
     border-radius: 10px;
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #16A085;
+    background-color: #3f72af;
     border: none;
     color: white;
 }
 
 .accept-button:hover {
-    background-color: #19bb9b  ;
+    background-color: #5a8ece  ;
 }
 
 .detail-button {
