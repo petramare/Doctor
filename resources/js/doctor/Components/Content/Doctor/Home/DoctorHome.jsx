@@ -15,14 +15,14 @@ export default function DoctorHome() {
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <h1>
+                                <h1 className="text-center mt-5 mb-5">
                                     Welcome back, {user.first_name}{" "}
                                     {user.surname}
                                 </h1>
                             </div>
                         </div>
                     </div>
-                    <div className="container">
+                    <div className="container mb-3">
                         <div className="row">
                             <div className="col">
                                 <div className="calendar">
