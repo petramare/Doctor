@@ -61,7 +61,7 @@ export default function PatientCalendarComponent({ doctorAppointment }) {
                             ? meetings.status === 1
                                 ? "#E0A553"
                                 : meetings.status === 2
-                                ? "red"
+                                ? "c94e4e"
                                 : "green"
                             : "#1A6BC7";
                     return { style: { backgroundColor } };
