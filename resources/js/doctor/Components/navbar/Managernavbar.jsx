@@ -9,32 +9,20 @@ export default function Homenavbar() {
     return (
         <>
             <li className="nav-item active">
-                <Link
-                    to={`/managers`}
-                    className="nav-link"
-                >
+                <Link to={`/managers`} className="nav-link">
                     Home
                 </Link>
             </li>
 
             <li className="nav-item active">
-                <Link
-                    to={`/managers/edit`}
-                    className="nav-link"
-                >
+                <Link to={`/managers/edit`} className="nav-link">
                     Edit Details
                 </Link>
             </li>
             <li className="nav-item active">
-                <Link
-                    to={`/managers/find`}
-                    className="nav-link"
-                >
+                <Link to={`/managers/find`} className="nav-link">
                     Find Doctor
                 </Link>
-            </li>
-            <li>
-                <Logout />
             </li>
         </>
     );

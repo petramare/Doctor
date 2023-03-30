@@ -11,3 +11,12 @@
     color: white;
     font-size: 1.5em;
 }
+
+#logout_btn {
+    background-color: #112d4e;
+    border: none;
+    &:hover {
+        background-color: #dbe2ef;
+        color: black;
+    }
+}
