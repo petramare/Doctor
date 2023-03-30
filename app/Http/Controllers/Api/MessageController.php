@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
@@ -98,7 +98,7 @@ class MessageController extends Controller
 
         // $patients = $doctor->patients;
         $patients = $doctor->acceptedPatients;
-        
+
         foreach ($patients as $patient) {
             $patient->user;
         }

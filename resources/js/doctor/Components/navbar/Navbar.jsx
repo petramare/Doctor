@@ -5,6 +5,7 @@ import Patientnavbar from "./Patientnavbar";
 import Managernavbar from "./Managernavbar";
 import UserContext from "../UserContext/UserContext";
 import { Link } from "react-router-dom";
+import Logout from "../../Logout/Logout";
 
 export default function Navbar() {
     const { user } = useContext(UserContext);
@@ -37,7 +38,7 @@ export default function Navbar() {
                 <Link to="/" className="navbar-brand navbar-brand-text">
                     <img
                         className="mr-2"
-                        src="img/icons8-calendar-64.png"
+                        src="/img/icons8-calendar-64.png"
                         alt=""
                     />
                     CalenDr.
@@ -54,10 +55,14 @@ export default function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div
-                    className="collapse navbar-collapse"
+                    className="collapse navbar-collapse justify-content-between"
                     id="navbarNavDropdown"
                 >
                     <ul className="navbar-nav">{navbar}</ul>
+
+                    <div className="nav-item active float-right d-flex">
+                        <Logout className="nav-link" />
+                    </div>
                 </div>
             </nav>
         </>
