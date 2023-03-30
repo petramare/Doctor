@@ -24,32 +24,18 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 1,
                 "patient_id" => 2,
-                "status" => 'accepted'
+                "status" => 'applied'
             ],
+
             [
                 "doctor_id" => 1,
-                "patient_id" => 3,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 1,
-                "patient_id" => 4,
+                "patient_id" => 6,
                 "status" => 'applied'
             ],
             [
                 "doctor_id" => 1,
-                "patient_id" => 5,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 1,
-                "patient_id" => 6,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 1,
                 "patient_id" => 7,
-                "status" => 'rejected'
+                "status" => 'applied'
             ],
             [
                 "doctor_id" => 1,
@@ -64,12 +50,12 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 1,
                 "patient_id" => 10,
-                "status" => 'rejected'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 2,
                 "patient_id" => 1,
-                "status" => 'applied'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 2,
@@ -79,12 +65,12 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 2,
                 "patient_id" => 3,
-                "status" => 'rejected'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 2,
                 "patient_id" => 4,
-                "status" => 'applied'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 2,
@@ -96,21 +82,7 @@ class DoctorPatientSeeder extends Seeder
                 "patient_id" => 6,
                 "status" => 'rejected'
             ],
-            [
-                "doctor_id" => 2,
-                "patient_id" => 7,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 2,
-                "patient_id" => 8,
-                "status" => 'applied'
-            ],
-            [
-                "doctor_id" => 2,
-                "patient_id" => 9,
-                "status" => 'accepted'
-            ],
+
             [
                 "doctor_id" => 2,
                 "patient_id" => 10,
@@ -119,7 +91,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 3,
                 "patient_id" => 1,
-                "status" => 'applied'
+                "status" => 'rejected'
             ],
             [
                 "doctor_id" => 3,
@@ -134,7 +106,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 3,
                 "patient_id" => 4,
-                "status" => 'applied'
+                "status" => 'rejected'
             ],
             [
                 "doctor_id" => 3,
@@ -151,21 +123,7 @@ class DoctorPatientSeeder extends Seeder
                 "patient_id" => 7,
                 "status" => 'rejected'
             ],
-            [
-                "doctor_id" => 3,
-                "patient_id" => 8,
-                "status" => 'applied'
-            ],
-            [
-                "doctor_id" => 3,
-                "patient_id" => 9,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 3,
-                "patient_id" => 10,
-                "status" => 'rejected'
-            ],
+
             [
                 "doctor_id" => 4,
                 "patient_id" => 1,
@@ -174,7 +132,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 4,
                 "patient_id" => 2,
-                "status" => 'accepted'
+                "status" => 'rejected'
             ],
             [
                 "doctor_id" => 4,
@@ -189,7 +147,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 4,
                 "patient_id" => 5,
-                "status" => 'accepted'
+                "status" => 'rejected'
             ],
             [
                 "doctor_id" => 4,
@@ -201,26 +159,7 @@ class DoctorPatientSeeder extends Seeder
                 "patient_id" => 7,
                 "status" => 'rejected'
             ],
-            [
-                "doctor_id" => 4,
-                "patient_id" => 8,
-                "status" => 'applied'
-            ],
-            [
-                "doctor_id" => 4,
-                "patient_id" => 9,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 4,
-                "patient_id" => 10,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 5,
-                "patient_id" => 1,
-                "status" => 'applied'
-            ],
+
             [
                 "doctor_id" => 5,
                 "patient_id" => 2,
@@ -229,12 +168,12 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 5,
                 "patient_id" => 3,
-                "status" => 'rejected'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 5,
                 "patient_id" => 4,
-                "status" => 'applied'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 5,
@@ -254,27 +193,27 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 5,
                 "patient_id" => 8,
-                "status" => 'applied'
-            ],
-            [
-                "doctor_id" => 5,
-                "patient_id" => 9,
                 "status" => 'accepted'
             ],
             [
                 "doctor_id" => 5,
+                "patient_id" => 9,
+                "status" => 'accepted'
+            ],
+            [
+                "doctor_id" => 5,
                 "patient_id" => 10,
                 "status" => 'rejected'
             ],
             [
                 "doctor_id" => 6,
                 "patient_id" => 1,
-                "status" => 'applied'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 6,
                 "patient_id" => 2,
-                "status" => 'accepted'
+                "status" => 'rejected'
             ],
             [
                 "doctor_id" => 6,
@@ -286,30 +225,11 @@ class DoctorPatientSeeder extends Seeder
                 "patient_id" => 4,
                 "status" => 'applied'
             ],
-            [
-                "doctor_id" => 6,
-                "patient_id" => 5,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 6,
-                "patient_id" => 6,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 6,
-                "patient_id" => 7,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 6,
-                "patient_id" => 8,
-                "status" => 'applied'
-            ],
+
             [
                 "doctor_id" => 6,
                 "patient_id" => 9,
-                "status" => 'accepted'
+                "status" => 'rejected'
             ],
             [
                 "doctor_id" => 6,
@@ -319,7 +239,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 7,
                 "patient_id" => 1,
-                "status" => 'applied'
+                "status" => 'rejected'
             ],
             [
                 "doctor_id" => 7,
@@ -329,7 +249,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 7,
                 "patient_id" => 3,
-                "status" => 'rejected'
+                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 7,
@@ -349,28 +269,9 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 7,
                 "patient_id" => 7,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 7,
-                "patient_id" => 8,
                 "status" => 'applied'
             ],
-            [
-                "doctor_id" => 7,
-                "patient_id" => 9,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 7,
-                "patient_id" => 10,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 8,
-                "patient_id" => 1,
-                "status" => 'applied'
-            ],
+
             [
                 "doctor_id" => 8,
                 "patient_id" => 2,
@@ -379,7 +280,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 8,
                 "patient_id" => 3,
-                "status" => 'rejected'
+                "status" => 'applied'
             ],
             [
                 "doctor_id" => 8,
@@ -399,7 +300,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 8,
                 "patient_id" => 7,
-                "status" => 'rejected'
+                "status" => 'applied'
             ],
             [
                 "doctor_id" => 8,
@@ -414,7 +315,7 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 8,
                 "patient_id" => 10,
-                "status" => 'rejected'
+                "status" => 'applied'
             ],
             [
                 "doctor_id" => 9,
@@ -429,21 +330,6 @@ class DoctorPatientSeeder extends Seeder
             [
                 "doctor_id" => 9,
                 "patient_id" => 3,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 9,
-                "patient_id" => 4,
-                "status" => 'applied'
-            ],
-            [
-                "doctor_id" => 9,
-                "patient_id" => 5,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 9,
-                "patient_id" => 6,
                 "status" => 'rejected'
             ],
             [
@@ -473,26 +359,6 @@ class DoctorPatientSeeder extends Seeder
             ],
             [
                 "doctor_id" => 10,
-                "patient_id" => 2,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 10,
-                "patient_id" => 3,
-                "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 10,
-                "patient_id" => 4,
-                "status" => 'applied'
-            ],
-            [
-                "doctor_id" => 10,
-                "patient_id" => 5,
-                "status" => 'accepted'
-            ],
-            [
-                "doctor_id" => 10,
                 "patient_id" => 6,
                 "status" => 'rejected'
             ],
@@ -500,16 +366,6 @@ class DoctorPatientSeeder extends Seeder
                 "doctor_id" => 10,
                 "patient_id" => 7,
                 "status" => 'rejected'
-            ],
-            [
-                "doctor_id" => 10,
-                "patient_id" => 8,
-                "status" => 'applied'
-            ],
-            [
-                "doctor_id" => 10,
-                "patient_id" => 9,
-                "status" => 'accepted'
             ],
             [
                 "doctor_id" => 10,
