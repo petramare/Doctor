@@ -84,7 +84,7 @@ export default function EditInfo() {
             {doctor ? (
                 <div className="container">
                     <div className="row">
-                        <div className="col">
+                        <div className="col registration-form">
                             <form
                                 action=""
                                 method="post"
@@ -299,37 +299,37 @@ export default function EditInfo() {
                                 </div>
                                 {errorMessages
                                     ? Object.values(errorMessages).map(
-                                          (message, i) => {
-                                              return (
-                                                  <div
-                                                      key={i}
-                                                      className="alert alert-danger"
-                                                      role="alert"
-                                                  >
-                                                      {message}
-                                                  </div>
-                                              );
-                                          }
-                                      )
+                                        (message, i) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="alert alert-danger"
+                                                    role="alert"
+                                                >
+                                                    {message}
+                                                </div>
+                                            );
+                                        }
+                                    )
                                     : ""}
                                 {successMessage == 200 ? (
-                                <div
-                                    className="alert alert-success alert-dismissible fade show di"
-                                    role="alert"
-                                >
-                                    Record have been updated{" "}
-                                    <button
-                                        type="button"
-                                        className="btn close"
-                                        data-dismiss="alert"
-                                        aria-label="Close"
+                                    <div
+                                        className="alert alert-success alert-dismissible fade show di"
+                                        role="alert"
                                     >
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            ) : (
-                                ""
-                            )}
+                                        Record have been updated{" "}
+                                        <button
+                                            type="button"
+                                            className="btn close"
+                                            data-dismiss="alert"
+                                            aria-label="Close"
+                                        >
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
                                 <button type="submit" className="btn btn-primary">
                                     Update
                                 </button>
