@@ -51,31 +51,31 @@ export default function AppointmentsList({ appList, setAppList }) {
             {appList.length !== 0 ?
                 <div>
                     <h1>List of requested appointment:</h1>
-                    <table className="table">
+                    <table className="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">Appointment:</th>
-                                <th scope="col">Patient Name:</th>
-                                <th scope="col">Start:</th>
-                                <th scope="col">End:</th>
-                                <th scope="col">Description:</th>
-                                <th scope="col">Status:</th>
-                                <th scope="col">Action:</th>
+                                <th className="text-center align-middle" scope="col">Appointment:</th>
+                                <th className="text-center align-middle" scope="col">Patient Name:</th>
+                                <th className="text-center align-middle" scope="col">Start:</th>
+                                <th className="text-center align-middle" scope="col">End:</th>
+                                <th className="text-center align-middle" scope="col">Description:</th>
+                                <th className="text-center align-middle" scope="col">Status:</th>
+                                <th className="text-center align-middle" scope="col">Action:</th>
                             </tr>
                         </thead>
                         <tbody>
                             {appList.map((result, index) => (
                                 <tr key={index}>
                                     {console.log(appList)}
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{result.patient.first_name} {result.patient.surname}</td>
-                                    <td>{result.start}</td>
-                                    <td>{result.end}</td>
-                                    <td>{result.description}</td>
-                                    <td>{result.appointment_status.description}</td>
-                                    <td>
+                                    <th className="align-middle" scope="row">{index + 1}</th>
+                                    <td className="align-middle">{result.patient.first_name} {result.patient.surname}</td>
+                                    <td className="align-middle">{result.start}</td>
+                                    <td className="align-middle">{result.end}</td>
+                                    <td className="align-middle">{result.description}</td>
+                                    <td className="align-middle">{result.appointment_status.description}</td>
+                                    <td className="align-middle text-center">
                                         <button
-                                            className="btn btn-success"
+                                            className="accept-button"
                                             type="button"
                                             data-toggle="modal"
                                             data-target={`#doctorAppAccept${index}`}
@@ -83,7 +83,7 @@ export default function AppointmentsList({ appList, setAppList }) {
                                             Accept
                                         </button>
                                         <button
-                                            className="btn btn-danger"
+                                            className="reject-button"
                                             type="button" data-toggle="modal"
                                             data-target={`#doctorAppDetail${index}`}
                                             onClick={(e) => handleDoctorAppClickRejected(e, result)}>
