@@ -32,7 +32,7 @@ export default function PatientCondition() {
       console.log(response);
       setMessages({
         status: 'success',
-        messages: ['Success message']
+        messages: ['Condition successfully added']
       })
     } catch (error) {
       console.log(error);

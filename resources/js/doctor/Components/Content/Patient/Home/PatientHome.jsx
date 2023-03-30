@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../../../UserContext/UserContext";
 import PatientCalendarComponent from "../../Calendar/PatientCalendar";
 import PatientDatepicker from "../../Calendar/PatientDatepicker";
+import ColorLegendPatient from "../../Doctor/ColorLegend/ColorLegendPatient";
 
 export default function PatientHome() {
     const { user } = useContext(UserContext);
@@ -73,6 +74,7 @@ export default function PatientHome() {
                                         </div>
                                     </div>
                                 </div>
+                                < ColorLegendPatient />
                             </div>
                         );
                     })}
