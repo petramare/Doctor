@@ -62,9 +62,11 @@ export default function Logout() {
         </div>
     ) : (
         <div className="text-center">
-            <div className="spinner-border" role="status">
-                <span className="sr-only"></span>
-            </div>
+            <iframe
+                width={200}
+                height={100}
+                src="https://embed.lottiefiles.com/animation/43035"
+            ></iframe>
         </div>
     );
 }
