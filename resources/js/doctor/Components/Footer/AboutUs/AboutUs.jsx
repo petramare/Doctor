@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import style from "./AboutUs.scss";
 
 export default function AboutUs() {
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <div id="test" className="container my-5">
