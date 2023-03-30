@@ -29,22 +29,22 @@ export default function PatientRequest({ request, setRequest, applied }) {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Request:</th>
-                                    <th scope="col">Name:</th>
-                                    <th scope="col">Specialization:</th>
-                                    <th scope="col">Status:</th>
+                                    <th className="text-center align-middle" scope="col">#</th>
+                                    <th className="text-center align-middle" scope="col">Name:</th>
+                                    <th className="text-center align-middle" scope="col">Specialization:</th>
+                                    <th className="text-center align-middle" scope="col">Status:</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {request.map((result, index) => (
                                     <tr key={index}>
-                                        <th scope="row">{index + 1}</th>
-                                        <td>{result.user.first_name} {result.user.surname}</td>
-                                        <td>{result.specialization}</td>
-                                        <td>{result.pivot.status}</td>
+                                        <th className="text-center align-middle" scope="row">{index + 1}</th>
+                                        <td className="text-center align-middle">{result.user.first_name} {result.user.surname}</td>
+                                        <td className="text-center align-middle">{result.specialization}</td>
+                                        <td className="text-center align-middle">{result.pivot.status}</td>
                                         <td>
-                                            <button className="btn btn-info" type="button" data-toggle="modal" data-target={`#patientDetail${index}`}>Detail</button>
+                                            <button className="detail-button" type="button" data-toggle="modal" data-target={`#patientDetail${index}`}>Detail</button>
                                             {/* <!-- Modal Detail --> */}
                                             <div className="modal fade" id={`patientDetail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`patientDetailLabel${index}`} aria-hidden="true">
                                                 <div className="modal-dialog" role="document">
@@ -58,15 +58,15 @@ export default function PatientRequest({ request, setRequest, applied }) {
                                                         <div className="modal-body">
                                                             <div className="popup">
                                                                 <div className="popup-content">
-                                                                    <h2>{result.user.first_name} {result.user.surname}</h2>
-                                                                    <p><strong>Email:</strong> {result.user.email}</p>
-                                                                    <p><strong>Specialization:</strong> {result.specialization}</p>
-                                                                    <p><strong>Working days:</strong></p>
-                                                                    <div className="col">
+                                                                    <h2 className="text-center">{result.user.first_name} {result.user.surname}</h2>
+                                                                    <p className="text-center"><strong>Email:</strong> {result.user.email}</p>
+                                                                    <p className="text-center"><strong>Specialization:</strong> {result.specialization}</p>
+                                                                    <p className="text-center"><strong>Working days:</strong></p>
+                                                                    <div className="col text-center">
                                                                         {Object.entries(JSON.parse(result.visiting_hours))
                                                                             .filter(([day, isOpen]) => isOpen)
                                                                             .map(([a], i) => (
-                                                                                <button key={i} className="btn btn-success m-2">{a}</button>
+                                                                                <button key={i} className="accept-button margin-button-left">{a}</button>
                                                                             ))}
 
                                                                     </div >

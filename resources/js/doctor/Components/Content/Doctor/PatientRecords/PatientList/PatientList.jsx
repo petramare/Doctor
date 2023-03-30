@@ -26,7 +26,7 @@ export default function PatientList({ patientList, setState, state }) {
 
                     <thead>
                         <tr>
-                            <th className="text-center" scope="col">Result:</th>
+                            <th className="text-center" scope="col">#</th>
                             <th className="text-center" scope="col">Name:</th>
                             <th className="text-center" scope="col">Email:</th>
                             <th className="text-center" scope="col"></th>
@@ -35,13 +35,13 @@ export default function PatientList({ patientList, setState, state }) {
                     <tbody>
                         {patientList.map((result, index) => (
                             <tr key={index}>
-                                <th className="text-center" scope="row">{index + 1}</th>
-                                <td className="text-center">{result.user.first_name} {result.user.surname}</td>
-                                <td className="text-center" >{result.user.email}</td>
-                                <td className="text-center" >
+                                <th className="text-center align-middle" scope="row">{index + 1}</th>
+                                <td className="text-center align-middle">{result.user.first_name} {result.user.surname}</td>
+                                <td className="text-center align-middle" >{result.user.email}</td>
+                                <td className="text-center align-middle" >
 
-                                    <button className="btn btn-info btn-info-custom" type="button" data-toggle="modal" data-target={`#detail${index}`}>Detail</button>
-                                    <button className="btn btn-danger" type="button" data-toggle="modal" data-target={`#delete${index}`}>Remove</button>
+                                    <button className="accept-button" type="button" data-toggle="modal" data-target={`#detail${index}`}>Detail</button>
+                                    <button className="reject-button margin-button-left" type="button" data-toggle="modal" data-target={`#delete${index}`}>Remove</button>
                                     {/* <!-- Modal Detail --> */}
                                     <div className="modal fade" id={`detail${index}`} tabIndex="-1" role="dialog" aria-labelledby={`detailLabel${index}`} aria-hidden="true">
                                         <div className="modal-dialog" role="document">
@@ -79,8 +79,8 @@ export default function PatientList({ patientList, setState, state }) {
                                                     <div className="popup">
                                                         <div className="popup-content">
                                                             <p>Are you sure you want to remove {result.user.first_name} {result.user.surname} from your patients list ? </p>
-                                                            <button type="button" className="close btn btn-success" data-dismiss="modal" aria-label="Close" onClick={(e) => handleDelete(e, result)}>Yes</button>
-                                                            <button type="button" className="close btn btn-danger" data-dismiss="modal" aria-label="Close">No</button>
+                                                            <button type="button" className="close btn accept-button" data-dismiss="modal" aria-label="Close" onClick={(e) => handleDelete(e, result)}>Yes</button>
+                                                            <button type="button" className="close btn reject-button" data-dismiss="modal" aria-label="Close">No</button>
                                                         </div>
                                                     </div>
                                                 </div>

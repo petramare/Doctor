@@ -31,7 +31,7 @@ export default function FindClinic() {
                 <label htmlFor="search">Search for a clinic by Name:
                 </label>
                 <br></br>
-                <input type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
+                <input className="search-item" type="text" name="search" id="search" onChange={(e) => { setQuery(e.target.value) }} />
                 <button className="submit-button">Submit</button>
             </form>
             {
@@ -47,9 +47,10 @@ export default function FindClinic() {
                             {search.map((result, index) => (
                                 <tr key={index}>
                                     <th scope="row">{index + 1}</th>
-                                    <td className="align-items-center">{result.name} {result.address}</td>
-                                    <td> <button className="accept-button">Apply</button>
-                                        <button className="detail-button">Detail</button>
+                                    <td className="align-middle">{result.name} {result.address}</td>
+                                    <td className="align-middle text-center">
+                                        <button className="accept-button">Apply</button>
+                                        <button className="detail-button margin-button-left">Detail</button>
                                     </td>
                                 </tr>
                             ))}
