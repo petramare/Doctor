@@ -90,88 +90,86 @@ export default function PatientDatepicker({
     }, [newAppointment.start]);
 
     return (
-        <div className="row">
-            <div className="col text-center">
-                <h2>Add a New Event</h2>
-                <div>
-                    <label htmlFor="title">Title: </label>
-                    <br />
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="title"
-                        placeholder="Add a appointment title"
-                        value={newAppointment.title}
-                        onChange={(e) =>
-                            setNewAppointment({
-                                ...newAppointment,
-                                title: e.target.value,
-                            })
-                        }
-                    />
+        <div className="container">
+            <div className="row">
+                <div className="col text-center registration-form datepicker">
+                    <h2>Add a New Event</h2>
+                    <div className="datepicker-items">
+                        <input
+                            className="form-control item-picker datepicker-item"
+                            type="text"
+                            name="title"
+                            placeholder="Add a appointment title"
+                            value={newAppointment.title}
+                            onChange={(e) =>
+                                setNewAppointment({
+                                    ...newAppointment,
+                                    title: e.target.value,
+                                })
+                            }
+                        />
+                    </div>
+                    <div className="form-group datepicker-items">
+                        <DatePicker
+                            className="form-control item datepicker-item"
+                            placeholderText="Click to select a start date"
+                            selected={newAppointment.start}
+                            filterDate={(date) =>
+                                isWeekdayWithVisitingHoursWithPassedTime(
+                                    date,
+                                    visiting_hours_stringified
+                                )
+                            }
+                            filterTime={filterPassedTime}
+                            showTimeSelect
+                            withPortal
+                            timeFormat="HH:mm"
+                            calendarStartDay={1}
+                            injectTimes={[
+                                setHours(setMinutes(new Date(), 1), 0),
+                                setHours(setMinutes(new Date(), 5), 12),
+                                setHours(setMinutes(new Date(), 59), 23),
+                            ]}
+                            dateFormat="MMMM d, yyyy h:mm"
+                            onChange={(start) =>
+                                setNewAppointment({ ...newAppointment, start })
+                            }
+                        />
+                    </div>
+                    <div className="form-group datepicker-items">
+                        <DatePicker
+                            className="form-control item datepicker-item"
+                            placeholderText="Click to select an end date"
+                            selected={newAppointment.end}
+                            calendarStartDay={1}
+                            filterDate={(date) =>
+                                isWeekdayWithVisitingHoursWithPassedTime(
+                                    date,
+                                    visiting_hours_stringified
+                                )
+                            }
+                            filterTime={filterPassedTime}
+                            showTimeSelect
+                            withPortal
+                            timeFormat="HH:mm"
+                            injectTimes={[
+                                setHours(setMinutes(new Date(), 1), 0),
+                                setHours(setMinutes(new Date(), 5), 12),
+                                setHours(setMinutes(new Date(), 59), 23),
+                            ]}
+                            dateFormat="MMMM d, yyyy h:mm"
+                            onChange={(end) =>
+                                setNewAppointment({ ...newAppointment, end })
+                            }
+                        />
+                    </div>
+                    <button
+                        className="accept-button"
+                        onClick={handleAddAppointment}
+                    >
+                        Schedule Meeting
+                    </button>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="start">Start Date:</label>
-                    <DatePicker
-                        className="form-control"
-                        placeholderText="Click to select a start date"
-                        selected={newAppointment.start}
-                        filterDate={(date) =>
-                            isWeekdayWithVisitingHoursWithPassedTime(
-                                date,
-                                visiting_hours_stringified
-                            )
-                        }
-                        filterTime={filterPassedTime}
-                        showTimeSelect
-                        withPortal
-                        timeFormat="HH:mm"
-                        calendarStartDay={1}
-                        injectTimes={[
-                            setHours(setMinutes(new Date(), 1), 0),
-                            setHours(setMinutes(new Date(), 5), 12),
-                            setHours(setMinutes(new Date(), 59), 23),
-                        ]}
-                        dateFormat="MMMM d, yyyy h:mm"
-                        onChange={(start) =>
-                            setNewAppointment({ ...newAppointment, start })
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="end">End Date: </label>
-                    <DatePicker
-                        className="form-control"
-                        placeholderText="Click to select an end date"
-                        selected={newAppointment.end}
-                        calendarStartDay={1}
-                        filterDate={(date) =>
-                            isWeekdayWithVisitingHoursWithPassedTime(
-                                date,
-                                visiting_hours_stringified
-                            )
-                        }
-                        filterTime={filterPassedTime}
-                        showTimeSelect
-                        withPortal
-                        timeFormat="HH:mm"
-                        injectTimes={[
-                            setHours(setMinutes(new Date(), 1), 0),
-                            setHours(setMinutes(new Date(), 5), 12),
-                            setHours(setMinutes(new Date(), 59), 23),
-                        ]}
-                        dateFormat="MMMM d, yyyy h:mm"
-                        onChange={(end) =>
-                            setNewAppointment({ ...newAppointment, end })
-                        }
-                    />
-                </div>
-                <button
-                    className="btn btn-success mt-4"
-                    onClick={handleAddAppointment}
-                >
-                    Schedule Meeting
-                </button>
             </div>
         </div>
     );
