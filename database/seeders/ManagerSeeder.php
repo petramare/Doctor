@@ -17,15 +17,15 @@ class ManagerSeeder extends Seeder
 
         $managers = [
             [
-                "user_id" => 1,
+                "user_id" => 21,
                 "clinic_id" => 1,
             ],
             [
-                "user_id" => 2,
+                "user_id" => 22,
                 "clinic_id" => 2,
             ],
             [
-                "user_id" => 3,
+                "user_id" => 23,
                 "clinic_id" => 3,
             ],
         ];

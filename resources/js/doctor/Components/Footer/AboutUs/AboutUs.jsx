@@ -103,13 +103,13 @@ export default function AboutUs() {
                                 </p>
                                 <div className="container d-flex justify-content-center align-items-center align-self-center">
                                     <a
-                                        href=""
+                                        href="https://www.linkedin.com/in/janilletsko/"
                                         className="btn btn-primary text-decoration-none mx-1"
                                     >
                                         LinkedIn 👈
                                     </a>
                                     <a
-                                        href=""
+                                        href="https://github.com/Koleckoo"
                                         className="btn btn-primary text-decoration-none mx-1"
                                     >
                                         GitHub 👈
