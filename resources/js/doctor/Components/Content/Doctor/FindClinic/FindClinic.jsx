@@ -46,7 +46,7 @@ export default function FindClinic() {
                         <tbody>
                             {search.map((result, index) => (
                                 <tr key={index}>
-                                    <th scope="row">{index + 1}</th>
+                                    <th className="align-middle" scope="row">{index + 1}</th>
                                     <td className="align-middle">{result.name} {result.address}</td>
                                     <td className="align-middle text-center">
                                         <button className="accept-button">Apply</button>
