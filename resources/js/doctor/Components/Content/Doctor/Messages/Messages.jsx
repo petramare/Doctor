@@ -83,7 +83,6 @@ export default function Messages() {
                 newMessage
             );
             setMessageSent(messageSent + 1);
-            e.target.message_type_id.value = 99;
             e.target.message.value = "";
             setErrorMessages([]);
             setSuccessMessage(response.status);

@@ -87,23 +87,27 @@ export default function LandingPage() {
                                 </blockquote>
                             </div>
 
-                            <section class="hero-section">
-                                <div class="container">
-                                    <div class="row align-items-center my-5 py-5">
-                                        <div class="col-md-6 d-flex flex-column align-items-end px-3">
-                                            <h1>Let your Patients</h1>
-                                            <p>
-                                                Keep track of your schedule with
-                                                our easy-to-use calendar app.
+                            <section className="hero-section">
+                                <div className="container">
+                                    <div className="row align-items-center my-5 py-5">
+                                        <div className="col-md-6 d-flex flex-column align-items-end px-3">
+                                            <h1>
+                                                Be reachable to your Patients
+                                            </h1>
+                                            <p className="text-right">
+                                                Allow new patients to find You
+                                                and Your current Patients to
+                                                schedule an Appointment with you
+                                                on few clicks.
                                             </p>
                                             <a
                                                 href="#"
-                                                class="btn btn-primary btn-lg"
+                                                className="btn btn-primary btn-lg"
                                             >
                                                 Register as a Doctor
                                             </a>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div className="col-md-6">
                                             <iframe
                                                 width={500}
                                                 height={500}
@@ -116,15 +120,15 @@ export default function LandingPage() {
                                         platform aim to make communication
                                         between Patients and Doctors effective.
                                     </blockquote>
-                                    <div class="row align-items-center my-5 py-5">
-                                        <div class="col-md-6">
+                                    <div className="row align-items-center my-5 py-5">
+                                        <div className="col-md-6">
                                             <iframe
                                                 width={400}
                                                 height={400}
                                                 src="https://embed.lottiefiles.com/animation/131043"
                                             ></iframe>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div className="col-md-6">
                                             <h1>Your Personal Calendar</h1>
                                             <p>
                                                 Keep track of your schedule with
@@ -132,9 +136,9 @@ export default function LandingPage() {
                                             </p>
                                             <a
                                                 href="#"
-                                                class="btn btn-primary btn-lg"
+                                                className="btn btn-primary btn-lg"
                                             >
-                                                Download Now
+                                                Register as a Patient
                                             </a>
                                         </div>
                                     </div>
@@ -143,8 +147,8 @@ export default function LandingPage() {
                                         - have all the communication at one
                                         place.{" "}
                                     </blockquote>
-                                    <div class="row align-items-center my-5 py-5">
-                                        <div class="col-md-6 d-flex flex-column align-items-end">
+                                    <div className="row align-items-center my-5 py-5">
+                                        <div className="col-md-6 d-flex flex-column align-items-end">
                                             <h1>Your Personal Calendar</h1>
                                             <p>
                                                 Keep track of your schedule with
@@ -152,12 +156,12 @@ export default function LandingPage() {
                                             </p>
                                             <a
                                                 href="#"
-                                                class="btn btn-primary btn-lg"
+                                                className="btn btn-primary btn-lg"
                                             >
-                                                Download Now
+                                                Contact Us
                                             </a>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div className="col-md-6">
                                             <iframe
                                                 width={400}
                                                 height={400}
@@ -166,17 +170,20 @@ export default function LandingPage() {
                                         </div>
                                     </div>
                                     <blockquote className="col display-5 lh-base my-5 py-5 text-primary">
-                                        Search for Specialists who will help you with your Health Issues - Be visible for your potential new patients, let them contact you via CalenDr. 
+                                        Search for Specialists who will help you
+                                        with your Health Issues - Be visible for
+                                        your potential new patients, let them
+                                        contact you via CalenDr.
                                     </blockquote>
-                                    <div class="row align-items-center my-5 py-5">
-                                        <div class="col-md-6">
+                                    <div className="row align-items-center my-5 py-5">
+                                        <div className="col-md-6">
                                             <iframe
                                                 width={400}
                                                 height={400}
                                                 src="https://embed.lottiefiles.com/animation/101574"
                                             ></iframe>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div className="col-md-6">
                                             <h1>Your Personal Calendar</h1>
                                             <p>
                                                 Keep track of your schedule with
@@ -184,9 +191,9 @@ export default function LandingPage() {
                                             </p>
                                             <a
                                                 href="#"
-                                                class="btn btn-primary btn-lg"
+                                                className="btn btn-primary btn-lg"
                                             >
-                                                Download Now
+                                                Contact Us
                                             </a>
                                         </div>
                                     </div>
