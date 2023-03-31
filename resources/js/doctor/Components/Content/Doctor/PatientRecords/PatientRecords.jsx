@@ -55,7 +55,7 @@ export default function PatientRecords() {
                     </div>
                 </div>
             </div>
-            <div className="container mt-4">
+            <div className="container my-4">
                 <div className="row justify-content-center">
                     <div className="col col-md-8 col-sm-12">
                         <div className="card">

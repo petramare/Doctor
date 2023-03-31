@@ -53,7 +53,7 @@ export default function AppointmentsList({ appList, setAppList }) {
         <>
             {appList.length !== 0 ? (
                 <div>
-                    <h3 className="text-center mb-3">List of requested appointment:</h3>
+                    <h3 className="text-center mb-3">List of requested appointments:</h3>
                     <table className="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>

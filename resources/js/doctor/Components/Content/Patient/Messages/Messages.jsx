@@ -273,6 +273,7 @@ export default function Messages() {
                     ""
                 )}
             </div>
+            <div style={{minHeight:'120px'}}></div>
         </>
     );
 }
