@@ -60,6 +60,7 @@ export default function FindClinic() {
                     :
                     ''
             }
+            <div style={{minHeight:'320px'}}></div>
 
         </>
     )
